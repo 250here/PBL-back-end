@@ -13,7 +13,7 @@ import java.sql.Timestamp;
 public class GroupTask {
 
     private Integer taskId;
-    private Integer projectId;
+    private Integer projectTaskId;
     private Integer groupId;
     private String taskName;
     private String taskDiscribe;

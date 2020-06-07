@@ -18,14 +18,14 @@ import java.sql.Date;
 @NoArgsConstructor
 public class File {
 
-    private int fileId;
+    private Integer fileId;
     private String userId;
-    private int projectId;
+    private Integer projectId;
     private String fileName;
     private String filePath;
     private Date uploadTime;
 
-    public File(String userId, int projectId, String fileName, String filePath){
+    public File(String userId, Integer projectId, String fileName, String filePath){
         this.userId = userId;
         this.projectId = projectId;
         this.fileName = fileName;

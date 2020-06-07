@@ -3,10 +3,16 @@
 <mapper namespace="com.pbl.backend.dao.TakesDao">
 
 
+<!--    //学生选课-->
+<!--    Integer addCourse(@Param("userId")String userId, @Param("courseId")int courseId);-->
+    <insert id="addCourse">
+        insert into takes(user_id, course_id)
+        values(#{userId},#{courseId})
+    </insert>
 
 <!--    Integer deleteCourse(String userId, int courseId);-->
     <delete id="deleteCourse" >
-        delete from project where course_id=#{courseId} and user_id=#{userId}
+        delete from takes where course_id=#{courseId} and user_id=#{userId}
     </delete>
 
 </mapper>

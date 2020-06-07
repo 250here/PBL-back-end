@@ -10,11 +10,40 @@
         <result column="project_endtime" property="projectEndTime" jdbcType="DATE"/>
     </resultMap>
 
+<!--    //添加pj-->
+<!--    Integer addProject(Project project);-->
+    <insert id="addProject" parameterType="com.pbl.backend.entity.Project">
+        insert into project(project_id, course_id, project_name, project_startime, project_endtime)
+        values(#{projectId},#{courseId},#{projectName},#{projectStartTime},#{projectEndTime})
+    </insert>
+
+<!--    //根据courseId和projectName查找项目-->
+<!--    Project getProjectByCourseIdAndName(@Param("courseId")int courseId, @Param("projectName")String projectName);-->
+    <select id="getProjectByCourseIdAndName" resultMap="BaseResultMap">
+        select *
+        from project
+        where course_id=#{courseId} and project_name=#{projectName}
+    </select>
+
 <!--    List<Project> getAllProject(int courseId);-->
-    <select id="getAllProject" parameterType="integer" resultMap="BaseResultMap">
+    <select id="getAllProject" resultMap="BaseResultMap">
         select *
         from project
         where course_id=#{courseId}
     </select>
+
+<!--    //根据PjId查找Pj-->
+<!--    Project getProjectById(@Param("projectId")int projectId);-->
+    <select id="getProjectById" resultMap="BaseResultMap">
+        select *
+        from project
+        where project_id=#{projectId}
+    </select>
+
+<!--    //删除pj-->
+<!--    int deleteProject(@Param("projectId")int projectId);-->
+    <delete id="deleteProject" parameterType="int">
+        delete from project where project_id=#{projectId}
+    </delete>
 
 </mapper>

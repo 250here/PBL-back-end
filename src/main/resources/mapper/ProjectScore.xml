@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pbl.backend.dao.ProjectScoreDao">
+
+
+    <resultMap id="BaseResultMap" type="com.pbl.backend.entity.ProjectScore">
+        <id column="user_id" property="userId" jdbcType="VARCHAR"/>
+        <id column="project_id" property="projectId" jdbcType="INTEGER"/>
+        <result column="project_name" property="projectName" jdbcType="VARCHAR"/>
+        <result column="user_name" property="userName" jdbcType="VARCHAR"/>
+        <result column="student_grade" property="stuGrade" jdbcType="INTEGER"/>
+        <result column="teacher_grade" property="teacherGrade" jdbcType="INTEGER"/>
+    </resultMap>
+
+
+<!--    //根据项目ID删除该项目所有成绩信息-->
+<!--    int deleteScoresByProjectId(@Param("projectId")int projectId);-->
+    <delete id="deleteScoresByProjectId" parameterType="int">
+        delete from student_pj where project_id=#{projectId}
+    </delete>
+
+<!--    //删除学生与某个项目的关联信息-->
+<!--    int deleteStuProjectInfo(@Param("projectId")int projectId, @Param("stuId")String stuId);-->
+    <delete id="deleteStuProjectInfo">
+        delete from student_pj where project_id=#{projectId} and user_id=#{stuId}
+    </delete>
+
+<!--    //新增学生与某个项目的关联信息-->
+<!--    int addStuProjectInfo(@Param("projectId")int projectId, @Param("stuId")String stuId);-->
+    <insert id="addStuProjectInfo">
+        insert into student_pj(project_id, user_id)
+        values(#{projectId},#{stuId})
+    </insert>
+
+<!--    //根据projectId和stuId,获取该学生成绩信息-->
+<!--    int getPjScoreByPjIdAndStuId(@Param("projectId")int projectId, @Param("stuId")String stuId);-->
+    <select id="getPjScoreByPjIdAndStuId" resultType="int">
+        select teacher_grade
+        from student_pj
+        where project_id=#{projectId} and user_id=#{stuId}
+    </select>
+
+
+</mapper>

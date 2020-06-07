@@ -24,24 +24,24 @@
     </insert>
 
     <!--Course findCourseByCourseId(int courseId);-->
-    <select id="getCourseByCourseId" parameterType="integer" resultMap="BaseResultMap" >
+    <select id="getCourseByCourseId" resultMap="BaseResultMap" >
         select *
         from course
         where course_id=#{courseId}
     </select>
 
 <!--    Integer deleteStudentTake(int courseId);-->
-    <delete id="deleteStudentTake" parameterType="integer" >
+    <delete id="deleteStudentTake" >
         delete from takes where course_id=#{courseId}
     </delete>
 
 <!--    Integer deleteCourse(int course);-->
-    <delete id="deleteCourse" parameterType="integer">
+    <delete id="deleteCourse" >
         delete from course where course_id=#{courseId}
     </delete>
 
 <!--    List<Course> getCourseByTeacherId(String userId);-->
-    <select id="getCourseByTeacherId" parameterType="String" resultMap="BaseResultMap">
+    <select id="getCourseByTeacherId" resultMap="BaseResultMap">
         select *
         from course
         where teacher_id=#{userId}

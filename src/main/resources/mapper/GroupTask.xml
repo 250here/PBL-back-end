@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pbl.backend.dao.GroupTaskDao">
+
+    <resultMap id="BaseResultMap" type="com.pbl.backend.entity.GroupTask">
+        <id column="task_id" property="taskId" jdbcType="INTEGER"/>
+        <result column="project_task_id" property="projectTaskId" jdbcType="INTEGER"/>
+        <result column="group_id" property="groupId" jdbcType="INTEGER"/>
+        <result column="task_name" property="taskName" jdbcType="VARCHAR"/>
+        <result column="task_discribe" property="taskDiscribe" jdbcType="VARCHAR"/>
+        <result column="task_startime" property="taskStartTime" jdbcType="timestamp"/>
+        <result column="task_endtime" property="taskEndTime" jdbcType="timestamp"/>
+        <result column="is_finished" property="isFinished" jdbcType="INTEGER"/>
+    </resultMap>
+
+<!--    //获取小组内所有任务-->
+<!--    List<GroupTask> getAllGroupTasks(@Param("groupId")int groupId);-->
+    <select id="getAllGroupTasks" resultMap="BaseResultMap">
+        select *
+        from group_task
+        where group_id=#{groupId}
+    </select>
+
+<!--    //插入小组任务-->
+<!--    int addGroupTask(GroupTask groupTask);-->
+    <insert id="addGroupTask" parameterType="com.pbl.backend.entity.GroupTask">
+        insert into group_task(task_id, project_task_id, group_id, task_name, task_discribe, task_startime, task_endtime, is_finished)
+        values(#{taskId},#{projectTaskId},#{groupId},#{taskName},#{taskDiscribe},#{taskStartTime},#{taskEndTime},#{isFinished})
+    </insert>
+
+<!--    //根据taskId获取groupTask-->
+<!--    GroupTask getGroupTaskByTaskId(@Param("taskId")int taskId);-->
+    <select id="getGroupTaskByTaskId" resultMap="BaseResultMap">
+        select *
+        from group_task
+        where task_id=#{taskId}
+    </select>
+
+<!--    //获取小组任务，根据groupId和taskName-->
+<!--    GroupTask getGroupTaskByGpIdAndName(@Param("groupId")int groupId, @Param("taskName")String taskName);-->
+    <select id="getGroupTaskByGpIdAndName" resultMap="BaseResultMap">
+        select *
+        from group_task
+        where group_id=#{groupId} and task_name=#{taskName}
+    </select>
+
+<!--    //根据项目ID删除该项目所有小组任务-->
+<!--    int deleteGroupTaskByProjectId(@Param("projectId")int projectId);-->
+    <delete id="deleteGroupTaskByProjectId" parameterType="int">
+        delete from group_task where project_task_id=#{projectId}
+    </delete>
+
+<!--    //根据groupTaskId删除-->
+<!--    int deleteGroupTaskByTaskId(@Param("groupTaskId")int groupTaskId);-->
+    <delete id="deleteGroupTaskByTaskId" parameterType="int">
+        delete from group_task where task_id=#{groupTaskId}
+    </delete>
+
+<!--    //更新小组任务为已完成-->
+<!--    int updateGruopTaskFinished(@Param("groupTaskId")int groupTaskId, @Param("isFinished")int isFinished);-->
+    <update id="updateGruopTaskFinished">
+        update group_task
+        set is_finished=#{isFinished}
+        where task_id=#{groupTaskId}
+    </update>
+
+</mapper>

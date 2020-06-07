@@ -11,7 +11,7 @@ import lombok.Data;
 
 @Data
 public class CourseApply {
-    private int courseId;
+    private Integer courseId;
     private String courseName;
     private String applyResult;
     private String userId;
@@ -19,6 +19,8 @@ public class CourseApply {
 
     //维护学生和apply之间的一对一关系
     private User user;
+
+    private Course course;
 
     public static final String INCHECK = "0";
     public static final String AGREE = "1";

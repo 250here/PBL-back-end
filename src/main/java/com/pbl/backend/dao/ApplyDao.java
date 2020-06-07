@@ -2,6 +2,7 @@ package com.pbl.backend.dao;
 
 import com.pbl.backend.entity.CourseApply;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -9,18 +10,15 @@ import java.util.List;
 public interface ApplyDao {
 
     //填写退课申请,status：INCHECK，AGREE，REJECT
-    Integer submitApply(int userId, int courseId, int statusId);
+    Integer submitApply(@Param("userId")int userId, @Param("courseId")int courseId, @Param("statusId")String statusId);
 
     //教师获取退课申请
-    List<CourseApply> getCourseApply(int courseId);
-
-    //从学生已选课程删除申请课程
-    Integer deleteApplyCourse(int courseId);
+    List<CourseApply> getCourseApply(@Param("courseId")int courseId);
 
     //学生查看自己退课申请
-    List<CourseApply> studentGetCourseApply(String userId);
+    List<CourseApply> studentGetCourseApply(@Param("userId")String userId);
 
     //更新退课申请
-    Integer updateApply(String userId, int courseId, String code);
+    Integer updateApply(@Param("userId")String userId, @Param("courseId")int courseId, @Param("code")String code);
 
 }

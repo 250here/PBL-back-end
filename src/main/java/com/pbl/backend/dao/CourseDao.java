@@ -2,6 +2,7 @@ package com.pbl.backend.dao;
 
 import com.pbl.backend.entity.Course;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -12,26 +13,26 @@ public interface CourseDao {
     Integer addCourse(Course course);
 
     //添加进course——teacher
-    Integer updateTeaches(String userId, int courseId);
+    Integer updateTeaches(@Param("userId")String userId, @Param("courseId")int courseId);
 
     //删除course
-    Integer deleteCourse(int course);
+    Integer deleteCourse(@Param("course")int course);
 
     //删除tea-course表
-    Integer deleteTeaCourse(String userId,int courseId);
+    Integer deleteTeaCourse(@Param("userId")String userId, @Param("courseId")int courseId);
 
     //查找course
-    Course getCourse(int courseId, String courseName);
+    Course getCourse(@Param("courseId")int courseId, @Param("courseName")String courseName);
 
     //根据id或者名称查找
-    Course getCourseByCourseId(int courseId);
-    Course getCourseByCourseName(String courseName);
+    Course getCourseByCourseId(@Param("courseId")int courseId);
+    Course getCourseByCourseName(@Param("courseName")String courseName);
 
     //删除学生所选课程
-    Integer deleteStudentTake(int courseId);
+    Integer deleteStudentTake(@Param("courseId")int courseId);
 
     //获取老师所授课程
-    List<Course> getCourseByTeacherId(String userId);
+    List<Course> getCourseByTeacherId(@Param("userId")String userId);
 
 
 }

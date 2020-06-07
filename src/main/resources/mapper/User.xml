@@ -6,8 +6,19 @@
 <!--写对应的接口名-->
 <mapper namespace="com.pbl.backend.dao.UserDao">
 
+    <resultMap id="BaseResultMap" type="com.pbl.backend.entity.User">
+
+    </resultMap>
+
+<!--    User loadUserByUsername(@Param("userName")String userName);-->
+
+<!--    Role findRoleByUserId(@Param("userId")Integer userId);-->
+
+<!--    void add(User user);-->
+
+
     <!--String getPassword(String userId)-->
-    <select id="getPassword" parameterType="int" resultType="String">
+    <select id="getPassword" resultType="String">
         select password from [user] where id = #{userId}
     </select>
 

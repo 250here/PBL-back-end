@@ -28,13 +28,13 @@
         WHERE project_id=#{projectId} and user_id=#{userId};
     </select>
 
-    <select id="getFileByFileId" parameterType="integer" resultMap="BaseResultMap">
+    <select id="getFileByFileId" resultMap="BaseResultMap">
         select *
         from file
         WHERE file_id=#{fileId};
     </select>
     
-    <delete id="deleteFileByFileId" parameterType="integer">
+    <delete id="deleteFileByFileId">
         delete from file where file_id=#{fileId}
     </delete>
 </mapper>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--写对应的接口名-->
+<mapper namespace="com.pbl.backend.dao.UserGroupDao">
+
+    <resultMap id="BaseResultMap" type="com.pbl.backend.entity.User">
+
+    </resultMap>
+
+<!--    //根据项目ID删除该项目所有小组成员信息-->
+<!--    int deleteGroupsByProjectId(@Param("projectId")int projectId);-->
+    <delete id="deleteGroupsByProjectId" parameterType="int">
+        delete from grouping where project_id=#{projectId}
+    </delete>
+
+<!--    //学生加入小组,添加关联信息-->
+<!--    int addStuGroup(@Param("projectId")int projectId, @Param("groupId")int groupId, @Param("userId")String userId);-->
+
+
+<!--    //学生退出小组，删除关联信息-->
+<!--    int deleteStuGroup(@Param("groupId")int groupId, @Param("userId")String userId);-->
+    <delete id="deleteStuGroup" >
+        delete from user_group where group_id=#{groupId} and user_id=#{userId}
+    </delete>
+
+<!--    //根据UserId和ProjectId获取groupId-->
+<!--    int getGroupIdByPjIdAndUserId(@Param("projectId")int projectId, @Param("userId")String userId);-->
+
+</mapper>

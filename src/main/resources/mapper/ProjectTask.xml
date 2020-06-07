@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pbl.backend.dao.ProjectTaskDao">
+
+
+    <resultMap id="BaseResultMap" type="com.pbl.backend.entity.ProjectTask">
+        <id column="task_id" property="taskId" jdbcType="INTEGER"/>
+        <result column="project_id" property="projectId" jdbcType="INTEGER"/>
+        <result column="task_name" property="taskName" jdbcType="VARCHAR"/>
+        <result column="task_discribe" property="taskDiscribe" jdbcType="VARCHAR"/>
+        <result column="task_startime" property="taskStartTime" jdbcType="timestamp"/>
+        <result column="task_endtime" property="taskEndTime" jdbcType="timestamp"/>
+    </resultMap>
+
+
+<!--    //添加pjTask-->
+<!--    Integer addProjectTask(ProjectTask projectTask);-->
+    <insert id="addProjectTask" parameterType="com.pbl.backend.entity.ProjectTask">
+        insert into project_task(task_id, project_id, task_name, task_discribe,task_startime, task_endtime)
+        values(#{taskId},#{projectId},#{taskName},#{taskDiscribe},#{taskStartTime},#{taskEndTime})
+    </insert>
+
+<!--    //根据pjId和pjTaskName查找项目-->
+<!--    ProjectTask getPjTaskByPjIdAndName(@Param("projectId")int projectId, @Param("taskName")String taskName);-->
+    <select id="getPjTaskByPjIdAndName" resultType="com.pbl.backend.entity.ProjectTask">
+        select *
+        from project_task
+        where project_id=#{projectId} and task_name=#{taskName}
+    </select>
+
+<!--    //获取项目所有任务-->
+<!--    List<ProjectTask> getAllPjTasks(@Param("projectId")int projectId);-->
+    <select id="getAllPjTasks" resultMap="BaseResultMap">
+        select *
+        from project_task
+        where project_id=#{projectId}
+    </select>
+
+<!--    //根据taskId查找PjTask-->
+<!--    ProjectTask getPjTaskById(@Param("taskId")int taskId);-->
+    <select id="getPjTaskById" resultType="com.pbl.backend.entity.ProjectTask">
+        select *
+        from project_task
+        where task_id=#{taskId}
+    </select>
+
+<!--    //根据taskId删除项目任务信息-->
+<!--    int deletePjTaskByTaskId(@Param("pjTaskId")int pjTaskId);-->
+    <delete id="deletePjTaskByTaskId" parameterType="int">
+        delete from project_task where task_id=#{taskId}
+    </delete>
+
+<!--    //根据项目ID删除该项目所有任务信息-->
+<!--    int deletePjTasksByProjectId(@Param("projectId")int projectId);-->
+    <select id="deletePjTasksByProjectId" parameterType="int">
+        delete from project_task where project_id=#{projectId}
+    </select>
+
+
+</mapper>

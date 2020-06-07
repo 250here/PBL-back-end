@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pbl.backend.dao.GroupPjTaskDao">
+
+    <resultMap id="BaseResultMap" type="com.pbl.backend.entity.GroupPjTask">
+        <id column="project_task_id" property="projectTaskId" jdbcType="INTEGER"/>
+        <id column="group_id" property="groupId" jdbcType="INTEGER"/>
+        <result column="group_task_num" property="groupTaskNum" jdbcType="INTEGER"/>
+        <result column="group_task_finishnum" property="groupTaskFinishNum" jdbcType="INTEGER"/>
+        <result column="is_finished" property="isFinished" jdbcType="INTEGER"/>
+    </resultMap>
+
+<!--    //根据projectTaskId和groupId-->
+<!--    GroupPjTask getGroupPjTaskNum(@Param("projectTaskId")int projectTaskId, @Param("groupId")int groupId);-->
+    <select id="getGroupPjTaskNum" resultMap="BaseResultMap">
+        select *
+        from group_project_task
+        where project_task_id=#{projectTaskId} and group_id=#{groupId}
+    </select>
+
+<!--    //更新指定项目任务，小组发布任务数/已完成数-->
+<!--    int updateGroupPjTaskNum(@Param("projectTaskId")int projectTaskId, @Param("groupId")int groupId, @Param("groupTaskNum")int groupTaskNum, @Param("groupTaskFinishedNum")int groupTaskFinishedNum);-->
+    <update id="updateGroupPjTaskNum">
+        update group_project_task
+        set group_task_num=#{groupTaskNum}, group_task_finishnum=#{groupTaskFinishedNum}
+        where project_task_id=#{projectTaskId} and group_id=#{groupId}
+    </update>
+
+<!--    //更新指定项目任务，该小组已完成-->
+<!--    int updateGroupPjTaskFinished(@Param("projectTaskId")int projectTaskId, @Param("groupId")int groupId, @Param("isFinished")int isFinished);-->
+    <update id="updateGroupPjTaskFinished">
+        update group_project_task
+        set is_finished=#{isFinished}
+        where project_task_id=#{projectTaskId} and group_id=#{groupId}
+    </update>
+
+<!--    //创建groupTask与projectTask关联信息-->
+<!--    //groupTaskNum代表PjTask对应的小组创建的任务数-->
+<!--    int addGroupPjTask(@Param("projectTaskId")int projectTaskId, @Param("groupId")int groupId, @Param("groupTaskNum")int groupTaskNum);-->
+    <insert id="addGroupPjTask">
+        insert into group_project_task(project_task_id, group_id, group_task_num)
+        values(#{projectTaskId},#{groupId},#{groupTaskNum})
+    </insert>
+
+</mapper>
