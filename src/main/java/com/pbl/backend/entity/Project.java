@@ -21,5 +21,8 @@ public class Project {
     private String projectName;
     private Date startTime;
     private Date endTime;
-
+    private String projectDsc;
+    private Date evaluationTime;
+    private Integer teacherEvaWeight;  //教师评价权重
+    private Integer stuEvaWeight;   //学生评价权重, 和教师总和为100%
 }

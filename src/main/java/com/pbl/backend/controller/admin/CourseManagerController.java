@@ -37,4 +37,12 @@ public class CourseManagerController {
             return Result.SUCCESS(courses);
 
     }
+
+    //搜索课程, 根据课程名称
+    @ApiOperation(value = "搜索课程, 根据课程名")
+    @GetMapping("/courseInfo")
+    public Result getCourse(String courseName){
+        return null;
+    }
+
 }
