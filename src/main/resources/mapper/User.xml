@@ -16,6 +16,12 @@
                      javaType="com.pbl.backend.entity.Role" select="getRole"/>
     </resultMap>
 
+    <resultMap id="roleMap" type="com.pbl.backend.entity.Role">
+        <id column="role_id" property="id" jdbcType="INTEGER"/>
+        <result column="role_name" property="name" jdbcType="VARCHAR"/>
+
+    </resultMap>
+
 
 <!--    User loadUserByUsername(@Param("userName")String userName);-->
     <select id="loadUserByUsername" resultMap="BaseResultMap">
@@ -23,11 +29,19 @@
         from [user]
         where user_name=#{userName}
     </select>
-    <select id="getRole" parameterType="string" resultMap="">
 
+    <select id="getRole" parameterType="string" resultMap="roleMap">
+        select *
+        from user_role, role
+        where user_id=#{id}
     </select>
 
 <!--    Role findRoleByUserId(@Param("userId")Integer userId);-->
+    <select id="findRoleByUserId" parameterType="int" resultMap="roleMap">
+        select *
+        from user_role, role
+        where user_id=#{userId}
+    </select>
 
 <!--    void add(User user);-->
     <insert id="add" parameterType="com.pbl.backend.entity.User" useGeneratedKeys="true" keyProperty="userId">
