@@ -7,14 +7,53 @@
 <mapper namespace="com.pbl.backend.dao.UserDao">
 
     <resultMap id="BaseResultMap" type="com.pbl.backend.entity.User">
+        <id column="user_id" property="id" jdbcType="VARCHAR"/>
+        <result column="user_name" property="username" jdbcType="VARCHAR"/>
+        <result column="user_password" property="password" jdbcType="VARCHAR"/>
+        <result column="photo_path" property="photoPath" jdbcType="VARCHAR"/>
+
+        <association property="role" column="{id=user_id}"
+                     javaType="com.pbl.backend.entity.Role" select="getRole"/>
+    </resultMap>
+
+    <resultMap id="roleMap" type="com.pbl.backend.entity.Role">
+        <id column="role_id" property="id" jdbcType="INTEGER"/>
+        <result column="role_name" property="name" jdbcType="VARCHAR"/>
 
     </resultMap>
 
+
 <!--    User loadUserByUsername(@Param("userName")String userName);-->
+    <select id="loadUserByUsername" resultMap="BaseResultMap">
+        select *
+        from [user]
+        where user_name=#{userName}
+    </select>
+
+    <select id="getRole" parameterType="string" resultMap="roleMap">
+        select *
+        from user_role, role
+        where user_id=#{id}
+    </select>
 
 <!--    Role findRoleByUserId(@Param("userId")Integer userId);-->
+    <select id="findRoleByUserId" parameterType="int" resultMap="roleMap">
+        select *
+        from user_role, role
+        where user_id=#{userId}
+    </select>
 
 <!--    void add(User user);-->
+    <insert id="add" parameterType="com.pbl.backend.entity.User" useGeneratedKeys="true" keyProperty="userId">
+        insert into [user](user_name,user_password)
+        values(#{username},#{password})
+    </insert>
+
+<!--    void addRole(@Param("userId")String userId, @Param("roleId")int roleId);-->
+    <insert id="addRole">
+        insert into user_role(user_id,role_id)
+        values(#{userId},#{roleId})
+    </insert>
 
 
     <!--String getPassword(String userId)-->
