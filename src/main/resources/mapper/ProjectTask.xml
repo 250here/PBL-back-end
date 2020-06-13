@@ -8,8 +8,8 @@
         <result column="project_id" property="projectId" jdbcType="INTEGER"/>
         <result column="task_name" property="taskName" jdbcType="VARCHAR"/>
         <result column="task_discribe" property="taskDiscribe" jdbcType="VARCHAR"/>
-        <result column="task_startime" property="taskStartTime" jdbcType="timestamp"/>
-        <result column="task_endtime" property="taskEndTime" jdbcType="timestamp"/>
+        <result column="task_startime" property="taskStartTime" jdbcType="TIMESTAMP"/>
+        <result column="task_endtime" property="taskEndTime" jdbcType="TIMESTAMP"/>
     </resultMap>
 
 
@@ -52,9 +52,9 @@
 
 <!--    //根据项目ID删除该项目所有任务信息-->
 <!--    int deletePjTasksByProjectId(@Param("projectId")int projectId);-->
-    <select id="deletePjTasksByProjectId" parameterType="int">
+    <delete id="deletePjTasksByProjectId" parameterType="int">
         delete from project_task where project_id=#{projectId}
-    </select>
+    </delete>
 
 
 </mapper>
