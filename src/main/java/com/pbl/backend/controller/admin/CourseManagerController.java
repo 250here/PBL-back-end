@@ -3,7 +3,7 @@ package com.pbl.backend.controller.admin;
 import com.pbl.backend.common.response.Result;
 import com.pbl.backend.common.response.ResultCode;
 import com.pbl.backend.entity.Course;
-import com.pbl.backend.service.admin.ICourseService;
+import com.pbl.backend.service.admin.ICourseAdminService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ import java.util.List;
 public class CourseManagerController {
 
     @Autowired(required=false)
-    ICourseService courseService;
+    ICourseAdminService courseService;
 
     //获取所有课程信息
     @ApiOperation(value = "获取所有课程信息---是否分页待定")

@@ -1,10 +1,15 @@
 package com.pbl.backend.service.teacher.impl;
 
+import com.pbl.backend.config.FileManageConfig;
 import com.pbl.backend.dao.*;
 import com.pbl.backend.entity.Course;
 import com.pbl.backend.entity.CourseApply;
 import com.pbl.backend.entity.Project;
+import com.pbl.backend.service.common.IFileService;
 import com.pbl.backend.service.teacher.ICourseService;
+import com.pbl.backend.service.teacher.IProjectService;
+import com.zhazhapan.modules.constant.ValueConsts;
+import com.zhazhapan.util.FileExecutor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +17,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * @ClassName CourseServiceImpl
+ * @ClassName CourseAdminServiceImpl
  * @Description
  * @Author 孟超
  * @Date 2020/6/3
@@ -27,28 +32,19 @@ public class CourseServiceImpl implements ICourseService {
     @Autowired
     private ProjectDao projectDao;
     @Autowired
-    private DiscussionDao discussionDao;
-    @Autowired
-    private PjFileDao pjFileDao;
-    @Autowired
-    private GroupTaskDao groupTaskDao;
-    @Autowired
-    private GroupDao groupDao;
-    @Autowired
-    private ProjectTaskDao projectTaskDao;
-    @Autowired
-    private UserGroupDao userGroupDao;
-    @Autowired
-    private ProjectScoreDao projectScoreDao;
-    @Autowired
     private ApplyDao applyDao;
     @Autowired
     private TakesDao takesDao;
+    @Autowired
+    private IProjectService projectService;
+
+    @Autowired
+    IFileService fileService;
 
     @Override
     public boolean createCourse(Course course) {
         log.info("创建课程: " + course.getCourseName());
-        Course courseTmp = courseDao.getCourse(course.getCourseId(), course.getCourseName());
+        Course courseTmp = courseDao.getCourse(course.getTeacherId(), course.getCourseName());
 
         //存在相同课程
         if(courseTmp != null){
@@ -57,6 +53,12 @@ public class CourseServiceImpl implements ICourseService {
         }
         //添加进course
         courseDao.addCourse(course);
+
+        //创建课程文件空间
+        String localUploadPath = FileManageConfig.getUploadStoragePath() + ValueConsts.SEPARATOR + course.getCourseId();
+        if(fileService.createCourseFileSpace(localUploadPath)){
+            return true;
+        }
         return true;
     }
 
@@ -68,44 +70,23 @@ public class CourseServiceImpl implements ICourseService {
             return false;
         }
 
-        //删除该课程
-        courseDao.deleteCourse(courseId);
+        //获取该课程下的project
+        List<Project> listPj = projectDao.getAllProject(courseId);
+        //删除pj信息及其他信息
+        for (Project project: listPj){
+            projectService.deleteProject(project.getProjectId());
+        }
+
         //删除学生所选课程
         courseDao.deleteStudentTake(courseId);
 
-        //获取该课程下的project
-        List<Project> listPj = projectDao.getAllProject(courseId);
+        //删除该课程
+        courseDao.deleteCourse(courseId);
 
-        //删除pj信息及其他信息
-        for (Project project: listPj){
-            //获取pj的id
-            int projectId = project.getProjectId();
+        //删除该课程文件空间
+        FileExecutor.createFolder(FileManageConfig.getUploadStoragePath() + ValueConsts.SEPARATOR + courseId);
 
-            //删除项目讨论信息
-            discussionDao.deleteDiscsByProjectId(projectId);
-
-            //删除项目文件空间的所有信息
-            pjFileDao.deleteFilesByProjectId(projectId);
-
-            //删除本地存储项目文件
-
-            //删除项目任务分组信息
-            groupTaskDao.deleteGroupTaskByProjectId(projectId);
-
-            //删除项目分组信息
-            groupDao.deleteGroupsByProjectId(projectId);
-            userGroupDao.deleteGroupsByProjectId(projectId);
-
-            //删除项目任务信息
-            projectTaskDao.deletePjTasksByProjectId(projectId);
-
-            //删除项目学生成绩信息
-            projectScoreDao.deleteScoresByProjectId(projectId);
-
-            //删除项目信息
-            projectDao.deleteProject(projectId);
-        }
-        return false;
+        return true;
     }
 
     @Override

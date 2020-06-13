@@ -3,7 +3,7 @@ package com.pbl.backend.controller.student;
 import com.pbl.backend.common.response.Result;
 import com.pbl.backend.entity.GroupTask;
 import com.pbl.backend.entity.ProjectTask;
-import com.pbl.backend.service.student.IPjGroupTaskService;
+import com.pbl.backend.service.student.IPjStuGroupTaskService;
 import com.pbl.backend.service.teacher.IProjectTaskService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -26,7 +26,7 @@ public class StuProjectTaskController {
     private IProjectTaskService projectTaskService;
 
     @Autowired
-    private IPjGroupTaskService pjGroupTaskService;
+    private IPjStuGroupTaskService pjGroupTaskService;
 
 
     @ApiOperation(value = "查看项目内所有任务列表(该任务为教师发布)")

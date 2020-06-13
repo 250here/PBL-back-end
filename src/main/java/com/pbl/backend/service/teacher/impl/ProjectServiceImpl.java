@@ -1,8 +1,12 @@
 package com.pbl.backend.service.teacher.impl;
 
+import com.pbl.backend.config.FileManageConfig;
 import com.pbl.backend.dao.*;
 import com.pbl.backend.entity.Project;
+import com.pbl.backend.service.common.IFileService;
 import com.pbl.backend.service.teacher.IProjectService;
+import com.zhazhapan.modules.constant.ValueConsts;
+import com.zhazhapan.util.FileExecutor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +36,8 @@ public class ProjectServiceImpl implements IProjectService {
     private UserGroupDao userGroupDao;
     @Autowired
     private ProjectScoreDao projectScoreDao;
+    @Autowired
+    private IFileService fileService;
 
     //创建课程项目
     @Override
@@ -42,7 +48,16 @@ public class ProjectServiceImpl implements IProjectService {
         }
         //课程项目创建成功
         projectDao.addProject(project);
-        return true;
+
+        //创建课程项目文件空间
+        String localUploadPath = FileManageConfig.getUploadStoragePath() + ValueConsts.SEPARATOR + project.getCourseId() + ValueConsts.SEPARATOR +project.getProjectId();
+        if(fileService.createProjectFileSpace(localUploadPath)){
+            return true;
+        }
+        else {
+            projectDao.deleteProject(project.getProjectId());
+            return false;
+        }
     }
 
     //获取课程所有项目
@@ -72,7 +87,8 @@ public class ProjectServiceImpl implements IProjectService {
         pjFileDao.deleteFilesByProjectId(projectId);
 
         //删除本地存储项目文件
-
+        String localUploadPath = FileManageConfig.getUploadStoragePath() + ValueConsts.SEPARATOR + project.getCourseId() + ValueConsts.SEPARATOR +project.getProjectId();
+        FileExecutor.createFolder(localUploadPath);
 
         //删除项目任务分组信息
         groupTaskDao.deleteGroupTaskByProjectId(projectId);

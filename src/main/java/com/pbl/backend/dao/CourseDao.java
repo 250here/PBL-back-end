@@ -13,20 +13,20 @@ public interface CourseDao {
     Integer addCourse(Course course);
 
     //添加进course——teacher
-    Integer updateTeaches(@Param("userId")String userId, @Param("courseId")int courseId);
+    //Integer updateTeaches(@Param("userId")String userId, @Param("courseId")int courseId);
 
     //删除course
     Integer deleteCourse(@Param("course")int course);
 
     //删除tea-course表
-    Integer deleteTeaCourse(@Param("userId")String userId, @Param("courseId")int courseId);
+    //Integer deleteTeaCourse(@Param("userId")String userId, @Param("courseId")int courseId);
 
     //查找course
-    Course getCourse(@Param("courseId")int courseId, @Param("courseName")String courseName);
+    Course getCourse(@Param("teacherId")String teacherId, @Param("courseName")String courseName);
 
     //根据id或者名称查找
     Course getCourseByCourseId(@Param("courseId")int courseId);
-    Course getCourseByCourseName(@Param("courseName")String courseName);
+    //Course getCourseByCourseName(@Param("courseName")String courseName);
 
     //删除学生所选课程
     Integer deleteStudentTake(@Param("courseId")int courseId);

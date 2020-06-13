@@ -34,8 +34,8 @@
 
 <!--    //根据projectId和stuId,获取该学生成绩信息-->
 <!--    int getPjScoreByPjIdAndStuId(@Param("projectId")int projectId, @Param("stuId")String stuId);-->
-    <select id="getPjScoreByPjIdAndStuId" resultType="int">
-        select teacher_grade
+    <select id="getPjScoreByPjIdAndStuId" resultMap="BaseResultMap">
+        select *
         from student_pj
         where project_id=#{projectId} and user_id=#{stuId}
     </select>

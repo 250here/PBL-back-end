@@ -4,7 +4,7 @@ import com.pbl.backend.entity.Project;
 
 import java.util.List;
 
-public interface IProjectService {
+public interface IProjectStuService {
 
     List<Project> getCourseAllProjects(Integer courseId);
 

@@ -6,42 +6,46 @@
         <id column="project_id" property="projectId" jdbcType="INTEGER"/>
         <result column="course_id" property="courseId" jdbcType="INTEGER"/>
         <result column="project_name" property="projectName" jdbcType="VARCHAR"/>
-        <result column="project_startime" property="projectStartTime" jdbcType="DATE"/>
-        <result column="project_endtime" property="projectEndTime" jdbcType="DATE"/>
+        <result column="project_startime" property="startTime" jdbcType="DATE"/>
+        <result column="project_endtime" property="endTime" jdbcType="DATE"/>
+        <result column="project_dsc" property="projectDsc" jdbcType="VARCHAR"/>
+        <result column="evaluation_time" property="evaluationTime" jdbcType="DATE"/>
+        <result column="teacher_eva_weight" property="teacherEvaWeight" jdbcType="INTEGER"/>
+        <result column="stu_eva_weight" property="stuEvaWeight" jdbcType="INTEGER"/>
     </resultMap>
 
-<!--    //添加pj-->
-<!--    Integer addProject(Project project);-->
+    <!--    //添加pj-->
+    <!--    Integer addProject(Project project);-->
     <insert id="addProject" parameterType="com.pbl.backend.entity.Project">
-        insert into project(project_id, course_id, project_name, project_startime, project_endtime)
-        values(#{projectId},#{courseId},#{projectName},#{projectStartTime},#{projectEndTime})
+        insert into project(project_id, course_id, project_name, project_startime, project_endtime, project_dsc, evaluation_time, teacher_eva_weight, stu_eva_weight)
+        values(#{projectId},#{courseId},#{projectName},#{startTime},#{endTime},#{projectDsc},#{evaluationTime},#{teacherEvaWeight},#{stuEvaWeight})
     </insert>
 
-<!--    //根据courseId和projectName查找项目-->
-<!--    Project getProjectByCourseIdAndName(@Param("courseId")int courseId, @Param("projectName")String projectName);-->
+    <!--    //根据courseId和projectName查找项目-->
+    <!--    Project getProjectByCourseIdAndName(@Param("courseId")int courseId, @Param("projectName")String projectName);-->
     <select id="getProjectByCourseIdAndName" resultMap="BaseResultMap">
         select *
         from project
         where course_id=#{courseId} and project_name=#{projectName}
     </select>
 
-<!--    List<Project> getAllProject(int courseId);-->
+    <!--    List<Project> getAllProject(int courseId);-->
     <select id="getAllProject" resultMap="BaseResultMap">
         select *
         from project
         where course_id=#{courseId}
     </select>
 
-<!--    //根据PjId查找Pj-->
-<!--    Project getProjectById(@Param("projectId")int projectId);-->
+    <!--    //根据PjId查找Pj-->
+    <!--    Project getProjectById(@Param("projectId")int projectId);-->
     <select id="getProjectById" resultMap="BaseResultMap">
         select *
         from project
         where project_id=#{projectId}
     </select>
 
-<!--    //删除pj-->
-<!--    int deleteProject(@Param("projectId")int projectId);-->
+    <!--    //删除pj-->
+    <!--    int deleteProject(@Param("projectId")int projectId);-->
     <delete id="deleteProject" parameterType="int">
         delete from project where project_id=#{projectId}
     </delete>

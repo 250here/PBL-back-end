@@ -1,10 +1,9 @@
 package com.pbl.backend.controller.student;
 
 import com.pbl.backend.entity.Project;
-import com.pbl.backend.service.student.IProjectService;
+import com.pbl.backend.service.student.IProjectStuService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.pbl.backend.common.response.Result;
@@ -23,7 +22,7 @@ import java.util.List;
 public class StuProjectController {
 
     @Resource
-    private IProjectService stuProjectService;
+    private IProjectStuService stuProjectService;
 
     @ApiOperation(value = "获取该课程所有项目")
     @GetMapping("/projectList/{courseId}")

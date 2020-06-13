@@ -4,7 +4,7 @@ import com.pbl.backend.dao.ProjectDao;
 import com.pbl.backend.dao.ProjectScoreDao;
 import com.pbl.backend.entity.Project;
 import com.pbl.backend.entity.ProjectScore;
-import com.pbl.backend.service.student.IProjectService;
+import com.pbl.backend.service.student.IProjectStuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,7 @@ import java.util.List;
  * @description:
  */
 @Service
-public class ProjectServiceImpl implements IProjectService {
+public class ProjectStuServiceImpl implements IProjectStuService {
 
     @Autowired
     private ProjectDao projectDao;

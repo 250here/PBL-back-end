@@ -9,7 +9,7 @@ import java.util.List;
  * @date: 2020/6/1
  * @description:
  */
-public interface IProjectGroupService {
+public interface IProjectStuGroupService {
 
     List<Group> getPjAllGroups(Integer projectId);
 

@@ -5,7 +5,7 @@ import com.pbl.backend.entity.GroupTask;
 
 import java.util.List;
 
-public interface IPjGroupTaskService {
+public interface IPjStuGroupTaskService {
 
     Result createPjGroupTask(GroupTask groupTask);
 

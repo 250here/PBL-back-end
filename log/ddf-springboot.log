@@ -1,2 +1,20 @@
 2020-06-03 17:40:04.772 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 55 ] - Starting BackendApplication on LAPTOP-D8OQ4NNN with PID 6732 (D:\桌面\大三下\高级web\Pj\Code\PBL-back-end\target\classes started by lenovo in D:\桌面\大三下\高级web\Pj\Code\PBL-back-end)
 2020-06-03 17:40:04.775 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 651 ] - No active profile set, falling back to default profiles: default
+2020-06-13 11:55:34.303 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 55 ] - Starting BackendApplication on LAPTOP-L7VRH05M with PID 29276 (D:\AdvancedWeb\PJ\PBL-back-end\target\classes started by 杜东方 in D:\AdvancedWeb\PJ\PBL-back-end)
+2020-06-13 11:55:34.309 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 651 ] - No active profile set, falling back to default profiles: default
+2020-06-13 11:56:31.524 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 55 ] - Starting BackendApplication on LAPTOP-L7VRH05M with PID 28268 (D:\AdvancedWeb\PJ\PBL-back-end\target\classes started by 杜东方 in D:\AdvancedWeb\PJ\PBL-back-end)
+2020-06-13 11:56:31.530 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 651 ] - No active profile set, falling back to default profiles: default
+2020-06-13 12:02:11.126 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 55 ] - Starting BackendApplication on LAPTOP-L7VRH05M with PID 2852 (D:\AdvancedWeb\PJ\PBL-back-end\target\classes started by 杜东方 in D:\AdvancedWeb\PJ\PBL-back-end)
+2020-06-13 12:02:11.131 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 651 ] - No active profile set, falling back to default profiles: default
+2020-06-13 12:02:27.257 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 55 ] - Starting BackendApplication on LAPTOP-L7VRH05M with PID 16812 (D:\AdvancedWeb\PJ\PBL-back-end\target\classes started by 杜东方 in D:\AdvancedWeb\PJ\PBL-back-end)
+2020-06-13 12:02:27.260 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 651 ] - No active profile set, falling back to default profiles: default
+2020-06-13 12:04:45.327 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 55 ] - Starting BackendApplication on LAPTOP-L7VRH05M with PID 17300 (D:\AdvancedWeb\PJ\PBL-back-end\target\classes started by 杜东方 in D:\AdvancedWeb\PJ\PBL-back-end)
+2020-06-13 12:04:45.333 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 651 ] - No active profile set, falling back to default profiles: default
+2020-06-13 12:05:04.727 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 55 ] - Starting BackendApplication on LAPTOP-L7VRH05M with PID 9432 (D:\AdvancedWeb\PJ\PBL-back-end\target\classes started by 杜东方 in D:\AdvancedWeb\PJ\PBL-back-end)
+2020-06-13 12:05:04.734 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 651 ] - No active profile set, falling back to default profiles: default
+2020-06-13 12:05:49.084 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 55 ] - Starting BackendApplication on LAPTOP-L7VRH05M with PID 15888 (D:\AdvancedWeb\PJ\PBL-back-end\target\classes started by 杜东方 in D:\AdvancedWeb\PJ\PBL-back-end)
+2020-06-13 12:05:49.090 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 651 ] - No active profile set, falling back to default profiles: default
+2020-06-13 12:07:02.784 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 55 ] - Starting BackendApplication on LAPTOP-L7VRH05M with PID 19324 (D:\AdvancedWeb\PJ\PBL-back-end\target\classes started by 杜东方 in D:\AdvancedWeb\PJ\PBL-back-end)
+2020-06-13 12:07:02.793 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 651 ] - No active profile set, falling back to default profiles: default
+2020-06-13 12:07:48.801 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplicationTests : 55 ] - Starting BackendApplicationTests on LAPTOP-L7VRH05M with PID 9020 (started by �Ŷ��� in D:\AdvancedWeb\PJ\PBL-back-end)
+2020-06-13 12:07:48.805 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplicationTests : 651 ] - No active profile set, falling back to default profiles: default

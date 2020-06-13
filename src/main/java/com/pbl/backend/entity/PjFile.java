@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import java.sql.Date;
 
 /**
- * @ClassName File
+ * @ClassName PjFile
  * @Description
  * @Author 孟超
  * @Date 2020/6/1
@@ -16,7 +16,7 @@ import java.sql.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class File {
+public class PjFile {
 
     private Integer fileId;
     private String userId;
@@ -25,7 +25,7 @@ public class File {
     private String filePath;
     private Date uploadTime;
 
-    public File(String userId, Integer projectId, String fileName, String filePath){
+    public PjFile(String userId, Integer projectId, String fileName, String filePath){
         this.userId = userId;
         this.projectId = projectId;
         this.fileName = fileName;

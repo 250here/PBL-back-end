@@ -6,7 +6,7 @@ import com.pbl.backend.dao.GroupPjTaskDao;
 import com.pbl.backend.dao.GroupTaskDao;
 import com.pbl.backend.entity.GroupPjTask;
 import com.pbl.backend.entity.GroupTask;
-import com.pbl.backend.service.student.IPjGroupTaskService;
+import com.pbl.backend.service.student.IPjStuGroupTaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -16,7 +16,7 @@ import java.util.List;
  * @date: 2020/6/1
  * @description:
  */
-public class PjGroupTaskServiceImpl implements IPjGroupTaskService {
+public class PjStuGroupTaskServiceImpl implements IPjStuGroupTaskService {
 
     @Autowired
     private GroupTaskDao groupTaskDao;
@@ -43,12 +43,12 @@ public class PjGroupTaskServiceImpl implements IPjGroupTaskService {
         groupTaskDao.addGroupTask(groupTask);
 
         //更新该小组对指定项目任务所发布的小组任务数
-        GroupPjTask groupPjTask = groupPjTaskDao.getGroupPiTaskNum(groupTask.getProjectId(), groupTask.getGroupId());
+        GroupPjTask groupPjTask = groupPjTaskDao.getGroupPjTaskNum(groupTask.getProjectTaskId(), groupTask.getGroupId());
         if(groupPjTask == null){ //首次创建项目任务对应的小组任务
-            groupPjTaskDao.addGroupPjTask(groupTask.getProjectId(), groupTask.getGroupId(), 1);
+            groupPjTaskDao.addGroupPjTask(groupTask.getProjectTaskId(), groupTask.getGroupId(), 1);
         }
         else{
-            groupPjTaskDao.updateGroupPjTaskNum(groupTask.getProjectId(), groupTask.getGroupId(), groupPjTask.getGroupTaskNum()+1, groupPjTask.getGroupTaskFinishNum());
+            groupPjTaskDao.updateGroupPjTaskNum(groupTask.getProjectTaskId(), groupTask.getGroupId(), groupPjTask.getGroupTaskNum()+1, groupPjTask.getGroupTaskFinishNum());
         }
         return Result.SUCCESS();
     }
@@ -89,7 +89,7 @@ public class PjGroupTaskServiceImpl implements IPjGroupTaskService {
         groupTaskDao.deleteGroupTaskByTaskId(groupTaskId);
 
         //更新该小组与项目任务的关联信息
-        GroupPjTask groupPjTask = groupPjTaskDao.getGroupPiTaskNum(pjTaskId, groupId);
+        GroupPjTask groupPjTask = groupPjTaskDao.getGroupPjTaskNum(pjTaskId, groupId);
         if(groupPjTask == null){
             return false;
         }
@@ -114,7 +114,7 @@ public class PjGroupTaskServiceImpl implements IPjGroupTaskService {
         groupTaskDao.updateGruopTaskFinished(groupTaskId, 1);
 
         //更新该小组与项目任务的关联信息
-        GroupPjTask groupPjTask = groupPjTaskDao.getGroupPiTaskNum(pjTaskId, groupId);
+        GroupPjTask groupPjTask = groupPjTaskDao.getGroupPjTaskNum(pjTaskId, groupId);
         if(groupPjTask == null){
             return false;
         }

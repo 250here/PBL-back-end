@@ -4,7 +4,7 @@ import com.pbl.backend.entity.Course;
 
 import java.util.List;
 
-public interface ICourseService {
+public interface ICourseAdminService {
 
 
     List<Course> getAllCourses();

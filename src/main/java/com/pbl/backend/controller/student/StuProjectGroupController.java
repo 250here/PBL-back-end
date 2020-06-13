@@ -2,7 +2,7 @@ package com.pbl.backend.controller.student;
 
 import com.pbl.backend.common.response.Result;
 import com.pbl.backend.entity.Group;
-import com.pbl.backend.service.student.IProjectGroupService;
+import com.pbl.backend.service.student.IProjectStuGroupService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ import java.util.List;
 public class StuProjectGroupController {
 
     @Autowired
-    private IProjectGroupService stuProjectGroupService;
+    private IProjectStuGroupService stuProjectGroupService;
 
     @ApiOperation(value = "获取该课程项目所有小组")
     @GetMapping("/pjGroupList/{projectId}")

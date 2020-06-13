@@ -1,9 +1,12 @@
 package com.pbl.backend.controller.teacher;
 
 import com.pbl.backend.common.response.ResultCode;
+import com.pbl.backend.config.FileManageConfig;
 import com.pbl.backend.entity.Course;
 import com.pbl.backend.entity.CourseApply;
 import com.pbl.backend.service.teacher.ICourseService;
+import com.zhazhapan.modules.constant.ValueConsts;
+import com.zhazhapan.util.FileExecutor;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,12 +32,19 @@ public class CourseController {
     @ApiOperation(value = "新增课程")
     @PostMapping("/courseInfo")
     public Result createCourse(@RequestBody Course course) {
-        boolean createResult = courseService.createCourse(course);
-
-        if(createResult)
+//        boolean createResult = courseService.createCourse(course);
+//
+//        if(createResult)
+//            return Result.SUCCESS();
+//        else
+//            return new Result(ResultCode.COURES_ALREADY_EXISTS);
+        String localUploadPath = FileManageConfig.getUploadStoragePath() + "/1";
+        if(FileExecutor.createFolder(localUploadPath)){
             return Result.SUCCESS();
-        else
-            return new Result(ResultCode.COURES_ALREADY_EXISTS);
+        }
+        else {
+            return Result.FAIL();
+        }
     }
 
     @ApiOperation(value = "删除课程")

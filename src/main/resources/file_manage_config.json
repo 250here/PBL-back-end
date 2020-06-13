@@ -1,6 +1,6 @@
 {
   "uploadPath": {
-    "windows": "D:\\AdvancedWeb\\PJ\\ProjectFileUpload",
+    "windows": "static/file/upload",
     "mac": "upload",
     "linux": "upload"
   },

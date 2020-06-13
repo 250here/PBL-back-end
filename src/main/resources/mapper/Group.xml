@@ -33,7 +33,7 @@
 
 <!--    //根据ProjectId和GroupName获取group-->
 <!--    Group getGroupByPjIdAndName(@Param("projectId")int projectId, @Param("groupName")String groupName);-->
-    <select id="getGroupByGroupId" resultMap="BaseResultMap">
+    <select id="getGroupByPjIdAndName" resultMap="BaseResultMap">
         select *
         from grouping
         where project_id=#{projectId} and group_name=#{groupName}

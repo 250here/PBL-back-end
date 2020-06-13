@@ -3,7 +3,7 @@ package com.pbl.backend.service.student.impl;
 import com.pbl.backend.dao.GroupDao;
 import com.pbl.backend.dao.UserGroupDao;
 import com.pbl.backend.entity.Group;
-import com.pbl.backend.service.student.IProjectGroupService;
+import com.pbl.backend.service.student.IProjectStuGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ import java.util.List;
  * @description:
  */
 @Service
-public class ProjectGroupServiceImpl implements IProjectGroupService {
+public class ProjectStuGroupServiceImpl implements IProjectStuGroupService {
 
     @Autowired
     private GroupDao groupDao;

@@ -1,7 +1,7 @@
 package com.pbl.backend.service.admin.impl;
 
 import com.pbl.backend.entity.Course;
-import com.pbl.backend.service.admin.ICourseService;
+import com.pbl.backend.service.admin.ICourseAdminService;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import java.util.List;
  * @date: 2020/6/13
  * @description:
  */
-public class CourseServiceImpl implements ICourseService {
+public class CourseAdminServiceImpl implements ICourseAdminService {
     @Override
     public List<Course> getAllCourses() {
         return null;
