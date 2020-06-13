@@ -28,17 +28,17 @@ public class UserManageController {
         return null;
     }
 
-    @ApiOperation(value = "分页获取用户信息")
+    @ApiOperation(value = "分页获取用户信息---待定")
     @GetMapping("/usersInfo")
     public Result getAllUsers(){
         return null;
     }
 
-    @ApiOperation(value = "根据用户名获取用户")
-    @GetMapping("/userInfo")
-    public Result searchUser(){
-        return null;
-    }
+//    @ApiOperation(value = "根据用户名获取用户")
+//    @GetMapping("/userInfo")
+//    public Result searchUser(){
+//        return null;
+//    }
 
     @ApiOperation(value = "删除指定用户")
     @DeleteMapping("/userInfo")
@@ -46,10 +46,10 @@ public class UserManageController {
         return null;
     }
 
-    @ApiOperation(value = "修改用户，即修改角色——待定")
-    @PutMapping("/userInfo")
-    public Result updateUserInfo(){
-        return null;
-    }
+//    @ApiOperation(value = "修改用户，即修改角色——待定")
+//    @PutMapping("/userInfo")
+//    public Result updateUserInfo(){
+//        return null;
+//    }
 
 }
