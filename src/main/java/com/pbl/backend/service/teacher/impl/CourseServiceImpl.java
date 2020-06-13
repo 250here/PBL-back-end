@@ -5,7 +5,9 @@ import com.pbl.backend.entity.Course;
 import com.pbl.backend.entity.CourseApply;
 import com.pbl.backend.entity.Project;
 import com.pbl.backend.service.teacher.ICourseService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -16,6 +18,8 @@ import java.util.List;
  * @Date 2020/6/3
  **/
 
+@Service
+@Slf4j
 public class CourseServiceImpl implements ICourseService {
 
     @Autowired
@@ -43,10 +47,12 @@ public class CourseServiceImpl implements ICourseService {
 
     @Override
     public boolean createCourse(Course course) {
+        log.info("创建课程: " + course.getCourseName());
         Course courseTmp = courseDao.getCourse(course.getCourseId(), course.getCourseName());
 
         //存在相同课程
         if(courseTmp != null){
+            log.info("存在同名课程: " + course.getCourseName());
             return false;
         }
         //添加进course
