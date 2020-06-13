@@ -8,6 +8,7 @@ import com.pbl.backend.entity.GroupPjTask;
 import com.pbl.backend.entity.GroupTask;
 import com.pbl.backend.service.student.IPjStuGroupTaskService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ import java.util.List;
  * @date: 2020/6/1
  * @description:
  */
+@Service
 public class PjStuGroupTaskServiceImpl implements IPjStuGroupTaskService {
 
     @Autowired
