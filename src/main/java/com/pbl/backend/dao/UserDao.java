@@ -14,9 +14,11 @@ public interface UserDao {
 
     User loadUserByUsername(@Param("userName")String userName);
 
-    Role findRoleByUserId(@Param("userId")Integer userId);
+    Role findRoleByUserId(@Param("userId")String userId);
 
     void add(User user);
+
+    void addRole(@Param("userId")String userId, @Param("roleId")int roleId);
 
     //更新用户密码
     Integer updatePasswordOFUser(@Param("userId")String userId, @Param("passwordNew")String passwordNew);
