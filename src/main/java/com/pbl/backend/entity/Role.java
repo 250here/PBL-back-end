@@ -1,25 +1,31 @@
 package com.pbl.backend.entity;
 
+import lombok.NoArgsConstructor;
+
 /**
  * @author: 杜东方
  * @date: 2020/5/17
  * @description: 用户角色
  */
+
 public class Role {
 
-    private String id;
+    private Integer id;
     private String name;
-    private String nameZh;
+//    private String nameZh;
+
+    public Role(){}
+
 
     public Role(String roleName){
         this.name = roleName;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -31,11 +37,11 @@ public class Role {
         this.name = name;
     }
 
-    public String getNameZh() {
-        return nameZh;
-    }
-
-    public void setNameZh(String nameZh) {
-        this.nameZh = nameZh;
-    }
+//    public String getNameZh() {
+//        return nameZh;
+//    }
+//
+//    public void setNameZh(String nameZh) {
+//        this.nameZh = nameZh;
+//    }
 }

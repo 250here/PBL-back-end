@@ -1,6 +1,7 @@
 package com.pbl.backend.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,9 +20,12 @@ import java.sql.Date;
 public class PjFile {
 
     private Integer fileId;
+    @JsonIgnore
     private String userId;
+    @JsonIgnore
     private Integer projectId;
     private String fileName;
+    @JsonIgnore
     private String filePath;
     private Date uploadTime;
 

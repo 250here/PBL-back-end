@@ -61,8 +61,9 @@ public class JwtUser implements UserDetails {
     //账户是否未锁定
     @Override
     public boolean isAccountNonLocked() {
-        return !locked;
+        return true;
     }
+
 
     //获取用户角色，即权限信息
     @Override
@@ -90,7 +91,7 @@ public class JwtUser implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 
     public void setEnabled(Boolean enabled) {

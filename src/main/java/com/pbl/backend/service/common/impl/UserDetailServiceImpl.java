@@ -26,7 +26,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
         if(user == null){
             throw new UsernameNotFoundException("用户不存在");
         }
-        //user.setRole(userDao.findRoleByUserId(user.getId()));
+        user.setRole(userDao.findRoleByUserId(user.getId()));
         return new JwtUser(user);
     }
 }

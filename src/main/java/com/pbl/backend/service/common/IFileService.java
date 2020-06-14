@@ -2,6 +2,7 @@ package com.pbl.backend.service.common;
 
 import com.pbl.backend.common.response.Result;
 import com.pbl.backend.entity.PjFile;
+import com.pbl.backend.model.PjFileUpload;
 import org.springframework.web.multipart.MultipartFile;
 
 public interface IFileService {
@@ -9,15 +10,9 @@ public interface IFileService {
     /**
      * 上传文件
      *
-     * @param categoryId 分类ID
-     * @param tag 标签
-     * @param description 描述
-     * @param prefix 自定义前缀
-     * @param multipartFile 文件
-     *
      * @return 是否上传成功
       */
-    boolean upload(String courseId, String userId, String projectId, MultipartFile multipartFile);
+    Result upload(PjFileUpload pjFileUpload);
 
 
     /**

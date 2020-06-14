@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.crypto.spec.SecretKeySpec;
+import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.DatatypeConverter;
 import java.security.Key;
 import java.util.Date;
@@ -59,7 +60,7 @@ public class JwtTokenUtil {
                     .setAudience(audience.getName())          // 代表这个JWT的接收对象；
                     .signWith(signatureAlgorithm, signingKey);
             //添加Token过期时间
-            int TTLMillis = audience.getExpiresSecond();
+            int TTLMillis = audience.getExpiresSecond()*1000;
             if (TTLMillis >= 0) {
                 long expMillis = nowMillis + TTLMillis;
                 Date exp = new Date(expMillis);
@@ -107,8 +108,7 @@ public class JwtTokenUtil {
      * @return
      */
     public static String getUserId(String token, String base64Security){
-        String userId = parseJWT(token, base64Security).get("userId", String.class);
-        return Base64Util.decode(userId);
+        return parseJWT(token, base64Security).get("userId", String.class);
     }
 
     /**
@@ -129,5 +129,20 @@ public class JwtTokenUtil {
      */
     public static boolean isExpiration(String token, String base64Security) {
         return parseJWT(token, base64Security).getExpiration().before(new Date());
+    }
+
+    /**
+     * 根据HttpRequest里的token获取userId
+     * @param request
+     * @return
+     */
+    public static String getUserIdFromToken(HttpServletRequest request, Audience audience){
+        // 获取请求头信息authorization信息
+        final String authHeader = request.getHeader(JwtTokenUtil.AUTH_HEADER_KEY);
+
+        // 获取token
+        final String token = authHeader.substring(7);
+
+        return getUserId(token, audience.getBase64Secret());
     }
 }

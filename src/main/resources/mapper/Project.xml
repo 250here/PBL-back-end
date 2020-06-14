@@ -16,7 +16,7 @@
 
     <!--    //添加pj-->
     <!--    Integer addProject(Project project);-->
-    <insert id="addProject" parameterType="com.pbl.backend.entity.Project">
+    <insert id="addProject" parameterType="com.pbl.backend.entity.Project" useGeneratedKeys="true" keyProperty="projectId">
         insert into project(project_id, course_id, project_name, project_startime, project_endtime, project_dsc, evaluation_time, teacher_eva_weight, stu_eva_weight)
         values(#{projectId},#{courseId},#{projectName},#{startTime},#{endTime},#{projectDsc},#{evaluationTime},#{teacherEvaWeight},#{stuEvaWeight})
     </insert>

@@ -1,6 +1,8 @@
 package com.pbl.backend.filter;
 
+import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.pbl.backend.common.response.Result;
 import com.pbl.backend.entity.JwtUser;
 import com.pbl.backend.model.LoginUser;
 import com.pbl.backend.entity.Audience;
@@ -39,7 +41,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     public JWTAuthenticationFilter(AuthenticationManager authenticationManager, Audience audience){
         this.authenticationManager = authenticationManager;
         this.audience = audience;
-        super.setFilterProcessesUrl("/auth/login");
+        super.setFilterProcessesUrl("/user/login");
     }
 
     @Override
@@ -78,14 +80,20 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         for (GrantedAuthority authority : authorities){
             role = authority.getAuthority();
         }
-        String token = JwtTokenUtil.createJWT(jwtUser.getId().toString(), jwtUser.getUsername(), role, audience);
+        String token = JwtTokenUtil.createJWT(jwtUser.getId(), jwtUser.getUsername(), role, audience);
         // 返回创建成功的token
         // 但是这里创建的token只是单纯的token
         // 按照jwt的规定，最后请求的格式应该是 `Bearer token`
         response.setHeader(JwtTokenUtil.AUTH_HEADER_KEY, JwtTokenUtil.TOKEN_PREFIX + token);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("token",token);
+        Result result = Result.SUCCESS(jsonObject);
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().write(JSONObject.toJSON(result).toString());
     }
 
     @Override
     protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response, AuthenticationException failed) throws IOException, ServletException {
+        System.out.println("------------");
         response.getWriter().write("authentication failed, reason: " + failed.getMessage());    }
 }

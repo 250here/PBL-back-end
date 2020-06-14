@@ -1,6 +1,6 @@
 {
   "uploadPath": {
-    "windows": "static/file/upload",
+    "windows": "src/main/resources/static/PJFile/upload",
     "mac": "upload",
     "linux": "upload"
   },

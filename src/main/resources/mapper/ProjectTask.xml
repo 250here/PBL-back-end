@@ -22,7 +22,7 @@
 
 <!--    //根据pjId和pjTaskName查找项目-->
 <!--    ProjectTask getPjTaskByPjIdAndName(@Param("projectId")int projectId, @Param("taskName")String taskName);-->
-    <select id="getPjTaskByPjIdAndName" resultType="com.pbl.backend.entity.ProjectTask">
+    <select id="getPjTaskByPjIdAndName" resultMap="BaseResultMap">
         select *
         from project_task
         where project_id=#{projectId} and task_name=#{taskName}
@@ -38,7 +38,7 @@
 
 <!--    //根据taskId查找PjTask-->
 <!--    ProjectTask getPjTaskById(@Param("taskId")int taskId);-->
-    <select id="getPjTaskById" resultType="com.pbl.backend.entity.ProjectTask">
+    <select id="getPjTaskById" resultMap="BaseResultMap">
         select *
         from project_task
         where task_id=#{taskId}

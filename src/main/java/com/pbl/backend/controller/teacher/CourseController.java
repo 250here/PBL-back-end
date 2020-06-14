@@ -2,18 +2,22 @@ package com.pbl.backend.controller.teacher;
 
 import com.pbl.backend.common.response.ResultCode;
 import com.pbl.backend.config.FileManageConfig;
+import com.pbl.backend.entity.Audience;
 import com.pbl.backend.entity.Course;
 import com.pbl.backend.entity.CourseApply;
 import com.pbl.backend.service.teacher.ICourseService;
+import com.pbl.backend.utils.JwtTokenUtil;
 import com.zhazhapan.modules.constant.ValueConsts;
 import com.zhazhapan.util.FileExecutor;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.web.bind.annotation.*;
 
 import com.pbl.backend.common.response.Result;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -29,22 +33,20 @@ public class CourseController {
     @Autowired(required=false)
     ICourseService courseService;
 
+    @Autowired
+    Audience audience;
+
     @ApiOperation(value = "新增课程")
     @PostMapping("/courseInfo")
-    public Result createCourse(@RequestBody Course course) {
-//        boolean createResult = courseService.createCourse(course);
-//
-//        if(createResult)
-//            return Result.SUCCESS();
-//        else
-//            return new Result(ResultCode.COURES_ALREADY_EXISTS);
-        String localUploadPath = FileManageConfig.getUploadStoragePath() + "/1";
-        if(FileExecutor.createFolder(localUploadPath)){
+    public Result createCourse(HttpServletRequest request, @RequestBody Course course) {
+        String userId = JwtTokenUtil.getUserIdFromToken(request, audience);
+        course.setTeacherId(userId);
+        boolean createResult = courseService.createCourse(course);
+
+        if(createResult)
             return Result.SUCCESS();
-        }
-        else {
-            return Result.FAIL();
-        }
+        else
+            return new Result(ResultCode.COURES_ALREADY_EXISTS);
     }
 
     @ApiOperation(value = "删除课程")
@@ -59,8 +61,9 @@ public class CourseController {
     }
 
     @ApiOperation(value = "获取所有任课课程")
-    @GetMapping("/courseList/{userId}")
-    public Result getAllCourseList(@PathVariable("userId") String userId){
+    @GetMapping("/courseList")
+    public Result getAllCourseList(HttpServletRequest request){
+        String userId = JwtTokenUtil.getUserIdFromToken(request, audience);
         List<Course> courses = courseService.getCoursesOfTeacher(userId);
         if(courses == null)
             return new Result(ResultCode.RESULT_NULL);
@@ -90,7 +93,7 @@ public class CourseController {
     }
 
     @ApiOperation(value = "处理学生退课请求")
-    @DeleteMapping("/courseInfo/dropCourseInfo/{userId}/{courseId}/{isAgree}")
+    @PutMapping("/dropCourseInfo/{userId}/{courseId}/{isAgree}")
     public Result handleStuDropCourse(@PathVariable String userId, @PathVariable Integer courseId,@PathVariable String isAgree){
         boolean handleResult = courseService.handleApply(userId,courseId,isAgree);
 

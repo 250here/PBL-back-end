@@ -1,5 +1,7 @@
 package com.pbl.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import java.sql.Date;
@@ -18,5 +20,15 @@ public class Course {
     private String courseName;
     private Date courseStartTime;
     private Date courseEndTime;
+
+    @JsonIgnore
+    public String getTeacherId() {
+        return teacherId;
+    }
+
+    @JsonProperty
+    public void setTeacherId(String teacherId) {
+        this.teacherId = teacherId;
+    }
 
 }

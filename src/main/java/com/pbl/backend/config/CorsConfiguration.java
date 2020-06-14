@@ -20,7 +20,7 @@ public class CorsConfiguration implements WebMvcConfigurer {
                 //如果不设置这个属性前端无法通过response header获取到Authorization也就是token
                 .exposedHeaders("Authorization")
                 .allowCredentials(true)
-                .allowedMethods("GET", "POST", "DELETE", "PUT")
+                .allowedMethods("GET", "POST", "DELETE", "PUT", "OPTIONS")
                 .maxAge(3600);
     }
 }

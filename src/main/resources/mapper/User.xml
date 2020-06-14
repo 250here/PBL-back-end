@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <!--写对应的接口名-->
 <mapper namespace="com.pbl.backend.dao.UserDao">
@@ -12,35 +10,32 @@
         <result column="user_password" property="password" jdbcType="VARCHAR"/>
         <result column="photo_path" property="photoPath" jdbcType="VARCHAR"/>
 
-        <association property="role" column="{id=user_id}"
-                     javaType="com.pbl.backend.entity.Role" select="getRole"/>
     </resultMap>
 
     <resultMap id="roleMap" type="com.pbl.backend.entity.Role">
         <id column="role_id" property="id" jdbcType="INTEGER"/>
         <result column="role_name" property="name" jdbcType="VARCHAR"/>
-
     </resultMap>
 
 
-<!--    User loadUserByUsername(@Param("userName")String userName);-->
-    <select id="loadUserByUsername" resultMap="BaseResultMap">
+<!--User loadUserByUsername(@Param("userName")String userName);-->
+    <select id="loadUserByUsername" parameterType="String" resultMap="BaseResultMap">
         select *
-        from [user]
+        from user
         where user_name=#{userName}
     </select>
 
-    <select id="getRole" parameterType="string" resultMap="roleMap">
-        select *
-        from user_role, role
-        where user_id=#{id}
-    </select>
+<!--    <select id="getRole" parameterType="string" resultMap="roleMap">-->
+<!--        select *-->
+<!--        from user_role, role-->
+<!--        where user_id=#{id}-->
+<!--    </select>-->
 
 <!--    Role findRoleByUserId(@Param("userId")Integer userId);-->
-    <select id="findRoleByUserId" parameterType="int" resultMap="roleMap">
-        select *
-        from user_role, role
-        where user_id=#{userId}
+    <select id="findRoleByUserId" parameterType="String" resultMap="roleMap">
+        select role.*
+        from role
+        where role.role_id=(select user_role.role_id from user_role where user_role.user_id = #{userId})
     </select>
 
 <!--    void add(User user);-->

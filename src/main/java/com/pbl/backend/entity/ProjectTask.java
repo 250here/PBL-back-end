@@ -1,6 +1,8 @@
 package com.pbl.backend.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 
@@ -12,6 +14,8 @@ import java.sql.Timestamp;
  **/
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ProjectTask {
 
     private Integer taskId;
@@ -20,5 +24,14 @@ public class ProjectTask {
     private String taskDiscribe;
     private Timestamp taskStartTime;
     private Timestamp taskEndTime;
+
+    public ProjectTask(Integer projectId, String taskName, String taskDiscribe,
+                       Timestamp taskStartTime, Timestamp taskEndTime){
+        this.projectId = projectId;
+        this.taskName = taskName;
+        this.taskDiscribe = taskDiscribe;
+        this.taskStartTime = taskStartTime;
+        this.taskEndTime = taskEndTime;
+    }
 
 }
