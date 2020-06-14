@@ -16,7 +16,12 @@
         <result column="role_name" property="name" jdbcType="VARCHAR"/>
     </resultMap>
 
-
+    <!--    Role findRoleByUserId(@Param("userId")Integer userId);-->
+    <select id="findRoleByUserId" parameterType="String" resultMap="RoleMap">
+        select role.*
+        from role
+        where role.role_id=(select user_role.role_id from user_role where user_role.user_id = #{userId})
+    </select>
 
 
 <!--User loadUserByUsername(@Param("userName")String userName);-->

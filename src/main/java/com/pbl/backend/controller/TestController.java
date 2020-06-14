@@ -1,6 +1,8 @@
 package com.pbl.backend.controller;
 
 import com.pbl.backend.common.response.Result;
+import com.pbl.backend.dao.UserDao;
+import com.pbl.backend.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,10 +20,16 @@ public class TestController {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    @Autowired
+    UserDao userDao;
+
     @GetMapping("/test")
     public Result get(){
-        String psw = "123456";
-        return Result.SUCCESS(bCryptPasswordEncoder.encode(psw));
+//        String psw = "123456";
+//        return Result.SUCCESS(bCryptPasswordEncoder.encode(psw));
+        User user = userDao.loadUserByUsername("mc");
+        return Result.SUCCESS(user);
+
     }
 
 }
