@@ -5,10 +5,12 @@ import com.pbl.backend.config.FileManageConfig;
 import com.pbl.backend.entity.Audience;
 import com.pbl.backend.entity.Course;
 import com.pbl.backend.entity.CourseApply;
+import com.pbl.backend.model.CourseApplyRes;
 import com.pbl.backend.service.teacher.ICourseService;
 import com.pbl.backend.utils.JwtTokenUtil;
 import com.zhazhapan.modules.constant.ValueConsts;
 import com.zhazhapan.util.FileExecutor;
+import io.jsonwebtoken.Jwt;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,8 +53,9 @@ public class CourseController {
 
     @ApiOperation(value = "删除课程")
     @DeleteMapping("/courseInfo/{courseId}")
-    public Result deleteCourse(@PathVariable("courseId") Integer courseId){
-        boolean deleteResult = courseService.deleteCourse(courseId);
+    public Result deleteCourse(HttpServletRequest request, @PathVariable("courseId") Integer courseId){
+        String userId = JwtTokenUtil.getUserIdFromToken(request, audience);
+        boolean deleteResult = courseService.deleteCourse(courseId, userId);
 
         if(deleteResult)
             return Result.SUCCESS();
@@ -76,6 +79,7 @@ public class CourseController {
     @GetMapping("/courseInfo/{courseId}")
     public Result getCourseInfo(@PathVariable("courseId") Integer courseId){
         Course course = courseService.getCourseByCourseId(courseId);
+
         if(course == null)
             return new Result(ResultCode.RESULT_NULL);
         else
@@ -83,9 +87,9 @@ public class CourseController {
     }
 
     @ApiOperation(value = "获取学生退课请求")
-    @GetMapping("/courseInfo/stuDropRequests")
-    public Result getStuDropRequests(@RequestBody Integer courseId){
-        List<CourseApply> list = courseService.getAllCourseApply(courseId);
+    @GetMapping("/{courseId}/stuDropRequests")
+    public Result getStuDropRequests(@PathVariable("courseId") Integer courseId){
+        List<CourseApplyRes> list = courseService.getAllCourseApply(courseId);
         if(list == null)
             return new Result(ResultCode.RESULT_NULL);
         else
@@ -93,7 +97,7 @@ public class CourseController {
     }
 
     @ApiOperation(value = "处理学生退课请求")
-    @PutMapping("/dropCourseInfo/{userId}/{courseId}/{isAgree}")
+    @PutMapping("/dropCourseInfo/{courseId}/{userId}/{isAgree}")
     public Result handleStuDropCourse(@PathVariable String userId, @PathVariable Integer courseId,@PathVariable String isAgree){
         boolean handleResult = courseService.handleApply(userId,courseId,isAgree);
 

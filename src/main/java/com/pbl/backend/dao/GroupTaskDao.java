@@ -21,8 +21,8 @@ public interface GroupTaskDao {
     //获取小组任务，根据groupId和taskName
     GroupTask getGroupTaskByGpIdAndName(@Param("groupId")int groupId, @Param("taskName")String taskName);
 
-    //根据项目ID删除该项目所有小组任务
-    int deleteGroupTaskByProjectId(@Param("projectId")int projectId);
+    //根据项目任务ID删除该项目所有小组任务
+    int deleteGroupTaskByProjectTaskId(@Param("projectTaskId")int projectTaskId);
 
     //根据groupTaskId删除
     int deleteGroupTaskByTaskId(@Param("groupTaskId")int groupTaskId);

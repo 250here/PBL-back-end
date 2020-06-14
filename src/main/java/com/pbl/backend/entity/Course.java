@@ -21,6 +21,8 @@ public class Course {
     private Date courseStartTime;
     private Date courseEndTime;
 
+    private Integer stuNum; //课程学生数
+
     @JsonIgnore
     public String getTeacherId() {
         return teacherId;

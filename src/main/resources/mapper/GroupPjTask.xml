@@ -10,6 +10,12 @@
         <result column="is_finished" property="isFinished" jdbcType="INTEGER"/>
     </resultMap>
 
+    <select id="getGroupPjTasksById" resultMap="BaseResultMap">
+        select *
+        from group_project_task
+        where project_task_id=#{projectTaskId}
+    </select>
+
 <!--    //根据projectTaskId和groupId-->
 <!--    GroupPjTask getGroupPjTaskNum(@Param("projectTaskId")int projectTaskId, @Param("groupId")int groupId);-->
     <select id="getGroupPjTaskNum" resultMap="BaseResultMap">
@@ -41,5 +47,11 @@
         insert into group_project_task(project_task_id, group_id, group_task_num)
         values(#{projectTaskId},#{groupId},#{groupTaskNum})
     </insert>
+
+    <delete id="deleteInfoByPjTaskId">
+        delete *
+        from group_project_task
+        where project_task_id=#{pjTaskId}
+    </delete>
 
 </mapper>

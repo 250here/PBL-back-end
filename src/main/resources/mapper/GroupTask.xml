@@ -46,8 +46,8 @@
 
 <!--    //根据项目ID删除该项目所有小组任务-->
 <!--    int deleteGroupTaskByProjectId(@Param("projectId")int projectId);-->
-    <delete id="deleteGroupTaskByProjectId" parameterType="int">
-        delete from group_task where project_task_id=#{projectId}
+    <delete id="deleteGroupTaskByProjectTaskId" parameterType="int">
+        delete from group_task where project_task_id=#{projectTaskId}
     </delete>
 
 <!--    //根据groupTaskId删除-->

@@ -28,6 +28,7 @@ public enum  ResultCode {
     COURES_ALREADY_EXISTS(20004,"已存在同名课程，课程创建失败"),
     COURSE_SAME_PROJECT_TASK(20005,"该项目下存在同名项目任务"),
     UPLOAD_PJ_SHARED_FILE(20006, "文件过大, 不能超过100M"),
+    USERNAME_PASSWORD_ERROR(20007, "用户名或密码错误"),
 
     /* 权限错误：70001-79999 */
     PERMISSION_TOKEN_INVALID(70006, "无效token"),

@@ -2,6 +2,8 @@ package com.pbl.backend.entity;
 
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * @ClassName Group
  * @Description
@@ -16,6 +18,7 @@ public class Group {
     private String groupName;
     private String groupHeaderId;
 
+    List<User> groupMembers;
     public Group(){}
 
     public Group(Integer projectId, String groupName, String groupHeaderId){

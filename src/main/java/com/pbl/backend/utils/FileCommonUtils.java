@@ -74,8 +74,7 @@ public class FileCommonUtils {
      */
     public static void setResponseFileName(HttpServletResponse response, String fileName) throws
             UnsupportedEncodingException {
-        response.setHeader("Content-Disposition", "attachment;filename=" + new String(fileName.getBytes("UTF-8"),
-                "ISO-8859-1"));
+        response.setHeader("Content-Disposition", "attachment;filename=" +  java.net.URLEncoder.encode(fileName, "UTF-8"));
     }
 
     //根据数据库存储文件路径获取绝对路径

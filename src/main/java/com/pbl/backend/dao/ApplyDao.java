@@ -21,4 +21,5 @@ public interface ApplyDao {
     //更新退课申请
     Integer updateApply(@Param("userId")String userId, @Param("courseId")int courseId, @Param("code")String code);
 
+    Integer deleteApplyInfoByCourseId(@Param("courseId") Integer courseId);
 }

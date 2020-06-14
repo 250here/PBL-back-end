@@ -60,12 +60,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 // 测试用资源，需要验证了的用户才能访问
                 .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
-                //.antMatchers("/admin/**").hasRole("ROLE_ADMIN")
-//                .antMatchers("/student/course/**").hasRole("ROLE_STUDENT")
-//                .antMatchers("/teacher/course/**").hasRole("ROLE_TEACHER")
-//                .antMatchers("/course/project/**").hasAnyRole("ROLE_STUDENT", "ROLE_TEACHER")
-//                .antMatchers("/user/**").hasAnyRole("ROLE_STUDENT", "ROLE_TEACHER", "ROLE_ADMIN")
-//                .antMatchers("/test/**").hasRole("ROLE_TEACHER")
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/student/course/**").hasRole("STUDENT")
+                .antMatchers("/teacher/course/**").hasRole("TEACHER")
+                .antMatchers("/course/project/**").permitAll()
+                .antMatchers("/user/**").hasAnyRole("STUDENT", "TEACHER", "ADMIN")
+                .antMatchers("/test/**").hasRole("TEACHER")
                 // 其他都放行了
                 .anyRequest().permitAll()
                 .and()

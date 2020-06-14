@@ -7,7 +7,24 @@
         <result column="project_id" property="projectId" jdbcType="INTEGER"/>
         <result column="group_name" property="groupName" jdbcType="VARCHAR"/>
         <result column="group_header" property="groupHeaderId" jdbcType="VARCHAR"/>
+
+        <collection property="groupMembers" ofType="com.pbl.backend.entity.User"
+                    column="{groupId=group_id}" select="getUsersByGroupId" javaType="java.util.ArrayList"/>
     </resultMap>
+
+    <resultMap id="BaseUserGroupMap" type="com.pbl.backend.entity.User">
+        <id column="user_id" property="id" jdbcType="VARCHAR"/>
+        <result column="user_name" property="username" jdbcType="VARCHAR"/>
+        <result column="user_password" property="password" jdbcType="VARCHAR"/>
+        <result column="photo_path" property="photoPath" jdbcType="VARCHAR"/>
+    </resultMap>
+    
+    <select id="getUsersByGroupId" resultMap="BaseUserGroupMap">
+        select *
+        from user left join user_group
+        on user.user_id = user_group.user_id
+        where user_group.group_id=#{groupId}
+    </select>
 
 <!--    int addPjGroup(Group group);-->
     <insert id="addPjGroup" parameterType="com.pbl.backend.entity.Group">

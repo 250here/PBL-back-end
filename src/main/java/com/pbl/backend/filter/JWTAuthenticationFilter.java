@@ -3,6 +3,7 @@ package com.pbl.backend.filter;
 import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pbl.backend.common.response.Result;
+import com.pbl.backend.common.response.ResultCode;
 import com.pbl.backend.entity.JwtUser;
 import com.pbl.backend.model.LoginUser;
 import com.pbl.backend.entity.Audience;
@@ -54,7 +55,14 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             );
         }
         catch (Exception e){
-            e.printStackTrace();
+            try{
+                response.setCharacterEncoding("UTF-8");
+                response.setContentType("application/json; charset=utf-8");
+                response.getWriter().write(JSONObject.toJSONString(new Result(ResultCode.USERNAME_PASSWORD_ERROR)));
+            }
+            catch (IOException ex){
+                ex.printStackTrace();
+            }
             return null;
         }
     }
@@ -89,6 +97,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         jsonObject.put("token",token);
         Result result = Result.SUCCESS(jsonObject);
         response.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json; charset=utf-8");
         response.getWriter().write(JSONObject.toJSON(result).toString());
     }
 

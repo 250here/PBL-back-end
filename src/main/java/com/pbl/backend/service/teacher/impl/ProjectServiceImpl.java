@@ -82,6 +82,7 @@ public class ProjectServiceImpl implements IProjectService {
 
         //删除项目讨论信息
         discussionDao.deleteDiscsByProjectId(projectId);
+        discussionDao.deleteDiscsReplyByProjectId(projectId);
 
         //删除项目文件空间的所有信息
         pjFileDao.deleteFilesByProjectId(projectId);
@@ -91,7 +92,7 @@ public class ProjectServiceImpl implements IProjectService {
         FileExecutor.createFolder(localUploadPath);
 
         //删除项目任务分组信息
-        groupTaskDao.deleteGroupTaskByProjectId(projectId);
+        groupTaskDao.deleteGroupTaskByProjectTaskId(projectId);
 
         //删除项目分组信息
         groupDao.deleteGroupsByProjectId(projectId);

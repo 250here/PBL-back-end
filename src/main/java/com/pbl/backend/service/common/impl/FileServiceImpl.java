@@ -143,7 +143,6 @@ public class FileServiceImpl implements IFileService {
         if(pjFileDao.deleteFileByFileId(fileId) > 0){
             return Result.SUCCESS();
         }
-
         return Result.FAIL();
     }
 
