@@ -4,6 +4,7 @@ import com.pbl.backend.dao.UserDao;
 import com.pbl.backend.entity.User;
 import com.pbl.backend.service.common.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,10 +17,12 @@ public class UserServiceImpl implements IUserService {
 
     @Autowired
     UserDao userDao;
+    @Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
     public void addUser(User user){
-
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
     }
 
     //更新用户密码
