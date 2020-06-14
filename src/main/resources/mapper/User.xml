@@ -17,6 +17,8 @@
     </resultMap>
 
 
+
+
 <!--User loadUserByUsername(@Param("userName")String userName);-->
     <select id="loadUserByUsername" parameterType="String" resultMap="BaseResultMap">
         select *

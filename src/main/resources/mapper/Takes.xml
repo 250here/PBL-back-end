@@ -15,4 +15,10 @@
         delete from takes where course_id=#{courseId} and user_id=#{userId}
     </delete>
 
+    <select id="getCourseStuNum" resultType="integer">
+        select count(*)
+        from takes
+        where course_id=#{courseId}
+    </select>
+
 </mapper>

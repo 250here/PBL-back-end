@@ -1,5 +1,8 @@
 package com.pbl.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * @author: 杜东方
  * @date: 2020/5/17
@@ -34,10 +37,11 @@ public class User {
         this.username = username;
     }
 
+    @JsonIgnore
     public String getPassword() {
         return password;
     }
-
+    @JsonProperty
     public void setPassword(String password) {
         this.password = password;
     }
@@ -57,11 +61,11 @@ public class User {
     public void setPassword_new(String password_new) {
         this.password_new = password_new;
     }
-
+    @JsonIgnore
     public String getPhotoPath() {
         return photoPath;
     }
-
+    @JsonProperty
     public void setPhotoPath(String photoPath) {
         this.photoPath = photoPath;
     }

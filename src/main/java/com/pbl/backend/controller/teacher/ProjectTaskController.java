@@ -2,6 +2,7 @@ package com.pbl.backend.controller.teacher;
 
 import com.pbl.backend.common.response.ResultCode;
 import com.pbl.backend.entity.ProjectTask;
+import com.pbl.backend.model.PjTaskGroupRes;
 import com.pbl.backend.model.ProjectTaskReq;
 import com.pbl.backend.service.teacher.IProjectTaskService;
 import io.swagger.annotations.Api;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import com.pbl.backend.common.response.Result;
 
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -58,8 +58,7 @@ public class ProjectTaskController {
     @ApiOperation(value = "查看项目内指定任务具体信息，包含每个小组的任务完成情况")
     @GetMapping("/pjTaskInfo/{pjTaskId}")
     public Result getPjTaskInfo(@PathVariable("pjTaskId") Integer pjTaskId){
-        ProjectTask projectTask = projectTaskService.getPjTask(pjTaskId);
-        return Result.SUCCESS(projectTask);
+        return projectTaskService.getPjTaskAllGroupCompletion(pjTaskId);
     }
 
     @ApiOperation(value = "删除项目任务")

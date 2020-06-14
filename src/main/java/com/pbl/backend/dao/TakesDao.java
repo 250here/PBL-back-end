@@ -11,4 +11,8 @@ public interface TakesDao {
 
     //删除所选课程
     Integer deleteCourse(@Param("userId")String userId, @Param("courseId")int courseId);
+
+    //选课学生数
+    Integer getCourseStuNum(int courseId);
+
 }

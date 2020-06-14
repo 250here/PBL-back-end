@@ -1,8 +1,10 @@
 package com.pbl.backend.controller.common;
 
+import com.pbl.backend.entity.Audience;
 import com.pbl.backend.model.PjFileUpload;
 import com.pbl.backend.service.common.IFileService;
 import com.pbl.backend.utils.FileCommonUtils;
+import com.pbl.backend.utils.JwtTokenUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.pbl.backend.common.response.Result;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
@@ -24,16 +27,21 @@ public class FileManageController {
 
     @Autowired
     private IFileService fileService;
+    @Autowired
+    Audience audience;
 
     @ApiOperation(value = "用户上传项目分享文件")
     @PostMapping("/sharedFile")
-    public Result uploadFile(PjFileUpload pjFileUpload){
+    public Result uploadFile(HttpServletRequest request, PjFileUpload pjFileUpload){
+        String userId = JwtTokenUtil.getUserIdFromToken(request, audience);
+        pjFileUpload.setUserId(userId);
         return fileService.upload(pjFileUpload);
     }
 
     @ApiOperation(value = "用户浏览项目分享文件")
-    @GetMapping("/sharedFiles/{projectId}/{userId}")
-    public Result getSharedFiles(@PathVariable("projectId") Integer projectId,@PathVariable("userId") String userId){
+    @GetMapping("/sharedFiles/{projectId}")
+    public Result getSharedFiles(HttpServletRequest request, @PathVariable("projectId") Integer projectId){
+        String userId = JwtTokenUtil.getUserIdFromToken(request, audience);
         return fileService.getAllPjFileResources(projectId, userId);
     }
 
@@ -46,7 +54,8 @@ public class FileManageController {
 
     @ApiOperation(value = "用户删除项目分享文件")
     @DeleteMapping("/sharedFile/{fileId}")
-    public Result deleteSharedFile(@PathVariable("fileId") Integer fileId, String userId){
+    public Result deleteSharedFile(HttpServletRequest request, @PathVariable("fileId") Integer fileId){
+        String userId = JwtTokenUtil.getUserIdFromToken(request, audience);
         return fileService.deleteFileResource(fileId,userId);
     }
 }

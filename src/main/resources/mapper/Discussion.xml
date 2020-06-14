@@ -2,8 +2,57 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.pbl.backend.dao.DiscussionDao">
 
+    <resultMap id="BaseResultMap" type="com.pbl.backend.entity.Discussion">
+        <id column="discussion_id" property="discId" jdbcType="INTEGER"/>
+        <result column="user_id" property="userId" jdbcType="VARCHAR"/>
+        <result column="project_id" property="pjId" jdbcType="INTEGER"/>
+        <result column="discussion_title" property="discTitle" jdbcType="VARCHAR"/>
+        <result column="discussion_text" property="discMessage" jdbcType="VARCHAR"/>
+        <association property="userName" select="getUserNameById" column="{userId=user_id}" javaType="string"/>
+    </resultMap>
+    
+    <select id="getUserNameById" resultType="string">
+        select user.user_name
+        from user
+        where user.user_id=#{userId}
+    </select>
+
+    <insert id="addDiscussion" parameterType="com.pbl.backend.entity.Discussion" useGeneratedKeys="true" keyProperty="discId">
+        insert into discussion(user_id, project_id, discussion_title, discussion_text)
+        values (#{userId},#{pjId},#{discTitle},#{discMessage})
+    </insert>
+
+    <insert id="addDiscussionReply" parameterType="com.pbl.backend.entity.Discussion">
+        insert into discussion_reply(discussion_id, project_id, user_id, discussion_text)
+        values (#{discId},#{pjId},#{userId},#{discMessage})
+    </insert>
+
 <!--    int deleteDiscsByProjectId(@Param("projectId")int projectId);-->
     <delete id="deleteDiscsByProjectId">
         delete from discussion where project_id=#{projectId}
     </delete>
+
+    <delete id="deleteDiscsReplyByProjectId">
+        delete from discussion_reply where project_id=#{projectId}
+    </delete>
+
+    <select id="getDiscussionsTitle" parameterType="integer" resultMap="BaseResultMap">
+        select *
+        from discussion
+        where project_id=#{projectId}
+    </select>
+
+    <select id="getDiscussionById" resultMap="BaseResultMap">
+        select *
+        from discussion
+        where discussion_id=#{discussionId}
+    </select>
+
+    <select id="getDiscussionReply" resultMap="BaseResultMap">
+        select *
+        from discussion_reply
+        where discussion_id=#{discussionId}
+    </select>
+
+
 </mapper>

@@ -5,6 +5,7 @@ import com.pbl.backend.dao.*;
 import com.pbl.backend.entity.Course;
 import com.pbl.backend.entity.CourseApply;
 import com.pbl.backend.entity.Project;
+import com.pbl.backend.model.CourseApplyRes;
 import com.pbl.backend.service.common.IFileService;
 import com.pbl.backend.service.teacher.ICourseService;
 import com.pbl.backend.service.teacher.IProjectService;
@@ -14,6 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -63,10 +65,10 @@ public class CourseServiceImpl implements ICourseService {
     }
 
     @Override
-    public boolean deleteCourse(int courseId) {
+    public boolean deleteCourse(int courseId, String userId) {
         Course courseTmp = courseDao.getCourseByCourseId(courseId);
 
-        if(courseTmp == null){
+        if(courseTmp == null || !courseTmp.getTeacherId().equals(userId)){
             return false;
         }
 
@@ -79,6 +81,9 @@ public class CourseServiceImpl implements ICourseService {
 
         //删除学生所选课程
         courseDao.deleteStudentTake(courseId);
+
+        //删除课程申请退课信息
+        applyDao.deleteApplyInfoByCourseId(courseId);
 
         //删除该课程
         courseDao.deleteCourse(courseId);
@@ -98,13 +103,18 @@ public class CourseServiceImpl implements ICourseService {
     @Override
     public Course getCourseByCourseId(int courseId){
         Course course = courseDao.getCourseByCourseId(courseId);
+        course.setStuNum(takesDao.getCourseStuNum(courseId));
         return course;
     }
 
     @Override
-    public List<CourseApply> getAllCourseApply(int courseId){
+    public List<CourseApplyRes> getAllCourseApply(int courseId){
         List<CourseApply> list = applyDao.getCourseApply(courseId);
-        return list;
+        List<CourseApplyRes> result = new ArrayList<>(list.size());
+        for(CourseApply courseApply : list){
+            result.add(new CourseApplyRes(courseApply.getUserId(), courseApply.getUser().getUsername(), courseApply.getApplyResult()));
+        }
+        return result;
     }
 
     @Override

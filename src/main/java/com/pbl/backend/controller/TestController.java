@@ -23,4 +23,5 @@ public class TestController {
         String psw = "123456";
         return Result.SUCCESS(bCryptPasswordEncoder.encode(psw));
     }
+
 }

@@ -1,10 +1,15 @@
 package com.pbl.backend.service.common;
 
+import com.pbl.backend.common.response.Result;
+import com.pbl.backend.entity.Discussion;
+
 public interface IProjectDiscussionService {
 
-    void getProjectDiscussions(Integer projectId);
+    Result getProjectDiscussions(Integer projectId);
 
-    void getProjectDiscussion(Integer discussionId);
+    Result getProjectDiscussion(Integer discussionId);
 
-    boolean createProjectDiscussion();
+    boolean createProjectDiscussion(Discussion discussion);
+
+    boolean createPJDiscussionReply(Discussion discussion);
 }

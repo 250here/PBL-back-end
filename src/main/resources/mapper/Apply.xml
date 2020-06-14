@@ -6,9 +6,10 @@
         <id column="user_id" property="userId" jdbcType="VARCHAR"/>
         <id column="course_id" property="courseId" jdbcType="INTEGER"/>
         <result column="apply_result" property="applyResult" jdbcType="VARCHAR"/>
+
         <association property="user" javaType="com.pbl.backend.entity.User">
-            <id property="userId" column="user_id"/>
-            <result property="userName" column="user_name"/>
+            <id property="id" column="user_id"/>
+            <result property="username" column="user_name"/>
         </association>
     </resultMap>
 
@@ -22,6 +23,7 @@
         </association>
     </resultMap>
 
+
 <!--    Integer submitApply(int userId, int courseId, String statusId);-->
     <insert id="submitApply">
         insert into apply values (#{userId},#{courseId},#{statusId})
@@ -30,8 +32,8 @@
 <!--    List<CourseApply> getCourseApply(int courseId);-->
     <select id="getCourseApply" resultMap="BaseResultMap">
         select *
-        from apply, [user]
-        where course_id=#{courseId} and apply.user_id=[user].user_id and apply_result!=1
+        from apply,user
+        where course_id=#{courseId} and apply.user_id=user.user_id and apply_result!=1
     </select>
 
 <!--    List<CourseApply> studentGetCourseApply(@Param("userId")String userId);-->
@@ -47,4 +49,10 @@
         set apply_result=#{code}
         where user_id=#{userId} and course_id=#{courseId}
     </update>
+
+    <delete id="deleteApplyInfoByCourseId" parameterType="integer">
+        delete *
+        from apply
+        where course_id=#{courseId}
+    </delete>
 </mapper>
