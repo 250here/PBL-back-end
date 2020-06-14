@@ -1,14 +1,18 @@
 package com.pbl.backend.controller.student;
 
+import com.pbl.backend.entity.Audience;
 import com.pbl.backend.entity.Project;
 import com.pbl.backend.service.student.IProjectStuService;
+import com.pbl.backend.utils.JwtTokenUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.pbl.backend.common.response.Result;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -20,6 +24,9 @@ import java.util.List;
 @RequestMapping("/student/course/project")
 @Api(tags = "student/StuProjectController-学生项目操作-学生模块")
 public class StuProjectController {
+
+    @Autowired
+    private Audience audience;
 
     @Resource
     private IProjectStuService stuProjectService;
@@ -39,16 +46,19 @@ public class StuProjectController {
     }
 
     @ApiOperation(value = "加入项目")
-    @PostMapping("/studentPjInfo/{projectId}/{userId}")
-    public Result joinProject(@PathVariable("projectId") Integer projectId, @PathVariable("userId") String userId){
+    @PostMapping("/studentPjInfo/joinPj/{projectId}")
+    public Result joinProject(@PathVariable("projectId") Integer projectId, HttpServletRequest request){
+        String userId = JwtTokenUtil.getUserIdFromToken(request, audience);
         boolean result = stuProjectService.joinProject(projectId, userId);
         return result ? Result.SUCCESS() : Result.FAIL();
     }
 
     @ApiOperation(value = "退出项目")
-    @DeleteMapping("/studentPjInfo/{projectId}/{userId}")
-    public Result dropProject(@PathVariable("projectId") Integer projectId, @PathVariable("userId") String userId){
+    @DeleteMapping("/studentPjInfo/dropPj/{projectId}")
+    public Result dropProject(@PathVariable("projectId") Integer projectId, HttpServletRequest request){
+        String userId = JwtTokenUtil.getUserIdFromToken(request, audience);
         boolean result = stuProjectService.dropProject(projectId, userId);
+
         return result ? Result.SUCCESS() : Result.FAIL();
     }
 }

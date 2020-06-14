@@ -22,11 +22,13 @@ public class CourseAdminServiceImpl implements ICourseAdminService {
 
     @Override
     public List<Course> getAllCourses() {
-        return null;
+        List<Course> courses = courseDao.getAllCourse();
+        return courses;
     }
 
     @Override
     public Course getCourseByName(String courseName) {
-        return null;
+        Course course = courseDao.getCourseByCourseName(courseName);
+        return course;
     }
 }

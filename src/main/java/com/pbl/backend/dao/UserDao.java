@@ -35,5 +35,11 @@ public interface UserDao {
     //获取图片
     String getPhoto(@Param("userId")String userId);
 
+    List<User> getAllUser();
+
+    Role getUserRole(@Param("userId")String userId);
+
+    Integer deleteUserById(@Param("userId")String userId);
+
 
 }

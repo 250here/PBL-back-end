@@ -23,8 +23,8 @@ import org.springframework.web.cors.CorsUtils;
  * @date: 2020/5/23
  * @description: 负责注册有关权限控制和用户登录校验的类
  */
-//@EnableWebSecurity
-//@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired

@@ -21,8 +21,11 @@ public class UserServiceImpl implements IUserService {
     BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
-    public void addUser(User user){
+    public boolean addUser(User user){
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        userDao.add(user);
+        userDao.addRole(user.getId(), 3);
+        return true;
     }
 
     //更新用户密码

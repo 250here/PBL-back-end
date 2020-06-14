@@ -8,7 +8,7 @@ import com.pbl.backend.entity.User;
  */
 public interface IUserService {
 
-    void addUser(User user);
+    boolean addUser(User user);
 
     //更新用户密码
     boolean updatePasswordOFUser(User user);

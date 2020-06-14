@@ -34,5 +34,7 @@ public interface CourseDao {
     //获取老师所授课程
     List<Course> getCourseByTeacherId(@Param("userId")String userId);
 
+    List<Course> getAllCourse();
+
 
 }

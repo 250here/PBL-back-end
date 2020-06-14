@@ -61,7 +61,7 @@ public class ProjectStuServiceImpl implements IProjectStuService {
         if(projectScore != null){ //学生已经加入该项目
             return false;
         }
-        projectScoreDao.addStuProjectInfo(projectId, userId);
+        projectScoreDao.addStuProjectInfo(projectId, userId, 0, 0);
         return true;
     }
 

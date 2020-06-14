@@ -14,7 +14,7 @@ public interface ProjectScoreDao {
     int deleteStuProjectInfo(@Param("projectId")int projectId, @Param("stuId")String stuId);
 
     //新增学生与某个项目的关联信息
-    int addStuProjectInfo(@Param("projectId")int projectId, @Param("stuId")String stuId);
+    int addStuProjectInfo(@Param("projectId")int projectId, @Param("stuId")String stuId,@Param("studentGrade")int studentGrade,@Param("teacherGrade")int teacherGrade);
 
     //根据projectId和stuId,获取该学生成绩信息
     ProjectScore getPjScoreByPjIdAndStuId(@Param("projectId")int projectId, @Param("stuId")String stuId);

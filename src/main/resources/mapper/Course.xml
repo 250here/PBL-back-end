@@ -24,14 +24,14 @@
     </insert>
 
     <!--Course findCourseByCourseId(int courseId);-->
-    <select id="getCourseByCourseId" resultMap="BaseResultMap" >
+    <select id="getCourseByCourseId" parameterType="int" resultMap="BaseResultMap" >
         select *
         from course
         where course_id=#{courseId}
     </select>
 
 <!--    Course getCourseByCourseName(@Param("courseName")String courseName);-->
-    <select id="getCourseByCourseId" resultMap="BaseResultMap" >
+    <select id="getCourseByCourseName" parameterType="String" resultMap="BaseResultMap" >
         select *
         from course
         where course_name=#{courseName}
@@ -39,20 +39,24 @@
 
 
 <!--    Integer deleteStudentTake(int courseId);-->
-    <delete id="deleteStudentTake" >
+    <delete id="deleteStudentTake" parameterType="int">
         delete from takes where course_id=#{courseId}
     </delete>
 
 <!--    Integer deleteCourse(int course);-->
-    <delete id="deleteCourse" >
+    <delete id="deleteCourse" parameterType="int">
         delete from course where course_id=#{courseId}
     </delete>
 
 <!--    List<Course> getCourseByTeacherId(String userId);-->
-    <select id="getCourseByTeacherId" resultMap="BaseResultMap">
+    <select id="getCourseByTeacherId" parameterType="String" resultMap="BaseResultMap">
         select *
         from course
         where teacher_id=#{userId}
     </select>
 
+<!--    List<Course> getAllCourse();-->
+    <select id="getAllCourse" resultMap="BaseResultMap">
+        select * from course
+    </select>
 </mapper>
