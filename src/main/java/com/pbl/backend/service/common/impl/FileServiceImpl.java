@@ -3,10 +3,12 @@ package com.pbl.backend.service.common.impl;
 import com.alibaba.fastjson.JSONObject;
 import com.pbl.backend.BackendApplication;
 import com.pbl.backend.common.response.Result;
+import com.pbl.backend.common.response.ResultCode;
 import com.pbl.backend.config.FileManageConfig;
 import com.pbl.backend.constant.ConfigConstants;
 import com.pbl.backend.dao.PjFileDao;
 import com.pbl.backend.entity.PjFile;
+import com.pbl.backend.model.PjFileUpload;
 import com.pbl.backend.service.common.IFileService;
 import com.pbl.backend.utils.FileCommonUtils;
 import com.zhazhapan.modules.constant.ValueConsts;
@@ -34,18 +36,18 @@ public class FileServiceImpl implements IFileService {
     PjFileDao pjFileDao;
 
     @Override
-    public boolean upload(String courseId, String userId, String projectId, MultipartFile multipartFile) {
-        String name = multipartFile.getOriginalFilename();
+    public Result upload(PjFileUpload pjFileUpload) {
+        String name = pjFileUpload.getMultipartFile().getOriginalFilename();
 
         String suffix = FileExecutor.getFileSuffix(name);
 
         //创建上传文件的本地存储名,保证其唯一
-        String uniqueName = UUID.randomUUID().toString().replaceAll("-", "") + "-" + userId + ValueConsts.DOT_SIGN +suffix;
+        String uniqueName = UUID.randomUUID().toString().replaceAll("-", "") + "-" + pjFileUpload.getUserId() + ValueConsts.DOT_SIGN +suffix;
 
-        String localUrl = FileManageConfig.getUploadStoragePath() + ValueConsts.SEPARATOR + courseId +
-                ValueConsts.SEPARATOR + projectId + ValueConsts.SEPARATOR + uniqueName;
+        String localUrl = FileManageConfig.getUploadStoragePath() + FileManageConfig.RELATIVE_SEPARATOR  + pjFileUpload.getCourseId() +
+                FileManageConfig.RELATIVE_SEPARATOR + pjFileUpload.getProjectId() + FileManageConfig.RELATIVE_SEPARATOR;
 
-        long uploadFileSize = multipartFile.getSize();
+        long uploadFileSize = pjFileUpload.getMultipartFile().getSize();
         String uploadMaxSizeTag = BackendApplication.file_manage_settings.getJSONObject(ConfigConstants.FILE_MAX_SIZE_OF_SETTING[0])
                 .getString(ConfigConstants.FILE_MAX_SIZE_OF_SETTING[1]);
         long uploadMaxSize = Formatter.sizeToLong(uploadMaxSizeTag);
@@ -53,27 +55,32 @@ public class FileServiceImpl implements IFileService {
         boolean fileExists = localUrlExists(localUrl);
 
         //是否可以上传
-        boolean canUpload = !multipartFile.isEmpty() && uploadFileSize <= uploadMaxSize && !fileExists;
+        boolean canUpload = !pjFileUpload.getMultipartFile().isEmpty() && uploadFileSize <= uploadMaxSize && !fileExists;
 
 
         if(canUpload){
             try{
-                File file = new File(localUrl);
-                multipartFile.transferTo(file);
+                File file = new File(new File(localUrl).getAbsolutePath() +"/" + uniqueName);
+                System.out.println("----"+file.getAbsolutePath());
+                if(!file.getParentFile().exists()){
+                    file.getParentFile().mkdirs();
+                }
+                pjFileUpload.getMultipartFile().transferTo(file);
                 //将文件信息插入数据库
-                int isSuccess = pjFileDao.insert(new PjFile(userId, Integer.valueOf(projectId), name, courseId+"/"+projectId+"/"+uniqueName));
+                int isSuccess = pjFileDao.insert(new PjFile(pjFileUpload.getUserId(), pjFileUpload.getProjectId(), name, pjFileUpload.getCourseId()+"/"+pjFileUpload.getProjectId()+"/"+uniqueName));
                 if(isSuccess < 1){
                     FileExecutor.deleteFile(localUrl);
-                    return false;
+                    return Result.FAIL();
                 }
-                return true;
+                return Result.SUCCESS();
             }
             catch (Exception e){
                 FileExecutor.deleteFile(localUrl);
                 e.printStackTrace();
+                return new Result(ResultCode.SYSTEM_INNER_ERROR);
             }
         }
-        return false;
+        return new Result(ResultCode.UPLOAD_PJ_SHARED_FILE);
     }
 
     @Override

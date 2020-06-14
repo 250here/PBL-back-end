@@ -2,10 +2,13 @@ package com.pbl.backend.service.teacher.impl;
 
 import com.pbl.backend.dao.ProjectTaskDao;
 import com.pbl.backend.entity.ProjectTask;
+import com.pbl.backend.model.ProjectTaskReq;
 import com.pbl.backend.service.teacher.IProjectTaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -27,9 +30,15 @@ public class ProjectTaskServiceImpl implements IProjectTaskService {
      * @return: boolean
     */
     @Override
-    public boolean createPjTask(ProjectTask projectTask) {
-        ProjectTask projectTask1 = projectTaskDao.getPjTaskByPjIdAndName(projectTask.getProjectId(), projectTask.getTaskName());
-        if(projectTask1 != null){ //相同项目下存在同名任务
+    public boolean createPjTask(ProjectTaskReq projectTaskReq) {
+        Timestamp startTime = Timestamp.valueOf(projectTaskReq.getTaskStartTime());
+        Timestamp endTime = Timestamp.valueOf(projectTaskReq.getTaskEndTime());
+        ProjectTask projectTask = new ProjectTask(projectTaskReq.getProjectId(), projectTaskReq.getTaskName(),
+                projectTaskReq.getTaskDiscribe(), startTime, endTime);
+
+        System.out.println(projectTask.getProjectId()+"==="+projectTask.getTaskName());
+        ProjectTask projectTask2 = projectTaskDao.getPjTaskByPjIdAndName(projectTask.getProjectId(), projectTask.getTaskName());
+        if(projectTask2 != null){ //相同项目下存在同名任务
             return false;
         }
         projectTaskDao.addProjectTask(projectTask);

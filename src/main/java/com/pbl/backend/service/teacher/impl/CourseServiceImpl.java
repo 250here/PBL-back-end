@@ -59,7 +59,7 @@ public class CourseServiceImpl implements ICourseService {
         if(fileService.createCourseFileSpace(localUploadPath)){
             return true;
         }
-        return true;
+        return false;
     }
 
     @Override

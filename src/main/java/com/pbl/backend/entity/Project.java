@@ -1,5 +1,7 @@
 package com.pbl.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,4 +27,14 @@ public class Project {
     private Date evaluationTime;
     private Integer teacherEvaWeight;  //教师评价权重
     private Integer stuEvaWeight;   //学生评价权重, 和教师总和为100%
+
+    @JsonIgnore
+    public Integer getCourseId() {
+        return courseId;
+    }
+
+    @JsonProperty
+    public void setCourseId(Integer courseId) {
+        this.courseId = courseId;
+    }
 }

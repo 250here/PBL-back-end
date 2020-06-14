@@ -1,20 +1,218 @@
-2020-06-03 17:40:04.772 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 55 ] - Starting BackendApplication on LAPTOP-D8OQ4NNN with PID 6732 (D:\桌面\大三下\高级web\Pj\Code\PBL-back-end\target\classes started by lenovo in D:\桌面\大三下\高级web\Pj\Code\PBL-back-end)
-2020-06-03 17:40:04.775 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 651 ] - No active profile set, falling back to default profiles: default
-2020-06-13 11:55:34.303 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 55 ] - Starting BackendApplication on LAPTOP-L7VRH05M with PID 29276 (D:\AdvancedWeb\PJ\PBL-back-end\target\classes started by 杜东方 in D:\AdvancedWeb\PJ\PBL-back-end)
-2020-06-13 11:55:34.309 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 651 ] - No active profile set, falling back to default profiles: default
-2020-06-13 11:56:31.524 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 55 ] - Starting BackendApplication on LAPTOP-L7VRH05M with PID 28268 (D:\AdvancedWeb\PJ\PBL-back-end\target\classes started by 杜东方 in D:\AdvancedWeb\PJ\PBL-back-end)
-2020-06-13 11:56:31.530 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 651 ] - No active profile set, falling back to default profiles: default
-2020-06-13 12:02:11.126 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 55 ] - Starting BackendApplication on LAPTOP-L7VRH05M with PID 2852 (D:\AdvancedWeb\PJ\PBL-back-end\target\classes started by 杜东方 in D:\AdvancedWeb\PJ\PBL-back-end)
-2020-06-13 12:02:11.131 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 651 ] - No active profile set, falling back to default profiles: default
-2020-06-13 12:02:27.257 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 55 ] - Starting BackendApplication on LAPTOP-L7VRH05M with PID 16812 (D:\AdvancedWeb\PJ\PBL-back-end\target\classes started by 杜东方 in D:\AdvancedWeb\PJ\PBL-back-end)
-2020-06-13 12:02:27.260 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 651 ] - No active profile set, falling back to default profiles: default
-2020-06-13 12:04:45.327 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 55 ] - Starting BackendApplication on LAPTOP-L7VRH05M with PID 17300 (D:\AdvancedWeb\PJ\PBL-back-end\target\classes started by 杜东方 in D:\AdvancedWeb\PJ\PBL-back-end)
-2020-06-13 12:04:45.333 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 651 ] - No active profile set, falling back to default profiles: default
-2020-06-13 12:05:04.727 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 55 ] - Starting BackendApplication on LAPTOP-L7VRH05M with PID 9432 (D:\AdvancedWeb\PJ\PBL-back-end\target\classes started by 杜东方 in D:\AdvancedWeb\PJ\PBL-back-end)
-2020-06-13 12:05:04.734 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 651 ] - No active profile set, falling back to default profiles: default
-2020-06-13 12:05:49.084 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 55 ] - Starting BackendApplication on LAPTOP-L7VRH05M with PID 15888 (D:\AdvancedWeb\PJ\PBL-back-end\target\classes started by 杜东方 in D:\AdvancedWeb\PJ\PBL-back-end)
-2020-06-13 12:05:49.090 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 651 ] - No active profile set, falling back to default profiles: default
-2020-06-13 12:07:02.784 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 55 ] - Starting BackendApplication on LAPTOP-L7VRH05M with PID 19324 (D:\AdvancedWeb\PJ\PBL-back-end\target\classes started by 杜东方 in D:\AdvancedWeb\PJ\PBL-back-end)
-2020-06-13 12:07:02.793 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 651 ] - No active profile set, falling back to default profiles: default
-2020-06-13 12:07:48.801 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplicationTests : 55 ] - Starting BackendApplicationTests on LAPTOP-L7VRH05M with PID 9020 (started by �Ŷ��� in D:\AdvancedWeb\PJ\PBL-back-end)
-2020-06-13 12:07:48.805 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplicationTests : 651 ] - No active profile set, falling back to default profiles: default
+2020-06-14 00:01:48.553 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 55 ] - Starting BackendApplication on LAPTOP-L7VRH05M with PID 26792 (D:\AdvancedWeb\PJ\PBL-back-end\target\classes started by 杜东方 in D:\AdvancedWeb\PJ\PBL-back-end)
+2020-06-14 00:01:48.565 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 651 ] - No active profile set, falling back to default profiles: default
+2020-06-14 00:01:52.746 [ main ] - [ INFO  ] [ org.apache.coyote.http11.Http11NioProtocol : 173 ] - Initializing ProtocolHandler ["http-nio-8080"]
+2020-06-14 00:01:52.747 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardService : 173 ] - Starting service [Tomcat]
+2020-06-14 00:01:52.747 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardEngine : 173 ] - Starting Servlet engine: [Apache Tomcat/9.0.34]
+2020-06-14 00:01:52.884 [ main ] - [ INFO  ] [ o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] : 173 ] - Initializing Spring embedded WebApplicationContext
+2020-06-14 00:01:54.485 [ main ] - [ INFO  ] [ s.d.s.w.PropertySourcedRequestMappingHandlerMapping : 69 ] - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-06-14 00:01:54.840 [ main ] - [ INFO  ] [ s.d.s.web.plugins.DocumentationPluginsBootstrapper : 160 ] - Context refreshed
+2020-06-14 00:01:54.860 [ main ] - [ INFO  ] [ s.d.s.web.plugins.DocumentationPluginsBootstrapper : 163 ] - Found 1 custom documentation plugin(s)
+2020-06-14 00:01:54.904 [ main ] - [ INFO  ] [ s.d.spring.web.scanners.ApiListingReferenceScanner : 41 ] - Scanning for api listing references
+2020-06-14 00:01:55.032 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getAllCourseListUsingGET_1
+2020-06-14 00:01:55.097 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getAllProjectListUsingGET_1
+2020-06-14 00:01:55.100 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getProjectInfoUsingGET_1
+2020-06-14 00:01:55.107 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getAllPjGroupListUsingGET_1
+2020-06-14 00:01:55.110 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getPjGroupInfoUsingGET_1
+2020-06-14 00:01:55.133 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getPjTaskInfoUsingGET_1
+2020-06-14 00:01:55.136 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getPjTaskListUsingGET_1
+2020-06-14 00:01:55.211 [ main ] - [ INFO  ] [ org.apache.coyote.http11.Http11NioProtocol : 173 ] - Starting ProtocolHandler ["http-nio-8080"]
+2020-06-14 00:01:55.235 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 61 ] - Started BackendApplication in 7.634 seconds (JVM running for 10.039)
+2020-06-14 00:01:59.850 [ http-nio-8080-exec-1 ] - [ INFO  ] [ o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] : 173 ] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-06-14 00:04:23.862 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 55 ] - Starting BackendApplication on LAPTOP-L7VRH05M with PID 36872 (D:\AdvancedWeb\PJ\PBL-back-end\target\classes started by 杜东方 in D:\AdvancedWeb\PJ\PBL-back-end)
+2020-06-14 00:04:23.869 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 651 ] - No active profile set, falling back to default profiles: default
+2020-06-14 00:04:26.308 [ main ] - [ INFO  ] [ org.apache.coyote.http11.Http11NioProtocol : 173 ] - Initializing ProtocolHandler ["http-nio-8080"]
+2020-06-14 00:04:26.309 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardService : 173 ] - Starting service [Tomcat]
+2020-06-14 00:04:26.310 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardEngine : 173 ] - Starting Servlet engine: [Apache Tomcat/9.0.34]
+2020-06-14 00:04:26.560 [ main ] - [ INFO  ] [ o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] : 173 ] - Initializing Spring embedded WebApplicationContext
+2020-06-14 00:04:27.877 [ main ] - [ INFO  ] [ s.d.s.w.PropertySourcedRequestMappingHandlerMapping : 69 ] - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-06-14 00:04:28.207 [ main ] - [ INFO  ] [ s.d.s.web.plugins.DocumentationPluginsBootstrapper : 160 ] - Context refreshed
+2020-06-14 00:04:28.227 [ main ] - [ INFO  ] [ s.d.s.web.plugins.DocumentationPluginsBootstrapper : 163 ] - Found 1 custom documentation plugin(s)
+2020-06-14 00:04:28.275 [ main ] - [ INFO  ] [ s.d.spring.web.scanners.ApiListingReferenceScanner : 41 ] - Scanning for api listing references
+2020-06-14 00:04:28.420 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getAllCourseListUsingGET_1
+2020-06-14 00:04:28.503 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getAllProjectListUsingGET_1
+2020-06-14 00:04:28.505 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getProjectInfoUsingGET_1
+2020-06-14 00:04:28.509 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getAllPjGroupListUsingGET_1
+2020-06-14 00:04:28.512 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getPjGroupInfoUsingGET_1
+2020-06-14 00:04:28.541 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getPjTaskInfoUsingGET_1
+2020-06-14 00:04:28.543 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getPjTaskListUsingGET_1
+2020-06-14 00:04:28.610 [ main ] - [ INFO  ] [ org.apache.coyote.http11.Http11NioProtocol : 173 ] - Starting ProtocolHandler ["http-nio-8080"]
+2020-06-14 00:04:28.644 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 61 ] - Started BackendApplication in 5.563 seconds (JVM running for 7.489)
+2020-06-14 00:04:49.074 [ http-nio-8080-exec-1 ] - [ INFO  ] [ o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] : 173 ] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-06-14 00:20:50.266 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 55 ] - Starting BackendApplication on LAPTOP-L7VRH05M with PID 11940 (D:\AdvancedWeb\PJ\PBL-back-end\target\classes started by 杜东方 in D:\AdvancedWeb\PJ\PBL-back-end)
+2020-06-14 00:20:50.288 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 651 ] - No active profile set, falling back to default profiles: default
+2020-06-14 00:20:53.246 [ main ] - [ INFO  ] [ org.apache.coyote.http11.Http11NioProtocol : 173 ] - Initializing ProtocolHandler ["http-nio-8080"]
+2020-06-14 00:20:53.247 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardService : 173 ] - Starting service [Tomcat]
+2020-06-14 00:20:53.248 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardEngine : 173 ] - Starting Servlet engine: [Apache Tomcat/9.0.34]
+2020-06-14 00:20:53.363 [ main ] - [ INFO  ] [ o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] : 173 ] - Initializing Spring embedded WebApplicationContext
+2020-06-14 00:20:54.554 [ main ] - [ INFO  ] [ s.d.s.w.PropertySourcedRequestMappingHandlerMapping : 69 ] - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-06-14 00:20:54.876 [ main ] - [ INFO  ] [ s.d.s.web.plugins.DocumentationPluginsBootstrapper : 160 ] - Context refreshed
+2020-06-14 00:20:54.893 [ main ] - [ INFO  ] [ s.d.s.web.plugins.DocumentationPluginsBootstrapper : 163 ] - Found 1 custom documentation plugin(s)
+2020-06-14 00:20:54.935 [ main ] - [ INFO  ] [ s.d.spring.web.scanners.ApiListingReferenceScanner : 41 ] - Scanning for api listing references
+2020-06-14 00:20:55.072 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getAllCourseListUsingGET_1
+2020-06-14 00:20:55.143 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getAllProjectListUsingGET_1
+2020-06-14 00:20:55.145 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getProjectInfoUsingGET_1
+2020-06-14 00:20:55.152 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getAllPjGroupListUsingGET_1
+2020-06-14 00:20:55.155 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getPjGroupInfoUsingGET_1
+2020-06-14 00:20:55.176 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getPjTaskInfoUsingGET_1
+2020-06-14 00:20:55.178 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getPjTaskListUsingGET_1
+2020-06-14 00:20:55.239 [ main ] - [ INFO  ] [ org.apache.coyote.http11.Http11NioProtocol : 173 ] - Starting ProtocolHandler ["http-nio-8080"]
+2020-06-14 00:20:55.262 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 61 ] - Started BackendApplication in 5.97 seconds (JVM running for 7.999)
+2020-06-14 00:21:01.763 [ http-nio-8080-exec-1 ] - [ INFO  ] [ o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] : 173 ] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-06-14 00:21:02.451 [ http-nio-8080-exec-1 ] - [ ERROR ] [ c.p.b.c.exception.handler.GlobalExceptionHandler : 72 ] - ### 不可知的异常:Request method 'POST' not supported ###
+2020-06-14 00:21:26.996 [ http-nio-8080-exec-3 ] - [ INFO  ] [ com.zaxxer.hikari.HikariDataSource : 110 ] - HikariPool-1 - Starting...
+2020-06-14 00:21:27.223 [ http-nio-8080-exec-3 ] - [ INFO  ] [ com.zaxxer.hikari.HikariDataSource : 123 ] - HikariPool-1 - Start completed.
+2020-06-14 00:22:17.625 [ http-nio-8080-exec-4 ] - [ INFO  ] [ c.p.backend.service.teacher.impl.CourseServiceImpl : 46 ] - 创建课程: course4
+2020-06-14 00:22:17.739 [ http-nio-8080-exec-4 ] - [ ERROR ] [ c.p.b.c.exception.handler.GlobalExceptionHandler : 72 ] - ### 不可知的异常:
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Column 'teacher_id' cannot be null
+### The error may exist in file [D:\AdvancedWeb\PJ\PBL-back-end\target\classes\mapper\Course.xml]
+### The error may involve com.pbl.backend.dao.CourseDao.addCourse-Inline
+### The error occurred while setting parameters
+### SQL: insert into course(teacher_id, course_name, course_startime, course_endtime)         values (?,?,?,?)
+### Cause: java.sql.SQLIntegrityConstraintViolationException: Column 'teacher_id' cannot be null
+; Column 'teacher_id' cannot be null; nested exception is java.sql.SQLIntegrityConstraintViolationException: Column 'teacher_id' cannot be null ###
+2020-06-14 00:23:07.277 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 55 ] - Starting BackendApplication on LAPTOP-L7VRH05M with PID 19380 (D:\AdvancedWeb\PJ\PBL-back-end\target\classes started by 杜东方 in D:\AdvancedWeb\PJ\PBL-back-end)
+2020-06-14 00:23:07.281 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 651 ] - No active profile set, falling back to default profiles: default
+2020-06-14 00:23:08.900 [ main ] - [ INFO  ] [ org.apache.coyote.http11.Http11NioProtocol : 173 ] - Initializing ProtocolHandler ["http-nio-8080"]
+2020-06-14 00:23:08.901 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardService : 173 ] - Starting service [Tomcat]
+2020-06-14 00:23:08.902 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardEngine : 173 ] - Starting Servlet engine: [Apache Tomcat/9.0.34]
+2020-06-14 00:23:09.015 [ main ] - [ INFO  ] [ o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] : 173 ] - Initializing Spring embedded WebApplicationContext
+2020-06-14 00:23:09.850 [ main ] - [ INFO  ] [ s.d.s.w.PropertySourcedRequestMappingHandlerMapping : 69 ] - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-06-14 00:23:10.165 [ main ] - [ INFO  ] [ s.d.s.web.plugins.DocumentationPluginsBootstrapper : 160 ] - Context refreshed
+2020-06-14 00:23:10.180 [ main ] - [ INFO  ] [ s.d.s.web.plugins.DocumentationPluginsBootstrapper : 163 ] - Found 1 custom documentation plugin(s)
+2020-06-14 00:23:10.219 [ main ] - [ INFO  ] [ s.d.spring.web.scanners.ApiListingReferenceScanner : 41 ] - Scanning for api listing references
+2020-06-14 00:23:10.340 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getAllCourseListUsingGET_1
+2020-06-14 00:23:10.392 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getAllProjectListUsingGET_1
+2020-06-14 00:23:10.394 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getProjectInfoUsingGET_1
+2020-06-14 00:23:10.398 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getAllPjGroupListUsingGET_1
+2020-06-14 00:23:10.400 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getPjGroupInfoUsingGET_1
+2020-06-14 00:23:10.415 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getPjTaskInfoUsingGET_1
+2020-06-14 00:23:10.417 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getPjTaskListUsingGET_1
+2020-06-14 00:23:10.477 [ main ] - [ INFO  ] [ org.apache.coyote.http11.Http11NioProtocol : 173 ] - Starting ProtocolHandler ["http-nio-8080"]
+2020-06-14 00:23:10.503 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 61 ] - Started BackendApplication in 4.03 seconds (JVM running for 5.655)
+2020-06-14 00:23:20.435 [ http-nio-8080-exec-1 ] - [ INFO  ] [ o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] : 173 ] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-06-14 00:23:21.111 [ http-nio-8080-exec-1 ] - [ INFO  ] [ c.p.backend.service.teacher.impl.CourseServiceImpl : 46 ] - 创建课程: course4
+2020-06-14 00:23:21.137 [ http-nio-8080-exec-1 ] - [ INFO  ] [ com.zaxxer.hikari.HikariDataSource : 110 ] - HikariPool-1 - Starting...
+2020-06-14 00:23:21.280 [ http-nio-8080-exec-1 ] - [ INFO  ] [ com.zaxxer.hikari.HikariDataSource : 123 ] - HikariPool-1 - Start completed.
+2020-06-14 08:54:59.519 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 55 ] - Starting BackendApplication on LAPTOP-L7VRH05M with PID 39736 (D:\AdvancedWeb\PJ\PBL-back-end\target\classes started by 杜东方 in D:\AdvancedWeb\PJ\PBL-back-end)
+2020-06-14 08:54:59.537 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 651 ] - No active profile set, falling back to default profiles: default
+2020-06-14 08:55:04.448 [ main ] - [ INFO  ] [ org.apache.coyote.http11.Http11NioProtocol : 173 ] - Initializing ProtocolHandler ["http-nio-8080"]
+2020-06-14 08:55:04.449 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardService : 173 ] - Starting service [Tomcat]
+2020-06-14 08:55:04.450 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardEngine : 173 ] - Starting Servlet engine: [Apache Tomcat/9.0.34]
+2020-06-14 08:55:04.642 [ main ] - [ INFO  ] [ o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] : 173 ] - Initializing Spring embedded WebApplicationContext
+2020-06-14 08:55:06.251 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardService : 173 ] - Stopping service [Tomcat]
+2020-06-14 08:55:43.277 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 55 ] - Starting BackendApplication on LAPTOP-L7VRH05M with PID 37660 (D:\AdvancedWeb\PJ\PBL-back-end\target\classes started by 杜东方 in D:\AdvancedWeb\PJ\PBL-back-end)
+2020-06-14 08:55:43.284 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 651 ] - No active profile set, falling back to default profiles: default
+2020-06-14 08:55:46.028 [ main ] - [ INFO  ] [ org.apache.coyote.http11.Http11NioProtocol : 173 ] - Initializing ProtocolHandler ["http-nio-8080"]
+2020-06-14 08:55:46.029 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardService : 173 ] - Starting service [Tomcat]
+2020-06-14 08:55:46.030 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardEngine : 173 ] - Starting Servlet engine: [Apache Tomcat/9.0.34]
+2020-06-14 08:55:46.188 [ main ] - [ INFO  ] [ o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] : 173 ] - Initializing Spring embedded WebApplicationContext
+2020-06-14 08:55:47.213 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardService : 173 ] - Stopping service [Tomcat]
+2020-06-14 08:56:15.183 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 55 ] - Starting BackendApplication on LAPTOP-L7VRH05M with PID 13968 (D:\AdvancedWeb\PJ\PBL-back-end\target\classes started by 杜东方 in D:\AdvancedWeb\PJ\PBL-back-end)
+2020-06-14 08:56:15.190 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 651 ] - No active profile set, falling back to default profiles: default
+2020-06-14 08:56:17.299 [ main ] - [ INFO  ] [ org.apache.coyote.http11.Http11NioProtocol : 173 ] - Initializing ProtocolHandler ["http-nio-8080"]
+2020-06-14 08:56:17.300 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardService : 173 ] - Starting service [Tomcat]
+2020-06-14 08:56:17.301 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardEngine : 173 ] - Starting Servlet engine: [Apache Tomcat/9.0.34]
+2020-06-14 08:56:17.494 [ main ] - [ INFO  ] [ o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] : 173 ] - Initializing Spring embedded WebApplicationContext
+2020-06-14 08:56:18.607 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardService : 173 ] - Stopping service [Tomcat]
+2020-06-14 08:58:13.008 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 55 ] - Starting BackendApplication on LAPTOP-L7VRH05M with PID 23180 (D:\AdvancedWeb\PJ\PBL-back-end\target\classes started by 杜东方 in D:\AdvancedWeb\PJ\PBL-back-end)
+2020-06-14 08:58:13.077 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 651 ] - No active profile set, falling back to default profiles: default
+2020-06-14 08:58:16.399 [ main ] - [ INFO  ] [ org.apache.coyote.http11.Http11NioProtocol : 173 ] - Initializing ProtocolHandler ["http-nio-8080"]
+2020-06-14 08:58:16.400 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardService : 173 ] - Starting service [Tomcat]
+2020-06-14 08:58:16.401 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardEngine : 173 ] - Starting Servlet engine: [Apache Tomcat/9.0.34]
+2020-06-14 08:58:16.640 [ main ] - [ INFO  ] [ o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] : 173 ] - Initializing Spring embedded WebApplicationContext
+2020-06-14 08:58:17.975 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardService : 173 ] - Stopping service [Tomcat]
+2020-06-14 08:59:53.266 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 55 ] - Starting BackendApplication on LAPTOP-L7VRH05M with PID 8912 (D:\AdvancedWeb\PJ\PBL-back-end\target\classes started by 杜东方 in D:\AdvancedWeb\PJ\PBL-back-end)
+2020-06-14 08:59:53.270 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 651 ] - No active profile set, falling back to default profiles: default
+2020-06-14 08:59:55.547 [ main ] - [ INFO  ] [ org.apache.coyote.http11.Http11NioProtocol : 173 ] - Initializing ProtocolHandler ["http-nio-8080"]
+2020-06-14 08:59:55.548 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardService : 173 ] - Starting service [Tomcat]
+2020-06-14 08:59:55.549 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardEngine : 173 ] - Starting Servlet engine: [Apache Tomcat/9.0.34]
+2020-06-14 08:59:55.721 [ main ] - [ INFO  ] [ o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] : 173 ] - Initializing Spring embedded WebApplicationContext
+2020-06-14 08:59:56.939 [ main ] - [ INFO  ] [ s.d.s.w.PropertySourcedRequestMappingHandlerMapping : 69 ] - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-06-14 08:59:57.418 [ main ] - [ INFO  ] [ s.d.s.web.plugins.DocumentationPluginsBootstrapper : 160 ] - Context refreshed
+2020-06-14 08:59:57.447 [ main ] - [ INFO  ] [ s.d.s.web.plugins.DocumentationPluginsBootstrapper : 163 ] - Found 1 custom documentation plugin(s)
+2020-06-14 08:59:57.504 [ main ] - [ INFO  ] [ s.d.spring.web.scanners.ApiListingReferenceScanner : 41 ] - Scanning for api listing references
+2020-06-14 08:59:57.735 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getAllCourseListUsingGET_1
+2020-06-14 08:59:57.819 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getAllProjectListUsingGET_1
+2020-06-14 08:59:57.822 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getProjectInfoUsingGET_1
+2020-06-14 08:59:57.828 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getAllPjGroupListUsingGET_1
+2020-06-14 08:59:57.831 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getPjGroupInfoUsingGET_1
+2020-06-14 08:59:57.854 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getPjTaskInfoUsingGET_1
+2020-06-14 08:59:57.856 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getPjTaskListUsingGET_1
+2020-06-14 08:59:57.956 [ main ] - [ INFO  ] [ org.apache.coyote.http11.Http11NioProtocol : 173 ] - Starting ProtocolHandler ["http-nio-8080"]
+2020-06-14 08:59:57.993 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 61 ] - Started BackendApplication in 5.479 seconds (JVM running for 7.838)
+2020-06-14 09:01:01.313 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 55 ] - Starting BackendApplication on LAPTOP-L7VRH05M with PID 35192 (D:\AdvancedWeb\PJ\PBL-back-end\target\classes started by 杜东方 in D:\AdvancedWeb\PJ\PBL-back-end)
+2020-06-14 09:01:01.318 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 651 ] - No active profile set, falling back to default profiles: default
+2020-06-14 09:01:03.393 [ main ] - [ INFO  ] [ org.apache.coyote.http11.Http11NioProtocol : 173 ] - Initializing ProtocolHandler ["http-nio-8080"]
+2020-06-14 09:01:03.395 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardService : 173 ] - Starting service [Tomcat]
+2020-06-14 09:01:03.396 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardEngine : 173 ] - Starting Servlet engine: [Apache Tomcat/9.0.34]
+2020-06-14 09:01:03.573 [ main ] - [ INFO  ] [ o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] : 173 ] - Initializing Spring embedded WebApplicationContext
+2020-06-14 09:01:04.608 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardService : 173 ] - Stopping service [Tomcat]
+2020-06-14 09:02:44.631 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 55 ] - Starting BackendApplication on LAPTOP-L7VRH05M with PID 38924 (D:\AdvancedWeb\PJ\PBL-back-end\target\classes started by 杜东方 in D:\AdvancedWeb\PJ\PBL-back-end)
+2020-06-14 09:02:44.638 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 651 ] - No active profile set, falling back to default profiles: default
+2020-06-14 09:02:46.792 [ main ] - [ INFO  ] [ org.apache.coyote.http11.Http11NioProtocol : 173 ] - Initializing ProtocolHandler ["http-nio-8080"]
+2020-06-14 09:02:46.794 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardService : 173 ] - Starting service [Tomcat]
+2020-06-14 09:02:46.795 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardEngine : 173 ] - Starting Servlet engine: [Apache Tomcat/9.0.34]
+2020-06-14 09:02:46.987 [ main ] - [ INFO  ] [ o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] : 173 ] - Initializing Spring embedded WebApplicationContext
+2020-06-14 09:02:48.065 [ main ] - [ INFO  ] [ s.d.s.w.PropertySourcedRequestMappingHandlerMapping : 69 ] - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-06-14 09:02:48.431 [ main ] - [ INFO  ] [ s.d.s.web.plugins.DocumentationPluginsBootstrapper : 160 ] - Context refreshed
+2020-06-14 09:02:48.450 [ main ] - [ INFO  ] [ s.d.s.web.plugins.DocumentationPluginsBootstrapper : 163 ] - Found 1 custom documentation plugin(s)
+2020-06-14 09:02:48.499 [ main ] - [ INFO  ] [ s.d.spring.web.scanners.ApiListingReferenceScanner : 41 ] - Scanning for api listing references
+2020-06-14 09:02:48.661 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getAllCourseListUsingGET_1
+2020-06-14 09:02:48.744 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getAllProjectListUsingGET_1
+2020-06-14 09:02:48.747 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getProjectInfoUsingGET_1
+2020-06-14 09:02:48.754 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getAllPjGroupListUsingGET_1
+2020-06-14 09:02:48.756 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getPjGroupInfoUsingGET_1
+2020-06-14 09:02:48.778 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getPjTaskInfoUsingGET_1
+2020-06-14 09:02:48.780 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getPjTaskListUsingGET_1
+2020-06-14 09:02:48.881 [ main ] - [ INFO  ] [ org.apache.coyote.http11.Http11NioProtocol : 173 ] - Starting ProtocolHandler ["http-nio-8080"]
+2020-06-14 09:02:48.920 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 61 ] - Started BackendApplication in 5.619 seconds (JVM running for 7.786)
+2020-06-14 09:03:20.619 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 55 ] - Starting BackendApplication on LAPTOP-L7VRH05M with PID 8984 (D:\AdvancedWeb\PJ\PBL-back-end\target\classes started by 杜东方 in D:\AdvancedWeb\PJ\PBL-back-end)
+2020-06-14 09:03:20.626 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 651 ] - No active profile set, falling back to default profiles: default
+2020-06-14 09:03:23.620 [ main ] - [ INFO  ] [ org.apache.coyote.http11.Http11NioProtocol : 173 ] - Initializing ProtocolHandler ["http-nio-8080"]
+2020-06-14 09:03:23.622 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardService : 173 ] - Starting service [Tomcat]
+2020-06-14 09:03:23.623 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardEngine : 173 ] - Starting Servlet engine: [Apache Tomcat/9.0.34]
+2020-06-14 09:03:23.984 [ main ] - [ INFO  ] [ o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] : 173 ] - Initializing Spring embedded WebApplicationContext
+2020-06-14 09:03:25.849 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardService : 173 ] - Stopping service [Tomcat]
+2020-06-14 09:04:37.703 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 55 ] - Starting BackendApplication on LAPTOP-L7VRH05M with PID 18576 (D:\AdvancedWeb\PJ\PBL-back-end\target\classes started by 杜东方 in D:\AdvancedWeb\PJ\PBL-back-end)
+2020-06-14 09:04:37.710 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 651 ] - No active profile set, falling back to default profiles: default
+2020-06-14 09:05:53.750 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 55 ] - Starting BackendApplication on LAPTOP-L7VRH05M with PID 11044 (D:\AdvancedWeb\PJ\PBL-back-end\target\classes started by 杜东方 in D:\AdvancedWeb\PJ\PBL-back-end)
+2020-06-14 09:05:53.756 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 651 ] - No active profile set, falling back to default profiles: default
+2020-06-14 09:05:55.923 [ main ] - [ INFO  ] [ org.apache.coyote.http11.Http11NioProtocol : 173 ] - Initializing ProtocolHandler ["http-nio-8080"]
+2020-06-14 09:05:55.924 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardService : 173 ] - Starting service [Tomcat]
+2020-06-14 09:05:55.925 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardEngine : 173 ] - Starting Servlet engine: [Apache Tomcat/9.0.34]
+2020-06-14 09:05:56.120 [ main ] - [ INFO  ] [ o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] : 173 ] - Initializing Spring embedded WebApplicationContext
+2020-06-14 09:05:57.398 [ main ] - [ INFO  ] [ s.d.s.w.PropertySourcedRequestMappingHandlerMapping : 69 ] - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-06-14 09:05:57.967 [ main ] - [ INFO  ] [ s.d.s.web.plugins.DocumentationPluginsBootstrapper : 160 ] - Context refreshed
+2020-06-14 09:05:58.035 [ main ] - [ INFO  ] [ s.d.s.web.plugins.DocumentationPluginsBootstrapper : 163 ] - Found 1 custom documentation plugin(s)
+2020-06-14 09:05:58.151 [ main ] - [ INFO  ] [ s.d.spring.web.scanners.ApiListingReferenceScanner : 41 ] - Scanning for api listing references
+2020-06-14 09:05:58.463 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getAllCourseListUsingGET_1
+2020-06-14 09:05:58.541 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getAllProjectListUsingGET_1
+2020-06-14 09:05:58.544 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getProjectInfoUsingGET_1
+2020-06-14 09:05:58.552 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getAllPjGroupListUsingGET_1
+2020-06-14 09:05:58.556 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getPjGroupInfoUsingGET_1
+2020-06-14 09:05:58.580 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getPjTaskInfoUsingGET_1
+2020-06-14 09:05:58.599 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getPjTaskListUsingGET_1
+2020-06-14 09:05:58.692 [ main ] - [ INFO  ] [ org.apache.coyote.http11.Http11NioProtocol : 173 ] - Starting ProtocolHandler ["http-nio-8080"]
+2020-06-14 09:05:58.738 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 61 ] - Started BackendApplication in 5.869 seconds (JVM running for 8.529)
+2020-06-14 09:14:51.944 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 55 ] - Starting BackendApplication on LAPTOP-L7VRH05M with PID 24956 (D:\AdvancedWeb\PJ\PBL-back-end\target\classes started by 杜东方 in D:\AdvancedWeb\PJ\PBL-back-end)
+2020-06-14 09:14:51.958 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 651 ] - No active profile set, falling back to default profiles: default
+2020-06-14 09:14:56.584 [ main ] - [ INFO  ] [ org.apache.coyote.http11.Http11NioProtocol : 173 ] - Initializing ProtocolHandler ["http-nio-8080"]
+2020-06-14 09:14:56.587 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardService : 173 ] - Starting service [Tomcat]
+2020-06-14 09:14:56.588 [ main ] - [ INFO  ] [ org.apache.catalina.core.StandardEngine : 173 ] - Starting Servlet engine: [Apache Tomcat/9.0.34]
+2020-06-14 09:14:57.020 [ main ] - [ INFO  ] [ o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] : 173 ] - Initializing Spring embedded WebApplicationContext
+2020-06-14 09:14:59.606 [ main ] - [ INFO  ] [ s.d.s.w.PropertySourcedRequestMappingHandlerMapping : 69 ] - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-06-14 09:15:00.448 [ main ] - [ INFO  ] [ s.d.s.web.plugins.DocumentationPluginsBootstrapper : 160 ] - Context refreshed
+2020-06-14 09:15:00.500 [ main ] - [ INFO  ] [ s.d.s.web.plugins.DocumentationPluginsBootstrapper : 163 ] - Found 1 custom documentation plugin(s)
+2020-06-14 09:15:00.618 [ main ] - [ INFO  ] [ s.d.spring.web.scanners.ApiListingReferenceScanner : 41 ] - Scanning for api listing references
+2020-06-14 09:15:00.973 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getAllCourseListUsingGET_1
+2020-06-14 09:15:01.098 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getAllProjectListUsingGET_1
+2020-06-14 09:15:01.102 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getProjectInfoUsingGET_1
+2020-06-14 09:15:01.114 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getAllPjGroupListUsingGET_1
+2020-06-14 09:15:01.124 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getPjGroupInfoUsingGET_1
+2020-06-14 09:15:01.167 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getPjTaskInfoUsingGET_1
+2020-06-14 09:15:01.170 [ main ] - [ INFO  ] [ s.d.s.w.r.operation.CachingOperationNameGenerator : 40 ] - Generating unique operation named: getPjTaskListUsingGET_1
+2020-06-14 09:15:01.353 [ main ] - [ INFO  ] [ org.apache.coyote.http11.Http11NioProtocol : 173 ] - Starting ProtocolHandler ["http-nio-8080"]
+2020-06-14 09:15:01.404 [ main ] - [ INFO  ] [ com.pbl.backend.BackendApplication : 61 ] - Started BackendApplication in 10.614 seconds (JVM running for 14.07)
+2020-06-14 09:16:43.951 [ http-nio-8080-exec-1 ] - [ INFO  ] [ o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] : 173 ] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-06-14 09:16:44.465 [ http-nio-8080-exec-1 ] - [ INFO  ] [ com.zaxxer.hikari.HikariDataSource : 110 ] - HikariPool-1 - Starting...
+2020-06-14 09:16:45.324 [ http-nio-8080-exec-1 ] - [ INFO  ] [ com.zaxxer.hikari.HikariDataSource : 123 ] - HikariPool-1 - Start completed.

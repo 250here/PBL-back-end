@@ -20,6 +20,11 @@ public class FileManageConfig {
 
     private static final String LINUX = "linux";
 
+    private static final String PJ_FILE_PATH = "src/main/resources/static/PJFile/upload";
+
+    public static final String ABSOLUTE_SEPARATOR = ValueConsts.SEPARATOR;
+
+    public static final String RELATIVE_SEPARATOR = "/";
     private static OsName currentOS;
 
     static {
@@ -35,8 +40,8 @@ public class FileManageConfig {
     }
 
     public static String getUploadStoragePath(){
-        String parent = getStoragePath(ConfigConstants.UPLOAD_PATH_OF_SETTING);
-        return parent;
+        //String parent = getStoragePath(ConfigConstants.UPLOAD_PATH_OF_SETTING);
+        return PJ_FILE_PATH;
     }
 
     public static String getStoragePath(String path){
