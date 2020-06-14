@@ -30,6 +30,14 @@
         where course_id=#{courseId}
     </select>
 
+<!--    Course getCourseByCourseName(@Param("courseName")String courseName);-->
+    <select id="getCourseByCourseId" resultMap="BaseResultMap" >
+        select *
+        from course
+        where course_name=#{courseName}
+    </select>
+
+
 <!--    Integer deleteStudentTake(int courseId);-->
     <delete id="deleteStudentTake" >
         delete from takes where course_id=#{courseId}

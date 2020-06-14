@@ -8,4 +8,5 @@ public interface ICourseAdminService {
 
 
     List<Course> getAllCourses();
+    Course getCourseByName(String courseName);
 }
