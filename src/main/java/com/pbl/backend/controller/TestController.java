@@ -25,10 +25,7 @@ public class TestController {
 
     @GetMapping("/test")
     public Result get(){
-//        String psw = "123456";
-//        return Result.SUCCESS(bCryptPasswordEncoder.encode(psw));
-        User user = userDao.loadUserByUsername("mc");
-        return Result.SUCCESS(user);
+
 
     }
 

@@ -1,5 +1,6 @@
 package com.pbl.backend.service.common.impl;
 
+import com.pbl.backend.dao.TestDao;
 import com.pbl.backend.dao.UserDao;
 import com.pbl.backend.entity.User;
 import com.pbl.backend.service.common.IUserService;
@@ -17,6 +18,8 @@ public class UserServiceImpl implements IUserService {
 
     @Autowired
     UserDao userDao;
+    @Autowired
+    TestDao testDao;
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
 
@@ -50,12 +53,14 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public boolean upLoadPhoto( User user) {
-
-        if(userDao.uploadPhoto(user.getId(),user.getPhotoPath())>0){
-            return true;
-        }
-        return false;
+    public boolean upLoadPhoto(User user) {
+//        System.out.println(user.getPhotoPath()+user.getId()+"++++++++++++++++++");
+//        userDao.uploadPhoto("17302010059","1.jpg");
+//        if(userDao.uploadPhoto(user.getId(),user.getPhotoPath())>0){
+//            return true;
+//        }
+        testDao.upload("17302010059","1.jpg");
+        return true;
     }
 
     @Override

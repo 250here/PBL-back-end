@@ -62,4 +62,10 @@
         delete from grouping where project_id=#{projectId}
     </delete>
 
+<!--    int getGroupIdByGroupNameAndPjId(@Param("projectId")int projectId, @Param("groupName")String groupName);-->
+    <select id="getGroupIdByGroupNameAndPjId" resultType="int">
+        select group_id
+        from grouping
+        where project_id=#{projectId} and group_name=#{groupName}
+    </select>
 </mapper>

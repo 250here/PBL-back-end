@@ -58,9 +58,12 @@ public class ProjectStuGroupServiceImpl implements IProjectStuGroupService {
     @Override
     public boolean createPjGroup(int projectId, String userId, String groupName) {
         //判断是否已经加入某个项目小组
-        int groupId = -1;
-        groupId = userGroupDao.getGroupIdByPjIdAndUserId(projectId, userId);
-        if(groupId > 0){
+//        int groupId = -1;
+//        groupId = userGroupDao.getGroupIdByPjIdAndUserId(projectId, userId);
+//        if(groupId > 0){
+//            return false;
+//        }
+        if(userGroupDao.getGroupIdByPjIdAndUserId(projectId, userId) != null){
             return false;
         }
 
@@ -70,8 +73,11 @@ public class ProjectStuGroupServiceImpl implements IProjectStuGroupService {
         }
         group = new Group(projectId, groupName, userId);
         //创建项目小组信息
+
         groupDao.addPjGroup(group);
 
+        group.setGroupId(groupDao.getGroupIdByGroupNameAndPjId(projectId, groupName));
+        System.out.println(projectId+"==="+ group.getGroupId()+"==="+userId);
         //关联学生与小组信息
         userGroupDao.addStuGroup(projectId, group.getGroupId(), userId);
         return true;

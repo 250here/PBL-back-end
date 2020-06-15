@@ -16,5 +16,5 @@ public interface UserGroupDao {
     int deleteStuGroup(@Param("groupId")int groupId, @Param("userId")String userId);
 
     //根据UserId和ProjectId获取groupId
-    int getGroupIdByPjIdAndUserId(@Param("projectId")int projectId, @Param("userId")String userId);
+    Integer getGroupIdByPjIdAndUserId(@Param("projectId")int projectId, @Param("userId")String userId);
 }

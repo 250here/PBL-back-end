@@ -68,6 +68,7 @@ public class ProjectTaskServiceImpl implements IProjectTaskService {
     */
     @Override
     public List<ProjectTask> getPjAllTasks(Integer projectId) {
+
         return projectTaskDao.getAllPjTasks(projectId);
     }
 

@@ -27,7 +27,7 @@ public interface UserDao {
     String getPassword(@Param("userId")String userId);
 
     //上传图片路径
-    Integer uploadPhoto(@Param("userId")String UserId, @Param("photoPath")String photoPath);
+    void uploadPhoto(@Param("userId")String userId , @Param("photoPath")String photoPath);
 
     //更新图片路径
     Integer updatePhoto(@Param("userId")String userId, @Param("photoPath")String photoPath);

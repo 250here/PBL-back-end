@@ -24,5 +24,5 @@ public interface GroupDao {
     //根据项目ID删除该项目所有小组信息
     int deleteGroupsByProjectId(@Param("projectId")int projectId);
 
-
+    int getGroupIdByGroupNameAndPjId(@Param("projectId")int projectId, @Param("groupName")String groupName);
 }

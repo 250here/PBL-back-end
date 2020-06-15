@@ -1,13 +1,16 @@
 package com.pbl.backend.controller.student;
 
 import com.pbl.backend.common.response.Result;
+import com.pbl.backend.entity.Audience;
 import com.pbl.backend.entity.Group;
 import com.pbl.backend.service.student.IProjectStuGroupService;
+import com.pbl.backend.utils.JwtTokenUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -22,6 +25,9 @@ public class StuProjectGroupController {
 
     @Autowired
     private IProjectStuGroupService stuProjectGroupService;
+
+    @Autowired
+    private Audience audience;
 
     @ApiOperation(value = "获取该课程项目所有小组")
     @GetMapping("/pjGroupList/{projectId}")
@@ -38,24 +44,27 @@ public class StuProjectGroupController {
     }
 
     @ApiOperation(value = "创建小组")
-    @PostMapping("/pjGroupInfo/{projectId}/{userId}/{groupName}")
-    public Result getPjGroupInfo(@PathVariable("projectId") Integer projectId, @PathVariable("userId") String userId,
+    @PostMapping("/pjGroupInfo/{projectId}/{groupName}")
+    public Result getPjGroupInfo(@PathVariable("projectId") Integer projectId, HttpServletRequest request,
                                  @PathVariable("groupName") String groupName){
+        String userId = JwtTokenUtil.getUserIdFromToken(request, audience);
         boolean result = stuProjectGroupService.createPjGroup(projectId, userId, groupName);
         return result ? Result.SUCCESS() : Result.FAIL();
     }
 
     @ApiOperation(value = "加入项目小组")
-    @PostMapping("/studentInfo/{projectId}/{groupId}/{userId}")
+    @PostMapping("/studentInfo/{projectId}/{groupId}")
     public Result joinPjGroup(@PathVariable("projectId") Integer projectId, @PathVariable("groupId") Integer groupId,
-                              @PathVariable("userId") String userId){
+                              HttpServletRequest request){
+        String userId = JwtTokenUtil.getUserIdFromToken(request, audience);
         boolean result = stuProjectGroupService.joinPjGroup(projectId, groupId, userId);
         return result ? Result.SUCCESS() : Result.FAIL();
     }
 
     @ApiOperation(value = "退出项目小组")
-    @DeleteMapping("/studentInfo/{groupId}/{userId}")
-    public Result dropPjGroup(@PathVariable("groupId") Integer groupId, @PathVariable("userId") String userId) {
+    @DeleteMapping("/studentInfo/dropGroup/{groupId}")
+    public Result dropPjGroup(@PathVariable("groupId") Integer groupId, HttpServletRequest request) {
+        String userId = JwtTokenUtil.getUserIdFromToken(request, audience);
         boolean result = stuProjectGroupService.dropPjGroup(groupId, userId);
         return result ? Result.SUCCESS() : Result.FAIL();
     }

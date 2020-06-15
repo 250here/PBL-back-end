@@ -16,7 +16,7 @@
         <result column="role_name" property="name" jdbcType="VARCHAR"/>
     </resultMap>
 
-    <!--    Role findRoleByUserId(@Param("userId")Integer userId);-->
+<!--        Role findRoleByUserId(@Param("userId")Integer userId);-->
     <select id="findRoleByUserId" parameterType="String" resultMap="RoleMap">
         select role.*
         from role
@@ -37,7 +37,7 @@
         insert into user(user_id,user_name,user_password,photo_path)
         values(#{id},#{username},#{password},#{photoPath})
     </insert>
-
+<!---->
 <!--    void addRole(@Param("userId")String userId, @Param("roleId")int roleId);-->
     <insert id="addRole">
         insert into user_role(user_id,role_id)
@@ -50,24 +50,24 @@
         select password from user where id = #{userId}
     </select>
 
-    <!--Integer updatePasswordOFUser(String UserId, String passwordNew);-->
+    <!--Integer updatePasswordOFUser(String userId, String passwordNew);-->
     <update id="updatePasswordOFUser">
-        update user set [user](password) values(#{passwordNew}) where id = #{UserId}
+        update user set [user](password) values(#{passwordNew}) where id = #{userId}
     </update>
 
-    <!--Integer uploadPhoto(String UserId, String photoPath)-->
-    <insert id="uploadPhoto">
-        insert into user (photo_path) values (#{photoPath}) where id = #{UserId}
-    </insert>
-
-    <!--void updatePhoto(String UserId, String photoPath);-->
-    <update id="updatePhoto">
-        update user set user(photo_path) values(#{photoPath}) where id = #{UserId}
+    <!--Integer uploadPhoto(String userId, String photoPath)-->
+    <update id="uploadPhoto" >
+         update user set photo_path=#{photoPath} where user_id=#{userId}
     </update>
 
-    <!--String getPhoto(String UserId)-->
+    <!--void updatePhoto(String userId, String photoPath);-->
+    <update id="updatePhoto" >
+        update user set user(photo_path) values(#{photoPath}) where user_id = #{userId}
+    </update>
+
+    <!--String getPhoto(String userId)-->
     <select id="getPhoto" parameterType="String" resultType="String">
-        select photo_path from user where id = #{UserId}
+        select photo_path from user where user_id = #{userId}
     </select>
 
 <!--    List<User> getAllUser();-->
