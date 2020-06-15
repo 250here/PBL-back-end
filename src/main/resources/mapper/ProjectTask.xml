@@ -47,7 +47,7 @@
 <!--    //根据taskId删除项目任务信息-->
 <!--    int deletePjTaskByTaskId(@Param("pjTaskId")int pjTaskId);-->
     <delete id="deletePjTaskByTaskId" parameterType="int">
-        delete from project_task where task_id=#{taskId}
+        delete from project_task where task_id=#{pjTaskId}
     </delete>
 
 <!--    //根据项目ID删除该项目所有任务信息-->
@@ -55,6 +55,12 @@
     <delete id="deletePjTasksByProjectId" parameterType="int">
         delete from project_task where project_id=#{projectId}
     </delete>
+
+    <select id="getPjTaskNum" resultType="integer">
+        select count(*)
+        from project_task
+        where project_id=#{projectId}
+    </select>
 
 
 </mapper>

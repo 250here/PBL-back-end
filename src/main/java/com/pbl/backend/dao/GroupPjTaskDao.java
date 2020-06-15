@@ -29,4 +29,7 @@ public interface GroupPjTaskDao {
 
     //根据pjTaskId删除项目任务关联的组内任务完成信息
     int deleteInfoByPjTaskId(@Param("pjTaskId") int pjTaskId);
+
+    //获取小组对项目任务的完成数
+    int getGroupPjTaskFinishedNum(@Param("groupId") int groupId, @Param("projectId") int projectId);
 }

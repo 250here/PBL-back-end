@@ -49,9 +49,16 @@
     </insert>
 
     <delete id="deleteInfoByPjTaskId">
-        delete *
+        delete
         from group_project_task
         where project_task_id=#{pjTaskId}
     </delete>
+
+    <select id="getGroupPjTaskFinishedNum" resultType="integer">
+        select count(*)
+        from project_task left join group_project_task
+        on project_task.task_id=group_project_task.project_task_id
+        where project_task.project_id=#{projectId} and group_project_task.group_id=#{groupId} and group_project_task.is_finished=1
+    </select>
 
 </mapper>

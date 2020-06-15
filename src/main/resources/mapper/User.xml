@@ -62,7 +62,7 @@
 
     <!--void updatePhoto(String UserId, String photoPath);-->
     <update id="updatePhoto">
-        update user set user(photo_path) values(#{photoPath}) where id = #{UserId}
+        update user set user.photo_path=#{photoPath} where user_id = #{userId}
     </update>
 
     <!--String getPhoto(String UserId)-->

@@ -1,8 +1,10 @@
 package com.pbl.backend.service.teacher.impl;
 
+import com.pbl.backend.common.response.Result;
 import com.pbl.backend.config.FileManageConfig;
 import com.pbl.backend.dao.*;
 import com.pbl.backend.entity.Project;
+import com.pbl.backend.entity.ProjectScore;
 import com.pbl.backend.service.common.IFileService;
 import com.pbl.backend.service.teacher.IProjectService;
 import com.zhazhapan.modules.constant.ValueConsts;
@@ -38,6 +40,8 @@ public class ProjectServiceImpl implements IProjectService {
     private ProjectScoreDao projectScoreDao;
     @Autowired
     private IFileService fileService;
+    @Autowired
+    private GroupPjTaskDao groupPjTaskDao;
 
     //创建课程项目
     @Override
@@ -92,7 +96,7 @@ public class ProjectServiceImpl implements IProjectService {
         FileExecutor.createFolder(localUploadPath);
 
         //删除项目任务分组信息
-        groupTaskDao.deleteGroupTaskByProjectTaskId(projectId);
+        //groupTaskDao.deleteGroupTaskByProjectTaskId(projectId);
 
         //删除项目分组信息
         groupDao.deleteGroupsByProjectId(projectId);
@@ -100,6 +104,7 @@ public class ProjectServiceImpl implements IProjectService {
 
         //删除项目任务信息
         projectTaskDao.deletePjTasksByProjectId(projectId);
+
 
         //删除项目学生成绩信息
         projectScoreDao.deleteScoresByProjectId(projectId);
@@ -109,5 +114,26 @@ public class ProjectServiceImpl implements IProjectService {
 
         //项目删除成功
         return true;
+    }
+
+    @Override
+    public Result getGradeRefData(int projectId) {
+        List<ProjectScore> projectScores = projectScoreDao.getPjScoreByPjId(projectId);
+
+        //获取项目任务发布数
+        int pjTaskNum = projectTaskDao.getPjTaskNum(projectId);
+        int groupPjTaskFinishedNum = 0;
+        for(ProjectScore projectScore : projectScores){
+            //学生所在小组的任务完成情况
+            groupPjTaskFinishedNum = groupPjTaskDao.getGroupPjTaskFinishedNum(projectScore.getGroupId(), projectId);
+
+            projectScore.setPjTaskCompletion(groupPjTaskFinishedNum + "/" +pjTaskNum);
+        }
+        return Result.SUCCESS(projectScores);
+    }
+
+    @Override
+    public boolean updateStuGrade(int projectId, String stuId, int grade) {
+        return projectScoreDao.updateStuGrade(projectId, stuId, grade) > 0;
     }
 }

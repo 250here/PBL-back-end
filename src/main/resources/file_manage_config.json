@@ -1,8 +1,8 @@
 {
   "uploadPath": {
-    "windows": "src/main/resources/static/PJFile/upload",
+    "windows": "D:\\PBL\\FileUpload",
     "mac": "upload",
-    "linux": "upload"
+    "linux": "/usr/local/PBL/FileUpload"
   },
   "file": {
     "maxSize": "100 MB"

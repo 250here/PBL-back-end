@@ -20,4 +20,9 @@ public class ProjectScore {
     private Integer stuGrade;
     private Integer teacherGrade;
 
+    private Integer participation;  //学生参与度
+
+    private Integer groupId; //学生所在小组Id
+
+    private String pjTaskCompletion; //所在小组项目任务完成度
 }

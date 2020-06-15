@@ -57,14 +57,16 @@ public class ProjectController {
     }
 
     @ApiOperation(value = "教师评分，获取项目内所有学生参考数据(所在项目完成情况、讨论留言、小组互评)")
-    @GetMapping("/gradeRefData")
-    public Result getGradeRefData(){
-        return null;
+    @GetMapping("/gradeRefData/{projectId}")
+    public Result getGradeRefData(@PathVariable("projectId") Integer projectId){
+        return projectService.getGradeRefData(projectId);
     }
 
     @ApiOperation(value = "提交/更新学生评分")
-    @PutMapping("/gradeData")
-    public Result gradeForStu(){
-        return null;
+    @PutMapping("/gradeData/{projectId}/{studentId}/{grade}")
+    public Result gradeForStu(@PathVariable("projectId") Integer projectId, @PathVariable("studentId") String studentId,
+                              @PathVariable("grade") Integer grade){
+        boolean result = projectService.updateStuGrade(projectId, studentId, grade);
+        return result ? Result.SUCCESS() : Result.FAIL();
     }
 }
