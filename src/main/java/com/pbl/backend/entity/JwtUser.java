@@ -21,6 +21,7 @@ public class JwtUser implements UserDetails {
     private String password;
     private Boolean enabled;
     private Boolean locked;
+    private String profilePhoto;
 
     //用户具备的角色
     private Collection<? extends GrantedAuthority> authorities;
@@ -33,6 +34,7 @@ public class JwtUser implements UserDetails {
         id = user.getId();
         username = user.getUsername();
         password = user.getPassword();
+        profilePhoto = user.getPhotoPath();
         authorities = Collections.singleton(new SimpleGrantedAuthority(user.getRole().getName()));
     }
 
@@ -113,6 +115,14 @@ public class JwtUser implements UserDetails {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getProfilePhoto() {
+        return profilePhoto;
+    }
+
+    public void setProfilePhoto(String profilePhoto) {
+        this.profilePhoto = profilePhoto;
     }
 
     // 我自己重写打印下信息看的

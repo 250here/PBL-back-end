@@ -12,6 +12,7 @@ import com.zhazhapan.util.FileExecutor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.util.List;
 
 /**
@@ -25,17 +26,9 @@ public class ProjectServiceImpl implements IProjectService {
     @Autowired
     private ProjectDao projectDao;
     @Autowired
-    private DiscussionDao discussionDao;
-    @Autowired
-    private PjFileDao pjFileDao;
-    @Autowired
-    private GroupTaskDao groupTaskDao;
-    @Autowired
     private GroupDao groupDao;
     @Autowired
     private ProjectTaskDao projectTaskDao;
-    @Autowired
-    private UserGroupDao userGroupDao;
     @Autowired
     private ProjectScoreDao projectScoreDao;
     @Autowired
@@ -85,29 +78,32 @@ public class ProjectServiceImpl implements IProjectService {
         }
 
         //删除项目讨论信息
-        discussionDao.deleteDiscsByProjectId(projectId);
-        discussionDao.deleteDiscsReplyByProjectId(projectId);
+        //discussionDao.deleteDiscsByProjectId(projectId);
 
         //删除项目文件空间的所有信息
-        pjFileDao.deleteFilesByProjectId(projectId);
+        //pjFileDao.deleteFilesByProjectId(projectId);
 
         //删除本地存储项目文件
         String localUploadPath = FileManageConfig.getUploadStoragePath() + ValueConsts.SEPARATOR + project.getCourseId() + ValueConsts.SEPARATOR +project.getProjectId();
-        FileExecutor.createFolder(localUploadPath);
-
+        try{
+            FileExecutor.deleteDirectory(new File(localUploadPath));
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            throw new RuntimeException();
+        }
         //删除项目任务分组信息
         //groupTaskDao.deleteGroupTaskByProjectTaskId(projectId);
-
-        //删除项目分组信息
-        groupDao.deleteGroupsByProjectId(projectId);
-        userGroupDao.deleteGroupsByProjectId(projectId);
 
         //删除项目任务信息
         projectTaskDao.deletePjTasksByProjectId(projectId);
 
+        //删除项目分组信息
+        groupDao.deleteGroupsByProjectId(projectId);
+        //userGroupDao.deleteGroupsByProjectId(projectId);
 
         //删除项目学生成绩信息
-        projectScoreDao.deleteScoresByProjectId(projectId);
+        //projectScoreDao.deleteScoresByProjectId(projectId);
 
         //删除项目信息
         projectDao.deleteProject(projectId);

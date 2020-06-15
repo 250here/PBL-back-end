@@ -13,7 +13,7 @@
 <!--    //根据项目ID删除该项目所有小组成员信息-->
 <!--    int deleteGroupsByProjectId(@Param("projectId")int projectId);-->
     <delete id="deleteGroupsByProjectId" parameterType="int">
-        delete from grouping where project_id=#{projectId}
+        delete from user_group where project_id=#{projectId}
     </delete>
 
 <!--    //学生加入小组,添加关联信息-->

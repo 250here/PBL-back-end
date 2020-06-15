@@ -16,7 +16,7 @@ public interface CourseDao {
     //Integer updateTeaches(@Param("userId")String userId, @Param("courseId")int courseId);
 
     //删除course
-    Integer deleteCourse(@Param("course")int course);
+    Integer deleteCourse(@Param("courseId")int courseId);
 
     //删除tea-course表
     //Integer deleteTeaCourse(@Param("userId")String userId, @Param("courseId")int courseId);

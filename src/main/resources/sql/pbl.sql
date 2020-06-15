@@ -1,27 +1,265 @@
--- MySQL dump 10.13  Distrib 8.0.16, for Win64 (x86_64)
---
--- Host: 127.0.0.1    Database: pbl
--- ------------------------------------------------------
--- Server version	8.0.16
+/*
+ Navicat Premium Data Transfer
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
- SET NAMES utf8 ;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+ Source Server         : lab3db
+ Source Server Type    : MySQL
+ Source Server Version : 100131
+ Source Host           : localhost:3306
+ Source Schema         : pbl
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+ Target Server Type    : MySQL
+ Target Server Version : 100131
+ File Encoding         : 65001
 
--- Dump completed on 2020-05-15 10:05:07
+ Date: 15/06/2020 15:06:06
+*/
+
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for apply
+-- ----------------------------
+DROP TABLE IF EXISTS `apply`;
+CREATE TABLE `apply`  (
+  `user_id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `course_id` int(15) NOT NULL,
+  `apply_result` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`user_id`, `course_id`) USING BTREE,
+  INDEX `apply_ibfk_2`(`course_id`) USING BTREE,
+  CONSTRAINT `apply_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `apply_ibfk_2` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`) ON DELETE CASCADE ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Table structure for course
+-- ----------------------------
+DROP TABLE IF EXISTS `course`;
+CREATE TABLE `course`  (
+  `course_id` int(15) NOT NULL AUTO_INCREMENT,
+  `teacher_id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `course_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `course_startime` date NOT NULL,
+  `course_endtime` date NOT NULL,
+  PRIMARY KEY (`course_id`) USING BTREE,
+  INDEX `course_ibfk_1`(`teacher_id`) USING BTREE,
+  CONSTRAINT `course_ibfk_1` FOREIGN KEY (`teacher_id`) REFERENCES `user` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Table structure for discussion
+-- ----------------------------
+DROP TABLE IF EXISTS `discussion`;
+CREATE TABLE `discussion`  (
+  `discussion_id` int(20) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `project_id` int(20) NOT NULL,
+  `discussion_title` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `discussion_text` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`discussion_id`, `user_id`, `project_id`) USING BTREE,
+  INDEX `discussion_ibfk_2`(`user_id`) USING BTREE,
+  INDEX `discussion_id`(`discussion_id`) USING BTREE,
+  INDEX `discussion_ibfk_1`(`project_id`) USING BTREE,
+  CONSTRAINT `discussion_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `project` (`project_id`) ON DELETE CASCADE ON UPDATE RESTRICT,
+  CONSTRAINT `discussion_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Table structure for discussion_reply
+-- ----------------------------
+DROP TABLE IF EXISTS `discussion_reply`;
+CREATE TABLE `discussion_reply`  (
+  `discussion_id` int(20) NOT NULL,
+  `project_id` int(20) NOT NULL,
+  `user_id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `discussion_text` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  INDEX `discussion_reply_ibfk_2`(`project_id`) USING BTREE,
+  INDEX `discussion_reply_ibfk_1`(`discussion_id`) USING BTREE,
+  CONSTRAINT `discussion_reply_ibfk_1` FOREIGN KEY (`discussion_id`) REFERENCES `discussion` (`discussion_id`) ON DELETE CASCADE ON UPDATE RESTRICT,
+  CONSTRAINT `discussion_reply_ibfk_2` FOREIGN KEY (`project_id`) REFERENCES `project` (`project_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Table structure for file
+-- ----------------------------
+DROP TABLE IF EXISTS `file`;
+CREATE TABLE `file`  (
+  `file_id` int(20) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `project_id` int(20) NOT NULL,
+  `file_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `file_path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `upload_time` date NOT NULL,
+  PRIMARY KEY (`file_id`) USING BTREE,
+  INDEX `file_ibfk_1`(`project_id`) USING BTREE,
+  INDEX `file_ibfk_2`(`user_id`) USING BTREE,
+  CONSTRAINT `file_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `project` (`project_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `file_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Table structure for group_project_task
+-- ----------------------------
+DROP TABLE IF EXISTS `group_project_task`;
+CREATE TABLE `group_project_task`  (
+  `project_task_id` int(20) NOT NULL,
+  `group_id` int(20) NOT NULL,
+  `group_task_num` int(11) NOT NULL DEFAULT 0,
+  `group_task_finishnum` int(11) NOT NULL DEFAULT 0,
+  `is_finished` tinyint(1) NULL DEFAULT 0,
+  PRIMARY KEY (`project_task_id`, `group_id`) USING BTREE,
+  INDEX `group_project_task_ibfk_1`(`group_id`) USING BTREE,
+  CONSTRAINT `group_project_task_ibfk_1` FOREIGN KEY (`group_id`) REFERENCES `grouping` (`group_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `group_project_task_ibfk_2` FOREIGN KEY (`project_task_id`) REFERENCES `project_task` (`task_id`) ON DELETE CASCADE ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Table structure for group_task
+-- ----------------------------
+DROP TABLE IF EXISTS `group_task`;
+CREATE TABLE `group_task`  (
+  `task_id` int(20) NOT NULL AUTO_INCREMENT,
+  `project_task_id` int(20) NOT NULL,
+  `group_id` int(20) NOT NULL,
+  `task_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `task_discribe` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `task_startime` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
+  `task_endtime` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
+  `is_finished` tinyint(1) NULL DEFAULT 0,
+  PRIMARY KEY (`task_id`) USING BTREE,
+  INDEX `group_task_ibfk_1`(`group_id`) USING BTREE,
+  INDEX `group_task_ibfk_2`(`project_task_id`) USING BTREE,
+  CONSTRAINT `group_task_ibfk_1` FOREIGN KEY (`group_id`) REFERENCES `grouping` (`group_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `group_task_ibfk_2` FOREIGN KEY (`project_task_id`) REFERENCES `project_task` (`task_id`) ON DELETE CASCADE ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Table structure for grouping
+-- ----------------------------
+DROP TABLE IF EXISTS `grouping`;
+CREATE TABLE `grouping`  (
+  `group_id` int(20) NOT NULL AUTO_INCREMENT,
+  `project_id` int(20) NOT NULL,
+  `group_name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `group_header` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`group_id`) USING BTREE,
+  INDEX `grouping_ibfk_1`(`project_id`) USING BTREE,
+  CONSTRAINT `grouping_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `project` (`project_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Table structure for project
+-- ----------------------------
+DROP TABLE IF EXISTS `project`;
+CREATE TABLE `project`  (
+  `project_id` int(20) NOT NULL AUTO_INCREMENT,
+  `course_id` int(15) NOT NULL,
+  `project_name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `project_startime` date NOT NULL,
+  `project_endtime` date NOT NULL,
+  `project_dsc` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `evaluation_time` date NOT NULL,
+  `teacher_eva_weight` int(11) NOT NULL,
+  `stu_eva_weight` int(11) NOT NULL,
+  PRIMARY KEY (`project_id`) USING BTREE,
+  INDEX `project_ibfk_1`(`course_id`) USING BTREE,
+  CONSTRAINT `project_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Table structure for project_task
+-- ----------------------------
+DROP TABLE IF EXISTS `project_task`;
+CREATE TABLE `project_task`  (
+  `task_id` int(20) NOT NULL AUTO_INCREMENT,
+  `project_id` int(20) NOT NULL,
+  `task_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `task_discribe` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `task_startime` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
+  `task_endtime` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
+  PRIMARY KEY (`task_id`) USING BTREE,
+  INDEX `project_task_ibfk_1`(`project_id`) USING BTREE,
+  CONSTRAINT `project_task_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `project` (`project_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Table structure for role
+-- ----------------------------
+DROP TABLE IF EXISTS `role`;
+CREATE TABLE `role`  (
+  `role_id` int(11) NOT NULL AUTO_INCREMENT,
+  `role_name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`role_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Table structure for student_pj
+-- ----------------------------
+DROP TABLE IF EXISTS `student_pj`;
+CREATE TABLE `student_pj`  (
+  `user_id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `project_id` int(20) NOT NULL,
+  `participation` int(11) NOT NULL DEFAULT 0,
+  `student_grade` int(20) NOT NULL,
+  `teacher_grade` int(20) NOT NULL,
+  PRIMARY KEY (`user_id`, `project_id`) USING BTREE,
+  INDEX `student_pj_ibfk_2`(`project_id`) USING BTREE,
+  CONSTRAINT `student_pj_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `student_pj_ibfk_2` FOREIGN KEY (`project_id`) REFERENCES `project` (`project_id`) ON DELETE CASCADE ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Table structure for takes
+-- ----------------------------
+DROP TABLE IF EXISTS `takes`;
+CREATE TABLE `takes`  (
+  `user_id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `course_id` int(15) NOT NULL,
+  PRIMARY KEY (`user_id`, `course_id`) USING BTREE,
+  INDEX `takes_ibfk_2`(`course_id`) USING BTREE,
+  CONSTRAINT `takes_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `takes_ibfk_2` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`) ON DELETE CASCADE ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Table structure for user
+-- ----------------------------
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user`  (
+  `user_id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `user_name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `user_password` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `photo_path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`user_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Table structure for user_group
+-- ----------------------------
+DROP TABLE IF EXISTS `user_group`;
+CREATE TABLE `user_group`  (
+  `user_id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `group_id` int(20) NOT NULL,
+  `project_id` int(20) NOT NULL,
+  PRIMARY KEY (`user_id`, `group_id`) USING BTREE,
+  INDEX `user_group_ibfk_3`(`project_id`) USING BTREE,
+  INDEX `user_group_ibfk_2`(`group_id`) USING BTREE,
+  CONSTRAINT `user_group_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `user_group_ibfk_2` FOREIGN KEY (`group_id`) REFERENCES `grouping` (`group_id`) ON DELETE CASCADE ON UPDATE RESTRICT,
+  CONSTRAINT `user_group_ibfk_3` FOREIGN KEY (`project_id`) REFERENCES `project` (`project_id`) ON DELETE CASCADE ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Table structure for user_role
+-- ----------------------------
+DROP TABLE IF EXISTS `user_role`;
+CREATE TABLE `user_role`  (
+  `user_id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `role_id` int(11) NOT NULL,
+  PRIMARY KEY (`user_id`, `role_id`) USING BTREE,
+  INDEX `user_role_ibfk_2`(`role_id`) USING BTREE,
+  CONSTRAINT `user_role_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `user_role_ibfk_2` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
+
+SET FOREIGN_KEY_CHECKS = 1;
