@@ -27,4 +27,7 @@ public interface ProjectTaskDao {
 
     //根据项目ID删除该项目所有任务信息
     int deletePjTasksByProjectId(@Param("projectId")int projectId);
+
+    //获取项目发布任务数
+    int getPjTaskNum(int projectId);
 }

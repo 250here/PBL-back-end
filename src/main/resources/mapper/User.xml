@@ -47,22 +47,19 @@
 
     <!--String getPassword(String userId)-->
     <select id="getPassword" resultType="String">
-        select password from user where id = #{userId}
+        select user_password from user where user_id = #{userId}
     </select>
 
     <!--Integer updatePasswordOFUser(String userId, String passwordNew);-->
     <update id="updatePasswordOFUser">
-        update user set [user](password) values(#{passwordNew}) where id = #{userId}
+        update user set user.user_password=#{passwordNew} where user_id = #{userId}
     </update>
 
-    <!--Integer uploadPhoto(String userId, String photoPath)-->
-    <update id="uploadPhoto" >
-         update user set photo_path=#{photoPath} where user_id=#{userId}
-    </update>
 
-    <!--void updatePhoto(String userId, String photoPath);-->
-    <update id="updatePhoto" >
-        update user set user(photo_path) values(#{photoPath}) where user_id = #{userId}
+    <!--void updatePhoto(String UserId, String photoPath);-->
+    <update id="updatePhoto">
+        update user set user.photo_path=#{photoPath} where user_id = #{userId}
+
     </update>
 
     <!--String getPhoto(String userId)-->

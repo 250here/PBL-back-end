@@ -145,4 +145,14 @@ public class JwtTokenUtil {
 
         return getUserId(token, audience.getBase64Secret());
     }
+
+    public static String getUserRoleFromToken(HttpServletRequest request, Audience audience){
+        // 获取请求头信息authorization信息
+        final String authHeader = request.getHeader(JwtTokenUtil.AUTH_HEADER_KEY);
+
+        // 获取token
+        final String token = authHeader.substring(7);
+
+        return getUserRole(token, audience.getBase64Secret());
+    }
 }

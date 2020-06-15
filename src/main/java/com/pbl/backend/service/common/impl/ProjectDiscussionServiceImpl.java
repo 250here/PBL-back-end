@@ -3,6 +3,7 @@ package com.pbl.backend.service.common.impl;
 import com.alibaba.fastjson.JSONObject;
 import com.pbl.backend.common.response.Result;
 import com.pbl.backend.dao.DiscussionDao;
+import com.pbl.backend.dao.ProjectScoreDao;
 import com.pbl.backend.entity.Discussion;
 import com.pbl.backend.service.common.IProjectDiscussionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,8 @@ public class ProjectDiscussionServiceImpl implements IProjectDiscussionService {
 
     @Autowired
     private DiscussionDao discussionDao;
+    @Autowired
+    private ProjectScoreDao projectScoreDao;
 
     /**
      * @author: 杜东方
@@ -64,6 +67,8 @@ public class ProjectDiscussionServiceImpl implements IProjectDiscussionService {
     */
     @Override
     public boolean createProjectDiscussion(Discussion discussion) {
+        //更新参与度
+        projectScoreDao.updateParticipation(discussion.getUserId(), discussion.getPjId());
         return discussionDao.addDiscussion(discussion) > 0;
     }
 
@@ -76,6 +81,8 @@ public class ProjectDiscussionServiceImpl implements IProjectDiscussionService {
      */
     @Override
     public boolean createPJDiscussionReply(Discussion discussion) {
+        //更新参与度
+        projectScoreDao.updateParticipation(discussion.getUserId(), discussion.getPjId());
         return discussionDao.addDiscussionReply(discussion) > 0;
     }
 }

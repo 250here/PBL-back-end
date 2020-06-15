@@ -1,4 +1,5 @@
 package com.pbl.backend.service.common;
+import com.pbl.backend.common.response.Result;
 import com.pbl.backend.entity.User;
 
 /**
@@ -11,16 +12,14 @@ public interface IUserService {
     boolean addUser(User user);
 
     //更新用户密码
-    boolean updatePasswordOFUser(User user);
+    Result updatePasswordOFUser(User user, String role);
 
     //获取用户密码
     String getPassword(User user);
 
-    //上传图片路径
-    boolean upLoadPhoto(User user);
 
     //更新图片路径
-    boolean updatePhoto(User user);
+    boolean updateUserPhoto(User user);
 
     //获取图片路径
     String getPhotoPath(User user);

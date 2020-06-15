@@ -1,10 +1,15 @@
 package com.pbl.backend.controller.common;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.pbl.backend.entity.Audience;
 import com.pbl.backend.entity.User;
 import com.pbl.backend.service.common.impl.UserServiceImpl;
 
+import com.pbl.backend.utils.JwtTokenUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +17,8 @@ import org.springframework.web.bind.annotation.*;
 import com.pbl.backend.common.response.Result;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 
@@ -24,72 +31,31 @@ import java.io.IOException;
 @RequestMapping("/user")
 @Api(tags = "common/UserInfoController-用户个人信息管理-管理员/教师/学生共用模块")
 public class UserInfoController {
-    UserServiceImpl userService = new UserServiceImpl();
+    @Autowired
+    UserServiceImpl userService;
 
-
-//    @ApiOperation(value = "更新用户头像")
-//    @PostMapping("/userProfilePic")
-//    public Result updateUserProfilePic(@RequestBody MultipartFile photo, @RequestBody User user) throws IOException{
-//
-//
-//        //判断用户是否上传了文件
-//        if(!photo.isEmpty()){
-//
-//            //文件上传的地址
-//            String path = uploadPath;
-//            //String realPath = path.replace('/', '\\').substring(1,path.length());
-//            //用于查看路径是否正确
-//            System.out.println(path);
-//
-//            //获取文件的名称
-//            final String fileName = photo.getOriginalFilename();
-//
-//            //限制文件上传的类型
-//            String contentType = photo.getContentType();
-//            if("image/png".equals(contentType) || "image/jpg".equals(contentType) ){
-//                File file = new File(path,fileName);
-//
-//                //完成文件的上传
-//                photo.transferTo(file);
-//
-//                String path01 = fileName;
-//                user.setPhotoPath(path01);
-//
-//                //上传数据库
-//                if(userService.updatePhoto(user)){
-//                    Result result = Result.SUCCESS();
-//                    System.out.println("图片更新成功!");
-//                    return result;
-//                }
-//            } else {
-//                return Result.FAIL("图片格式不符合要求");
-//            }
-//        }
-//        return Result.FAIL();
-//    }
+    @Autowired
+    private Audience audience;
 
     @Value("${image.upload_path}")
     String uploadPath;
     @ApiOperation(value = "上传用户头像")
     @PostMapping("/userProfilePic")
-    public Result addUserProfilePic(MultipartFile photo) throws IOException {
-//        UserServiceImpl userService = new UserServiceImpl();
+    public Result addUserProfilePic(MultipartFile photo, HttpServletRequest request) throws IOException {
+        String userId = JwtTokenUtil.getUserIdFromToken(request, audience);
+
         User user = new User();
-        user.setId("17302010059");
+        user.setId(userId);
         //判断用户是否上传了文件
         if(!photo.isEmpty()){
             String path = uploadPath;
-
-
-            //用于查看路径是否正确
-            System.out.println(path);
 
             //获取文件的名称
             final String fileName = photo.getOriginalFilename();
 
             //限制文件上传的类型
             String contentType = photo.getContentType();
-            System.out.println(contentType);
+
             if("image/png".equals(contentType) || "image/jpg".equals(contentType) || "image/jpeg".equals(contentType)){
                 File file = new File(path,fileName);
 
@@ -98,9 +64,9 @@ public class UserInfoController {
 
                 String path01 = fileName;
                 user.setPhotoPath(path01);
-                System.out.println(user.getPhotoPath()+user.getId()+"==================");
+
                 //上传数据库
-                if(userService.upLoadPhoto(user)){
+                if(userService.updateUserPhoto(user)){
                     Result result = Result.SUCCESS();
                     System.out.println("图片上传成功!");
                     return result;
@@ -114,19 +80,29 @@ public class UserInfoController {
 
     @ApiOperation(value = "更新用户密码")
     @PutMapping("/pass")
-    public Result updateUserPassword(@RequestBody User user){
+    public Result updateUserPassword(HttpServletRequest request, @RequestBody JSONObject json){
 
-        //修改成功
-        if(userService.updatePasswordOFUser(user)){
-            return Result.SUCCESS();
+        String newPassword = json.get("newPassword").toString();
+        String oldPassword = json.get("oldPassword").toString();
+        String userId = JwtTokenUtil.getUserIdFromToken(request, audience);
+        System.out.println(newPassword+"++++++++++++++++++"+oldPassword);
+        User user = new User();
+        user.setId(userId);
+        user.setPassword_new(newPassword);
+        user.setPassword(oldPassword);
 
-        }
-        return Result.FAIL();
+        String role = JwtTokenUtil.getUserRoleFromToken(request, audience);
+
+        return userService.updatePasswordOFUser(user,role);
     }
 
     @ApiOperation(value = "加载用户头像")
-    @RequestMapping("/photo")
-    public Result loadPhoto(@RequestBody User user) throws IOException {
+    @GetMapping("/photo")
+    public Result loadPhoto(HttpServletRequest request) throws IOException {
+        String userId = JwtTokenUtil.getUserIdFromToken(request, audience);
+        User user = new User();
+        user.setId(userId);
+
         String photoPath = userService.getPhotoPath(user);
         Result result;
         if(photoPath != null){

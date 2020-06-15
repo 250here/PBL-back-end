@@ -6,11 +6,20 @@
     <resultMap id="BaseResultMap" type="com.pbl.backend.entity.ProjectScore">
         <id column="user_id" property="userId" jdbcType="VARCHAR"/>
         <id column="project_id" property="projectId" jdbcType="INTEGER"/>
-        <result column="project_name" property="projectName" jdbcType="VARCHAR"/>
-        <result column="user_name" property="userName" jdbcType="VARCHAR"/>
+<!--        <result column="project_name" property="projectName" jdbcType="VARCHAR"/>-->
+<!--        <result column="user_name" property="userName" jdbcType="VARCHAR"/>-->
         <result column="student_grade" property="stuGrade" jdbcType="INTEGER"/>
         <result column="teacher_grade" property="teacherGrade" jdbcType="INTEGER"/>
+        <result column="participation" property="participation" jdbcType="INTEGER" />
+        <result column="group_id" property="groupId" jdbcType="INTEGER"/>
+        <association property="userName" select="getUserNameById" javaType="string" column="{userId=user_id}"/>
     </resultMap>
+
+    <select id="getUserNameById" resultType="string">
+        select user.user_name
+        from user
+        where user_id=#{userId}
+    </select>
 
 
 <!--    //根据项目ID删除该项目所有成绩信息-->
@@ -40,5 +49,23 @@
         where project_id=#{projectId} and user_id=#{stuId}
     </select>
 
+    <select id="getPjScoreByPjId" resultMap="BaseResultMap">
+        select *
+        from student_pj left join user_group
+        on student_pj.user_id=user_group.user_id
+        where student_pj.project_id=#{projectId}
+    </select>
+
+    <update id="updateParticipation">
+        update student_pj
+        set participation=participation+1
+        where project_id=#{projectId} and user_id=#{userId}
+    </update>
+
+    <update id="updateStuGrade">
+        update student_pj
+        set teacher_grade=#{param3}
+        where project_id=#{param1} and user_id=#{param2}
+    </update>
 
 </mapper>

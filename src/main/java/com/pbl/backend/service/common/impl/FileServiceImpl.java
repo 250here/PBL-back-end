@@ -44,8 +44,8 @@ public class FileServiceImpl implements IFileService {
         //创建上传文件的本地存储名,保证其唯一
         String uniqueName = UUID.randomUUID().toString().replaceAll("-", "") + "-" + pjFileUpload.getUserId() + ValueConsts.DOT_SIGN +suffix;
 
-        String localUrl = FileManageConfig.getUploadStoragePath() + FileManageConfig.RELATIVE_SEPARATOR  + pjFileUpload.getCourseId() +
-                FileManageConfig.RELATIVE_SEPARATOR + pjFileUpload.getProjectId() + FileManageConfig.RELATIVE_SEPARATOR;
+        String localUrl = FileManageConfig.getUploadStoragePath() + FileManageConfig.SEPARATOR  + pjFileUpload.getCourseId() +
+                FileManageConfig.SEPARATOR + pjFileUpload.getProjectId() + FileManageConfig.SEPARATOR + uniqueName;
 
         long uploadFileSize = pjFileUpload.getMultipartFile().getSize();
         String uploadMaxSizeTag = BackendApplication.file_manage_settings.getJSONObject(ConfigConstants.FILE_MAX_SIZE_OF_SETTING[0])
@@ -60,8 +60,8 @@ public class FileServiceImpl implements IFileService {
 
         if(canUpload){
             try{
-                File file = new File(new File(localUrl).getAbsolutePath() +"/" + uniqueName);
-                System.out.println("----"+file.getAbsolutePath());
+                File file = new File(localUrl);
+                //System.out.println("----"+file.getAbsolutePath());
                 if(!file.getParentFile().exists()){
                     file.getParentFile().mkdirs();
                 }
