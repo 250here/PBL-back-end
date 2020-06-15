@@ -15,6 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -80,17 +81,22 @@ public class CourseServiceImpl implements ICourseService {
         }
 
         //删除学生所选课程
-        courseDao.deleteStudentTake(courseId);
+        //courseDao.deleteStudentTake(courseId);
 
         //删除课程申请退课信息
-        applyDao.deleteApplyInfoByCourseId(courseId);
+        //applyDao.deleteApplyInfoByCourseId(courseId);
 
         //删除该课程
         courseDao.deleteCourse(courseId);
 
         //删除该课程文件空间
-        FileExecutor.createFolder(FileManageConfig.getUploadStoragePath() + ValueConsts.SEPARATOR + courseId);
-
+        File file = new File(FileManageConfig.getUploadStoragePath() + ValueConsts.SEPARATOR + courseId);
+        try{
+            FileExecutor.deleteDirectory(file);
+        }
+        catch (Exception e){
+            throw new RuntimeException();
+        }
         return true;
     }
 
