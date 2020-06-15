@@ -3,6 +3,7 @@ package com.pbl.backend.controller.student;
 import com.pbl.backend.common.response.Result;
 import com.pbl.backend.entity.GroupTask;
 import com.pbl.backend.entity.ProjectTask;
+import com.pbl.backend.model.ProjectTaskReq;
 import com.pbl.backend.service.student.IPjStuGroupTaskService;
 import com.pbl.backend.service.teacher.IProjectTaskService;
 import io.swagger.annotations.Api;

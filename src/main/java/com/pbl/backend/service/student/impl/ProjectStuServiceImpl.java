@@ -77,4 +77,5 @@ public class ProjectStuServiceImpl implements IProjectStuService {
         projectScoreDao.deleteStuProjectInfo(projectId, userId);
         return true;
     }
+
 }

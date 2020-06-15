@@ -33,40 +33,4 @@ public class TestController {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 
-    @GetMapping("/test")
-    public Result get(){
-        String psw = "123456";
-        return Result.SUCCESS(bCryptPasswordEncoder.encode(psw));
-//        String localUrl = FileManageConfig.getUploadStoragePath() + FileManageConfig.SEPARATOR  + "2" +
-//                FileManageConfig.SEPARATOR + 3 + FileManageConfig.SEPARATOR + uploadFile.getOriginalFilename();
-//        return Result.SUCCESS(localUrl);
-    }
-
-
-
-    @PostMapping("/upload")
-    public Result test(MultipartFile uploadFile) throws Exception{
-        String localUrl = FileManageConfig.getUploadStoragePath() + FileManageConfig.SEPARATOR  + "2" +
-                FileManageConfig.SEPARATOR + 3 + FileManageConfig.SEPARATOR + uploadFile.getOriginalFilename();
-        File file = new File(localUrl);
-        uploadFile.transferTo(file);
-        return Result.SUCCESS();
-    }
-
-    @ApiOperation(value = "用户下载项目分享文件")
-    @GetMapping("/sharedFile/{fileName}")
-    public void downloadSharedFile(HttpServletResponse response, @PathVariable("fileName") String fileName){
-        String localUrl = FileManageConfig.getUploadStoragePath() + FileManageConfig.SEPARATOR  + "2" +
-                FileManageConfig.SEPARATOR + 3 + FileManageConfig.SEPARATOR + fileName;
-        String[] resourceLocalPath = new String[]{localUrl,fileName};
-        boolean result = FileCommonUtils.loadResource(response, resourceLocalPath);
-    }
-
-    @GetMapping("test1")
-    public Result test1(){
-//        int resutl = userDao.updatePhoto("5", "1253252455");
-//        return Result.SUCCESS(resutl);
-        return Result.SUCCESS(userDao.loadUserByUsername("ddf").getPassword());
-    }
-
 }

@@ -18,6 +18,9 @@
 
 <!--    //学生加入小组,添加关联信息-->
 <!--    int addStuGroup(@Param("projectId")int projectId, @Param("groupId")int groupId, @Param("userId")String userId);-->
+    <insert id="addStuGroup">
+       insert into user_group(user_id,group_id,project_id) values (#{userId},#{groupId},#{projectId})
+    </insert>
 
 
 <!--    //学生退出小组，删除关联信息-->
@@ -28,5 +31,10 @@
 
 <!--    //根据UserId和ProjectId获取groupId-->
 <!--    int getGroupIdByPjIdAndUserId(@Param("projectId")int projectId, @Param("userId")String userId);-->
+    <select id="getGroupIdByPjIdAndUserId" resultType="integer">
+        select group_id
+        from user_group
+        where project_id=#{projectId} and user_id=#{userId}
+    </select>
 
 </mapper>

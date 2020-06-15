@@ -63,7 +63,7 @@ public class StuCourseController {
         String userId = JwtTokenUtil.getUserIdFromToken(request, audience);
 
         if(courseStuService.studentDropCourse(userId, courseId))
-            return Result.SUCCESS();
+            return Result.SUCCESS("等待老师审核");
 
         return new Result(ResultCode.FAIL);
     }
