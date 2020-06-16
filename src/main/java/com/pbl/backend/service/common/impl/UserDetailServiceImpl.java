@@ -22,14 +22,10 @@ public class UserDetailServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-
         User user = userDao.loadUserByUsername(s);
-
         if(user == null){
-
             throw new UsernameNotFoundException("用户不存在");
         }
-
         user.setRole(userDao.findRoleByUserId(user.getId()));
         System.out.println(user.getPassword());
         return new JwtUser(user);

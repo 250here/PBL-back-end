@@ -192,6 +192,9 @@ CREATE TABLE `role`  (
   PRIMARY KEY (`role_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
 
+INSERT INTO `role`(`role_id`, `role_name`) VALUES(1, 'ROLE_ADMIN');
+INSERT INTO `role`(`role_id`, `role_name`) VALUES(2, 'ROLE_TEACHER');
+INSERT INTO `role`(`role_id`, `role_name`) VALUES(3, 'ROLE_STUDENT');
 -- ----------------------------
 -- Table structure for student_pj
 -- ----------------------------

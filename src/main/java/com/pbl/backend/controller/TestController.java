@@ -33,24 +33,4 @@ public class TestController {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 
-
-    @PostMapping("/test")
-    public Result get(MultipartFile uploadFile){
-//        String psw = "123456";
-//        return Result.SUCCESS(bCryptPasswordEncoder.encode(psw));
-//        User user = userDao.loadUserByUsername("mc");
-//        return Result.SUCCESS(user);
-        String localUrl = FileManageConfig.getUploadStoragePath() + FileManageConfig.SEPARATOR  + "2" +
-                FileManageConfig.SEPARATOR + 3 + FileManageConfig.SEPARATOR + uploadFile.getOriginalFilename();
-        return Result.SUCCESS(localUrl);
-    }
-
-
-
-    @GetMapping("test1")
-    public Result test1(){
-        int resutl = userDao.updatePhoto("17302010059", "1253252455");
-        return Result.SUCCESS(resutl);
-    }
-
 }
