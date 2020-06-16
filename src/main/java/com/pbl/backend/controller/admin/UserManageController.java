@@ -29,7 +29,7 @@ public class UserManageController {
     @ApiOperation(value = "新增教师")
     @PostMapping("/teacherInfo")
     public Result addTeacher(@RequestBody User user){
-        user.setPhotoPath("123456");
+
         if(userManageService.addUser(user) && userManageService.addRole(user.getId(),2)){
             return Result.SUCCESS();
         }

@@ -2,9 +2,12 @@ package com.pbl.backend.service.student.impl;
 
 import com.pbl.backend.dao.ApplyDao;
 import com.pbl.backend.dao.TakesDao;
+import com.pbl.backend.entity.CourseApply;
 import com.pbl.backend.service.student.ICourseStuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @ClassName CourseStuServiceImpl
@@ -32,5 +35,11 @@ public class CourseStuServiceImpl implements ICourseStuService {
         //takesDao.deleteCourse(userId, courseId);
         applyDao.submitApply(userId,courseId,"0");
         return true;
+    }
+
+    @Override
+    public List<CourseApply> studentGetApply(String userId) {
+
+        return applyDao.studentGetCourseApply(userId);
     }
 }

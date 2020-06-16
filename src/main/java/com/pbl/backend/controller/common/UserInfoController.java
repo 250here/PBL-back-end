@@ -50,8 +50,10 @@ public class UserInfoController {
         if(!photo.isEmpty()){
             String path = uploadPath;
 
-            //获取文件的名称
-            final String fileName = photo.getOriginalFilename();
+            //获取文件后缀
+            String suffix = photo.getOriginalFilename().substring(photo.getOriginalFilename().lastIndexOf(".") + 1);
+
+            final String fileName = userId + "."+ suffix;
 
             //限制文件上传的类型
             String contentType = photo.getContentType();
@@ -68,11 +70,10 @@ public class UserInfoController {
                 //上传数据库
                 if(userService.updateUserPhoto(user)){
                     Result result = Result.SUCCESS();
-                    System.out.println("图片上传成功!");
                     return result;
                 }
             } else {
-                return Result.FAIL("图片格式不符合要求");
+                return Result.FAIL("图片格式不符合要求或图片大小不符合要求");
             }
         }
         return Result.FAIL();
@@ -85,7 +86,7 @@ public class UserInfoController {
         String newPassword = json.get("newPassword").toString();
         String oldPassword = json.get("oldPassword").toString();
         String userId = JwtTokenUtil.getUserIdFromToken(request, audience);
-        System.out.println(newPassword+"++++++++++++++++++"+oldPassword);
+
         User user = new User();
         user.setId(userId);
         user.setPassword_new(newPassword);

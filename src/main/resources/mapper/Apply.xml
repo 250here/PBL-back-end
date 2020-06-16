@@ -19,7 +19,7 @@
         <result column="apply_result" property="applyResult" jdbcType="VARCHAR"/>
         <association property="course" javaType="com.pbl.backend.entity.Course">
             <id property="courseId" column="course_id"/>
-            <result property="courseName" column="courseName"/>
+            <result property="courseName" column="course_name"/>
         </association>
     </resultMap>
 
@@ -32,15 +32,15 @@
 <!--    List<CourseApply> getCourseApply(int courseId);-->
     <select id="getCourseApply" resultMap="BaseResultMap">
         select *
-        from apply,user
-        where course_id=#{courseId} and apply.user_id=user.user_id and apply_result!=1
+        from apply, user
+        where course_id=#{courseId} and apply.user_id=user.user_id and apply.apply_result != 1
     </select>
 
 <!--    List<CourseApply> studentGetCourseApply(@Param("userId")String userId);-->
     <select id="studentGetCourseApply" resultMap="Result">
         select *
-        from apply, course
-        where apply.course_id=course.course_id and apply.user_id=#{userId}
+        from apply natural join course
+        where apply.course_id=course.course_id and apply.user_id=#{userId} and apply.apply_result != 1
     </select>
 
 <!--    Integer updateApply(String userId, int courseId, String code);-->

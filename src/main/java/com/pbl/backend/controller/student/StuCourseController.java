@@ -3,6 +3,7 @@ package com.pbl.backend.controller.student;
 import com.pbl.backend.common.response.ResultCode;
 import com.pbl.backend.entity.Audience;
 import com.pbl.backend.entity.Course;
+import com.pbl.backend.entity.CourseApply;
 import com.pbl.backend.service.admin.ICourseAdminService;
 import com.pbl.backend.service.student.ICourseStuService;
 import com.pbl.backend.utils.JwtTokenUtil;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import com.pbl.backend.common.response.Result;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * @author: 杜东方
@@ -67,4 +69,25 @@ public class StuCourseController {
 
         return new Result(ResultCode.FAIL);
     }
+
+    @ApiOperation(value = "查看退课申请结果")
+    @GetMapping("/studentInfo/applyCourseList")
+    public Result getApplyList(HttpServletRequest request){
+        String userId = JwtTokenUtil.getUserIdFromToken(request, audience);
+
+        List<CourseApply> courseApplies = courseStuService.studentGetApply(userId);
+
+        for (CourseApply courseApply : courseApplies){
+            if(courseApply.getApplyResult().equals("0")){
+                courseApply.setApplyResult("审核中");
+            }
+            if(courseApply.getApplyResult().equals("2")){
+                courseApply.setApplyResult("拒绝退课申请");
+            }
+
+        }
+        return  Result.SUCCESS(courseApplies);
+    }
+
+
 }
