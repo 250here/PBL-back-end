@@ -72,6 +72,7 @@ public class FileServiceImpl implements IFileService {
                     FileExecutor.deleteFile(localUrl);
                     return Result.FAIL();
                 }
+                System.out.println("-----------");
                 return Result.SUCCESS();
             }
             catch (Exception e){

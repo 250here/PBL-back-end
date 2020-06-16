@@ -32,5 +32,9 @@ public class TestController {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    @GetMapping("test")
+    public Result test(){
+        return Result.SUCCESS(userDao.getPassword("1"));
+    }
 
 }
