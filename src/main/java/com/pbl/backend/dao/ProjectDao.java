@@ -23,4 +23,6 @@ public interface ProjectDao {
 
     //删除pj
     int deleteProject(@Param("projectId")int projectId);
+
+    List<Project> getMyCourseProject(@Param("userId") String userId, @Param("courseId") int courseId);
 }

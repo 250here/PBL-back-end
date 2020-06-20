@@ -45,6 +45,14 @@ public class StuProjectController {
         return Result.SUCCESS(project);
     }
 
+    @ApiOperation(value = "获取该课程下用户参与项目(我的项目)")
+    @GetMapping("/studentPjInfo/joinedPj/{courseId}")
+    public Result getMyJoinedProjects(@PathVariable("courseId") Integer courseId, HttpServletRequest request){
+        String userId = JwtTokenUtil.getUserIdFromToken(request, audience);
+        List<Project> projects = stuProjectService.getMyCourseProject(userId, courseId);
+        return Result.SUCCESS(projects);
+    }
+
     @ApiOperation(value = "加入项目")
     @PostMapping("/studentPjInfo/joinPj/{projectId}")
     public Result joinProject(@PathVariable("projectId") Integer projectId, HttpServletRequest request){
@@ -52,6 +60,7 @@ public class StuProjectController {
         boolean result = stuProjectService.joinProject(projectId, userId);
         return result ? Result.SUCCESS() : Result.FAIL();
     }
+
 
     @ApiOperation(value = "退出项目")
     @DeleteMapping("/studentPjInfo/dropPj/{projectId}")

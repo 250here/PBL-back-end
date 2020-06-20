@@ -47,6 +47,18 @@ public class StuCourseController {
             return Result.SUCCESS(courses);
     }
 
+    @ApiOperation(value = "获取已加入课程")
+    @GetMapping("/joinedCourseInfos")
+    public Result getJoinedCourseInfos(HttpServletRequest request){
+        String userId = JwtTokenUtil.getUserIdFromToken(request, audience);
+
+        List<Course> courses = courseStuService.getJoinedCourseInfos(userId);
+        if(courses == null)
+            return new Result(ResultCode.RESULT_NULL);
+        else
+            return Result.SUCCESS(courses);
+    }
+
     @ApiOperation(value = "加入课程")
     @PostMapping("/studentInfo/takesCourse/{courseId}")
     public Result joinCourse(HttpServletRequest request, @PathVariable("courseId") Integer courseId){

@@ -36,5 +36,6 @@ public interface CourseDao {
 
     List<Course> getAllCourse();
 
+    List<Course> getJoinedCourses(@Param("userId") String userId);
 
 }

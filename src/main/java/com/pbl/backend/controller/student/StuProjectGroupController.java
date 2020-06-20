@@ -45,7 +45,7 @@ public class StuProjectGroupController {
 
     @ApiOperation(value = "获取我的项目小组信息")
     @GetMapping("/myPjGroupInfo/{projectId}")
-    public Result getPjGroupInfo(HttpServletRequest request, @PathVariable("projectId") Integer projectId){
+    public Result getMyPjGroupInfo(HttpServletRequest request, @PathVariable("projectId") Integer projectId){
         String userId = JwtTokenUtil.getUserIdFromToken(request, audience);
         Group group = stuProjectGroupService.getMyPjGroup(userId, projectId);
         return Result.SUCCESS(group);

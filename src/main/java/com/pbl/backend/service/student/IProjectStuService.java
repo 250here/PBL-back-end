@@ -8,6 +8,8 @@ public interface IProjectStuService {
 
     List<Project> getCourseAllProjects(Integer courseId);
 
+    List<Project> getMyCourseProject(String userId, int courseId);
+
     Project getCourseProject(Integer projectId);
 
     boolean joinProject(Integer projectId, String userId);

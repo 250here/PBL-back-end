@@ -78,4 +78,16 @@ public class ProjectStuServiceImpl implements IProjectStuService {
         return true;
     }
 
+    /**
+     * @author: 杜东方
+     * @date: 2020/6/20
+     * @description: 学生获取该课程下已经加入的项目
+     * @param:
+     * @return:
+    */
+    @Override
+    public List<Project> getMyCourseProject(String userId, int courseId){
+        return projectDao.getMyCourseProject(userId, courseId);
+    }
+
 }
