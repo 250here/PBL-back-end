@@ -95,6 +95,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         response.setHeader(JwtTokenUtil.AUTH_HEADER_KEY, JwtTokenUtil.TOKEN_PREFIX + token);
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("token",token);
+        jsonObject.put("role", role);
         jsonObject.put("profilePhoto", jwtUser.getProfilePhoto());
         Result result = Result.SUCCESS(jsonObject);
         response.setCharacterEncoding("UTF-8");
