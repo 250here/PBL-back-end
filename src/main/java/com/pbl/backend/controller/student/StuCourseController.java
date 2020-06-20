@@ -39,13 +39,12 @@ public class StuCourseController {
     @ApiOperation(value = "根据课程名称获取课程信息")
     @GetMapping("/courseIndexInfo/{courseName}")
     public Result searchCourseInfo(@PathVariable("courseName")String courseName){
-        Course course = courseService.getCourseByName(courseName);
 
-        if(course == null)
+        List<Course> courses = courseService.getCourseByName(courseName);
+        if(courses == null)
             return new Result(ResultCode.RESULT_NULL);
         else
-            return Result.SUCCESS(course);
-
+            return Result.SUCCESS(courses);
     }
 
     @ApiOperation(value = "加入课程")

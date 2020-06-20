@@ -43,7 +43,7 @@ public class CourseManagerController {
     @ApiOperation(value = "搜索课程, 根据课程名")
     @GetMapping("/courseInfo/{courseName}")
     public Result getCourse(@PathVariable("courseName")String courseName){
-        Course course = courseService.getCourseByName(courseName);
+        List<Course> course = courseService.getCourseByName(courseName);
 
         if(course == null)
             return new Result(ResultCode.RESULT_NULL);

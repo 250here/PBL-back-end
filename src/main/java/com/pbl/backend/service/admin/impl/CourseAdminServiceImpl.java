@@ -26,9 +26,15 @@ public class CourseAdminServiceImpl implements ICourseAdminService {
         return courses;
     }
 
+//    @Override
+//    public Course getCourseByName(String courseName) {
+//        Course course = courseDao.getCourseByCourseName(courseName);
+//        return course;
+//    }
+
     @Override
-    public Course getCourseByName(String courseName) {
-        Course course = courseDao.getCourseByCourseName(courseName);
-        return course;
+    public List<Course> getCourseByName(String courseName) {
+        List<Course> courses = courseDao.getCourseByCourseName(courseName);
+        return courses;
     }
 }
