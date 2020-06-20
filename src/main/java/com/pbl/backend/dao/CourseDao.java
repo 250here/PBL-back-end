@@ -26,7 +26,7 @@ public interface CourseDao {
 
     //根据id或者名称查找
     Course getCourseByCourseId(@Param("courseId")int courseId);
-    Course getCourseByCourseName(@Param("courseName")String courseName);
+    List<Course> getCourseByCourseName(@Param("courseName")String courseName);
 
     //删除学生所选课程
     Integer deleteStudentTake(@Param("courseId")int courseId);
