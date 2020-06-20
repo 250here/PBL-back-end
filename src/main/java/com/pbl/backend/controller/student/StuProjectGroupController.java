@@ -43,6 +43,14 @@ public class StuProjectGroupController {
         return Result.SUCCESS(group);
     }
 
+    @ApiOperation(value = "获取我的项目小组信息")
+    @GetMapping("/myPjGroupInfo/{projectId}")
+    public Result getPjGroupInfo(HttpServletRequest request, @PathVariable("projectId") Integer projectId){
+        String userId = JwtTokenUtil.getUserIdFromToken(request, audience);
+        Group group = stuProjectGroupService.getMyPjGroup(userId, projectId);
+        return Result.SUCCESS(group);
+    }
+
     @ApiOperation(value = "创建小组")
     @PostMapping("/pjGroupInfo/{projectId}/{groupName}")
     public Result getPjGroupInfo(@PathVariable("projectId") Integer projectId, HttpServletRequest request,

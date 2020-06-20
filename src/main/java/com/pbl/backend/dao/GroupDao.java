@@ -18,6 +18,9 @@ public interface GroupDao {
     //根据GroupId获取小组信息
     Group getGroupByGroupId(@Param("groupId")int groupId);
 
+    //获取我的项目小组信息
+    Group getMyPjGroup(@Param("userId") String userId, @Param("projectId") int projectId);
+
     //根据ProjectId和GroupName获取group
     Group getGroupByPjIdAndName(@Param("projectId")int projectId, @Param("groupName")String groupName);
 
