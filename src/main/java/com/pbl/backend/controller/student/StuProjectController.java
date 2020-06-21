@@ -2,6 +2,7 @@ package com.pbl.backend.controller.student;
 
 import com.pbl.backend.entity.Audience;
 import com.pbl.backend.entity.Project;
+import com.pbl.backend.model.StuPjEvaluation;
 import com.pbl.backend.service.student.IProjectStuService;
 import com.pbl.backend.utils.JwtTokenUtil;
 import io.swagger.annotations.Api;
@@ -69,5 +70,12 @@ public class StuProjectController {
         boolean result = stuProjectService.dropProject(projectId, userId);
 
         return result ? Result.SUCCESS() : Result.FAIL();
+    }
+
+    @ApiOperation(value = "学生小组互评")
+    @PostMapping("/studentPjInfo/stuEvaluates")
+    public Result stuEvaluate(@RequestBody StuPjEvaluation stuPjEvaluation, HttpServletRequest request){
+        String userId = JwtTokenUtil.getUserIdFromToken(request, audience);
+        return stuProjectService.updateStuGrade(stuPjEvaluation, userId);
     }
 }

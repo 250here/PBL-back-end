@@ -28,4 +28,9 @@ public interface ProjectScoreDao {
 
     //更新学生评分
     int updateStuGrade(int projectId, String stuId, int grade);
+
+    //更新学生互评成绩
+    int updateStuEvaluate(int projectId, String stuId, int grade);
+
+    int updateFinishedEvaluate(int projectId, String stuId);
 }
