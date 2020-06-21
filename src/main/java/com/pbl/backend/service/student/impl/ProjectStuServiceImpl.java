@@ -90,4 +90,12 @@ public class ProjectStuServiceImpl implements IProjectStuService {
         return projectDao.getMyCourseProject(userId, courseId);
     }
 
+    @Override
+    public ProjectScore getPjScore(String userId, Integer projectId) {
+        ProjectScore projectScore = projectScoreDao.getPjScoreByPjIdAndStuId(projectId,userId);
+        Project project = projectDao.getProjectById(projectId);
+        int totalScore = (projectScore.getStuGrade() * project.getStuEvaWeight() + projectScore.getTeacherGrade() * project.getTeacherEvaWeight()) / 100;
+        projectScore.setTotalScore(totalScore);
+        return projectScore;
+    }
 }
