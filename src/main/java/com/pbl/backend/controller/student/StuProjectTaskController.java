@@ -1,15 +1,12 @@
 package com.pbl.backend.controller.student;
 
 import com.pbl.backend.common.response.Result;
-import com.pbl.backend.entity.Group;
 import com.pbl.backend.entity.GroupTask;
 import com.pbl.backend.entity.ProjectTask;
-import com.pbl.backend.model.ProjectTaskReq;
 import com.pbl.backend.service.student.IPjStuGroupTaskService;
 import com.pbl.backend.service.teacher.IProjectTaskService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

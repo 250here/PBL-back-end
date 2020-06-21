@@ -31,8 +31,8 @@ public class ProjectTaskController {
 
     @ApiOperation(value = "发布项目任务")
     @PostMapping("/pjTask")
-    public Result addPjTask(@RequestBody ProjectTaskReq projectTaskReq){
-        boolean result = projectTaskService.createPjTask(projectTaskReq);
+    public Result addPjTask(@RequestBody ProjectTask projectTask){
+        boolean result = projectTaskService.createPjTask(projectTask);
         return result ? Result.SUCCESS() : new Result(ResultCode.COURSE_SAME_PROJECT_TASK);
     }
 
@@ -41,18 +41,18 @@ public class ProjectTaskController {
     public Result getPjTaskList(@PathVariable("projectId") Integer projectId){
         List<ProjectTask> projectTasks = projectTaskService.getPjAllTasks(projectId);
 
-        List<ProjectTaskReq> projectTaskReqs = new ArrayList<>(projectTasks.size());
+        //List<ProjectTaskReq> projectTaskReqs = new ArrayList<>(projectTasks.size());
         //格式化时间
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String startTime = "";
-        String endTime = "";
-        for(ProjectTask projectTask : projectTasks){
-            startTime = sdf.format(projectTask.getTaskStartTime());
-            endTime = sdf.format(projectTask.getTaskEndTime());
-            projectTaskReqs.add(new ProjectTaskReq(projectTask.getTaskId(), projectTask.getProjectId(), projectTask.getTaskName(),
-                    projectTask.getTaskDiscribe(), startTime, endTime));
-        }
-        return Result.SUCCESS(projectTaskReqs);
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        String startTime = "";
+//        String endTime = "";
+//        for(ProjectTask projectTask : projectTasks){
+//            startTime = sdf.format(projectTask.getTaskStartTime());
+//            endTime = sdf.format(projectTask.getTaskEndTime());
+//            projectTaskReqs.add(new ProjectTaskReq(projectTask.getTaskId(), projectTask.getProjectId(), projectTask.getTaskName(),
+//                    projectTask.getTaskDiscribe(), projectTask.getTaskStartTime().toString(), projectTask.getTaskEndTime().toString()));
+//        }
+        return Result.SUCCESS(projectTasks);
     }
 
     @ApiOperation(value = "查看项目内指定任务具体信息，包含每个小组的任务完成情况")

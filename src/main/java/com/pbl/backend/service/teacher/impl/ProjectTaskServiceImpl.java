@@ -44,11 +44,11 @@ public class ProjectTaskServiceImpl implements IProjectTaskService {
      * @return: boolean
     */
     @Override
-    public boolean createPjTask(ProjectTaskReq projectTaskReq) {
-        Timestamp startTime = Timestamp.valueOf(projectTaskReq.getTaskStartTime());
-        Timestamp endTime = Timestamp.valueOf(projectTaskReq.getTaskEndTime());
-        ProjectTask projectTask = new ProjectTask(projectTaskReq.getProjectId(), projectTaskReq.getTaskName(),
-                projectTaskReq.getTaskDiscribe(), startTime, endTime);
+    public boolean createPjTask(ProjectTask projectTask) {
+        //Timestamp startTime = Timestamp.valueOf(projectTaskReq.getTaskStartTime());
+        //Timestamp endTime = Timestamp.valueOf(projectTaskReq.getTaskEndTime());
+//        ProjectTask projectTask = new ProjectTask(projectTaskReq.getProjectId(), projectTaskReq.getTaskName(),
+//                projectTaskReq.getTaskDiscribe(), projectTaskReq.getTaskStartTime(), projectTaskReq.getTaskEndTime());
 
         System.out.println(projectTask.getProjectId()+"==="+projectTask.getTaskName());
         ProjectTask projectTask2 = projectTaskDao.getPjTaskByPjIdAndName(projectTask.getProjectId(), projectTask.getTaskName());
