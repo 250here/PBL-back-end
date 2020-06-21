@@ -52,8 +52,7 @@
 
     <select id="getPjScoreByPjId" resultMap="BaseResultMap">
         select *
-        from student_pj left join user_group
-        on student_pj.user_id=user_group.user_id
+        from student_pj natural join user_group
         where student_pj.project_id=#{projectId}
     </select>
 
