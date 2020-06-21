@@ -5,6 +5,7 @@ import com.pbl.backend.common.response.ResultCode;
 import com.pbl.backend.dao.GroupDao;
 import com.pbl.backend.dao.ProjectDao;
 import com.pbl.backend.dao.ProjectScoreDao;
+import com.pbl.backend.dao.UserGroupDao;
 import com.pbl.backend.entity.Group;
 import com.pbl.backend.entity.Project;
 import com.pbl.backend.entity.ProjectScore;
@@ -30,6 +31,8 @@ public class ProjectStuServiceImpl implements IProjectStuService {
     private ProjectScoreDao projectScoreDao;
     @Autowired
     private GroupDao groupDao;
+    @Autowired
+    private UserGroupDao userGroupDao;
 
 
     /**
@@ -82,6 +85,11 @@ public class ProjectStuServiceImpl implements IProjectStuService {
     */
     @Override
     public boolean dropProject(Integer projectId, String userId) {
+        //如果是组长，删除该小组
+        groupDao.deleteGroupsByGroupHeaderId(userId, projectId);
+        //不是则退出小组
+        userGroupDao.deleteStuPjGroup(projectId, userId);
+
         projectScoreDao.deleteStuProjectInfo(projectId, userId);
         return true;
     }

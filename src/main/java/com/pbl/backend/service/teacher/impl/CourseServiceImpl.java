@@ -43,6 +43,10 @@ public class CourseServiceImpl implements ICourseService {
 
     @Autowired
     private GroupDao groupDao;
+    @Autowired
+    private UserGroupDao userGroupDao;
+    @Autowired
+    private ProjectScoreDao projectScoreDao;
 
     @Autowired
     IFileService fileService;
@@ -136,8 +140,9 @@ public class CourseServiceImpl implements ICourseService {
                     //如果是组长，删除该小组
                     groupDao.deleteGroupsByGroupHeaderId(userId, project.getProjectId());
                     //不是则退出小组
-
+                    userGroupDao.deleteStuPjGroup(project.getProjectId(), userId);
                     //删除学生与项目关联信息
+                    projectScoreDao.deleteStuProjectInfo(project.getProjectId(), userId);
                 }
                 return true;
             }else {
