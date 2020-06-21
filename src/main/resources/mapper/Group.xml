@@ -68,4 +68,11 @@
         from `grouping`
         where project_id=#{projectId} and group_name=#{groupName}
     </select>
+
+    <select id="getMyPjGroup" resultMap="BaseResultMap">
+        select *
+        from grouping
+        where group_id=(select user_group.group_id from user_group where
+        user_group.user_id=#{userId} and user_group.project_id=#{projectId})
+    </select>
 </mapper>

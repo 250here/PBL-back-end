@@ -50,6 +50,16 @@ public class ProjectStuGroupServiceImpl implements IProjectStuGroupService {
 
     /**
      * @author: 杜东方
+     * @date: 2020/6/20
+     * @description: 获取我的项目小组
+     * @param:
+     * @return:
+    */
+    public Group getMyPjGroup(String userId, int projectId){
+        return groupDao.getMyPjGroup(userId, projectId);
+    }
+    /**
+     * @author: 杜东方
      * @date: 2020/6/2
      * @description: 创建项目小组
      * @param:

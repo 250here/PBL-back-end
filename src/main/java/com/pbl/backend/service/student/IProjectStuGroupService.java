@@ -15,6 +15,8 @@ public interface IProjectStuGroupService {
 
     Group getPjGroup(Integer groupId);
 
+    Group getMyPjGroup(String userId, int projectId);
+
     boolean createPjGroup(int projectId, String userId, String groupName);
 
     boolean joinPjGroup(Integer projectId, Integer groupId, String userId);

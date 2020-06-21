@@ -50,4 +50,10 @@
         delete from project where project_id=#{projectId}
     </delete>
 
+    <select id="getMyCourseProject" resultMap="BaseResultMap">
+        select project.*
+        from  project natural join student_pj
+        where project.course_id=#{courseId} and student_pj.user_id=#{userId}
+    </select>
+
 </mapper>

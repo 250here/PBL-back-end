@@ -59,4 +59,10 @@
     <select id="getAllCourse" resultMap="BaseResultMap">
         select * from course
     </select>
+
+    <select id="getJoinedCourses" resultMap="BaseResultMap">
+        select course.*
+        from course natural join takes
+        where takes.user_id=#{userId}
+    </select>
 </mapper>
