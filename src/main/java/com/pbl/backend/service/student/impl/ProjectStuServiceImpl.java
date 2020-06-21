@@ -1,6 +1,7 @@
 package com.pbl.backend.service.student.impl;
 
 import com.pbl.backend.common.response.Result;
+import com.pbl.backend.common.response.ResultCode;
 import com.pbl.backend.dao.GroupDao;
 import com.pbl.backend.dao.ProjectDao;
 import com.pbl.backend.dao.ProjectScoreDao;
@@ -106,20 +107,26 @@ public class ProjectStuServiceImpl implements IProjectStuService {
     */
     @Override
     public Result updateStuGrade(StuPjEvaluation stuPjEvaluation, String userId) {
-        if(stuPjEvaluation == null || stuPjEvaluation.getProjectId() == null || stuPjEvaluation.getGroupId() == null){
+        ProjectScore currProjectScore = projectScoreDao.getPjScoreByPjIdAndStuId(stuPjEvaluation.getProjectId(), userId);
+        if(currProjectScore.getIsEvaluated() == 1){
+            return new Result(ResultCode.STUDENT_IS_EVALUATED);
+        }
+        if (stuPjEvaluation == null || stuPjEvaluation.getProjectId() == null || stuPjEvaluation.getGroupId() == null) {
             return Result.FAIL();
         }
         List<StuEvaluate> stuEvaluate = stuPjEvaluation.getStuEvaluates();
-        if(stuEvaluate == null || stuEvaluate.size() == 0){
+        if (stuEvaluate == null || stuEvaluate.size() == 0) {
             return Result.FAIL();
         }
 
         Group group = groupDao.getGroupByGroupId(stuPjEvaluation.getGroupId());
         int members = group.getGroupMembers().size();
-        for(StuEvaluate temp : stuEvaluate){
+        for (StuEvaluate temp : stuEvaluate) {
             //获取当前学生成绩
             ProjectScore projectScore = projectScoreDao.getPjScoreByPjIdAndStuId(stuPjEvaluation.getProjectId(), temp.getUserId());
-            int grade = (int)1.0/members*temp.getGrade()+projectScore.getStuGrade();
+            int grade = (int) (1.0 / members * temp.getGrade() + projectScore.getStuGrade());
+//            System.out.println(grade+"-----");
+//            System.out.println(temp.getUserId() + "---" + stuPjEvaluation.getProjectId());
             projectScoreDao.updateStuEvaluate(stuPjEvaluation.getProjectId(), temp.getUserId(), grade);
         }
 
@@ -127,4 +134,15 @@ public class ProjectStuServiceImpl implements IProjectStuService {
         projectScoreDao.updateFinishedEvaluate(stuPjEvaluation.getProjectId(), userId);
         return Result.SUCCESS();
     }
+
+    @Override
+    public ProjectScore getPjScore(String userId, Integer projectId) {
+        ProjectScore projectScore = projectScoreDao.getPjScoreByPjIdAndStuId(projectId,userId);
+        Project project = projectDao.getProjectById(projectId);
+        int totalScore = (projectScore.getStuGrade() * project.getStuEvaWeight() + projectScore.getTeacherGrade() * project.getTeacherEvaWeight()) / 100;
+        projectScore.setTotalScore(totalScore);
+        return projectScore;
+    }
+
+
 }

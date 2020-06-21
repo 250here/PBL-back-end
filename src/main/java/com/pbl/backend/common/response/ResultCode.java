@@ -32,6 +32,7 @@ public enum  ResultCode {
     TAKES_COURSE_FAIL(20007,"选课失败"),
 
     USERNAME_PASSWORD_ERROR(20008, "用户名或密码错误"),
+    STUDENT_IS_EVALUATED(20009, "学生已经完成评测"),
 
 
     /* 权限错误：70001-79999 */

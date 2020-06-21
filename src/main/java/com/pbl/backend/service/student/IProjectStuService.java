@@ -3,6 +3,7 @@ package com.pbl.backend.service.student;
 import com.pbl.backend.common.response.Result;
 import com.pbl.backend.entity.Project;
 import com.pbl.backend.model.StuPjEvaluation;
+import com.pbl.backend.entity.ProjectScore;
 
 import java.util.List;
 
@@ -19,4 +20,6 @@ public interface IProjectStuService {
     boolean dropProject(Integer projectId, String userId);
 
     Result updateStuGrade(StuPjEvaluation stuPjEvaluation, String userId);
+
+    ProjectScore getPjScore(String userId,Integer projectId);
 }
