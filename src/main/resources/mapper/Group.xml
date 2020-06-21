@@ -28,7 +28,7 @@
 
 <!--    int addPjGroup(Group group);-->
     <insert id="addPjGroup" parameterType="com.pbl.backend.entity.Group">
-      insert into grouping(group_id,project_id,group_name,group_header)
+      insert into `grouping`(group_id,project_id,group_name,group_header)
         values(#{groupId},#{projectId},#{groupName},#{groupHeaderId})
     </insert>
 
@@ -36,7 +36,7 @@
 <!--    List<Group> getAllGroupsByPjId(@Param("projectId")int projectId);-->
     <select id="getAllGroupsByPjId" resultMap="BaseResultMap">
         select *
-        from grouping
+        from `grouping`
         where project_id=#{projectId}
     </select>
 
@@ -44,7 +44,7 @@
 <!--    Group getGroupByGroupId(@Param("groupId")int groupId);-->
     <select id="getGroupByGroupId" resultMap="BaseResultMap">
         select *
-        from grouping
+        from `grouping`
         where group_id=#{groupId}
     </select>
 
@@ -52,20 +52,20 @@
 <!--    Group getGroupByPjIdAndName(@Param("projectId")int projectId, @Param("groupName")String groupName);-->
     <select id="getGroupByPjIdAndName" resultMap="BaseResultMap">
         select *
-        from grouping
+        from `grouping`
         where project_id=#{projectId} and group_name=#{groupName}
     </select>
 
 <!--    //根据项目ID删除该项目所有小组信息-->
 <!--    int deleteGroupsByProjectId(@Param("projectId")int projectId);-->
     <delete id="deleteGroupsByProjectId">
-        delete from grouping where project_id=#{projectId}
+        delete from `grouping` where project_id=#{projectId}
     </delete>
 
 <!--    int getGroupIdByGroupNameAndPjId(@Param("projectId")int projectId, @Param("groupName")String groupName);-->
     <select id="getGroupIdByGroupNameAndPjId" resultType="int">
         select group_id
-        from grouping
+        from `grouping`
         where project_id=#{projectId} and group_name=#{groupName}
     </select>
 
