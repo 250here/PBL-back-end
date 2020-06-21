@@ -30,4 +30,6 @@ public interface GroupDao {
     int getGroupIdByGroupNameAndPjId(@Param("projectId")int projectId, @Param("groupName")String groupName);
 
     int deleteGroupsByGroupId(@Param("groupId") int groupId);
+
+    int deleteGroupsByGroupHeaderId(@Param("groupHeaderId") String groupHeaderId, @Param("projectId") int projectId);
 }

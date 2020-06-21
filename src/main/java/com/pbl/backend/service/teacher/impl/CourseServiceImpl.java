@@ -42,6 +42,9 @@ public class CourseServiceImpl implements ICourseService {
     private IProjectService projectService;
 
     @Autowired
+    private GroupDao groupDao;
+
+    @Autowired
     IFileService fileService;
 
     @Override
@@ -126,8 +129,16 @@ public class CourseServiceImpl implements ICourseService {
     @Override
     public boolean handleApply(String userId, int courseId,String code) {
 
+        List<Project> projects = projectDao.getAllProject(courseId);
         if(code.equals("1")){
             if(applyDao.updateApply(userId, courseId,code) > 0 &&  takesDao.deleteCourse(userId,courseId) > 0){
+                for(Project project : projects){
+                    //如果是组长，删除该小组
+                    groupDao.deleteGroupsByGroupHeaderId(userId, project.getProjectId());
+                    //不是则退出小组
+
+                    //删除学生与项目关联信息
+                }
                 return true;
             }else {
                 return false;

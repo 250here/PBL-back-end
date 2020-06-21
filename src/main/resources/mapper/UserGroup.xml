@@ -37,4 +37,8 @@
         where project_id=#{projectId} and user_id=#{userId}
     </select>
 
+    <delete id="deleteStuPjGroup">
+        delete from user_group where project_id=#{projectId} and user_id=#{userId}
+    </delete>
+
 </mapper>
