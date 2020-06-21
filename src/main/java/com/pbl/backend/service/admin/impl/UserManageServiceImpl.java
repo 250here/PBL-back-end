@@ -4,6 +4,7 @@ import com.pbl.backend.dao.UserDao;
 import com.pbl.backend.entity.User;
 import com.pbl.backend.service.admin.IUserManageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,8 +20,12 @@ public class UserManageServiceImpl implements IUserManageService {
     @Autowired
     UserDao userDao;
 
+    @Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder;
+
     @Override
     public boolean addUser(User user) {
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userDao.add(user);
         return true;
     }
