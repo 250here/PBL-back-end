@@ -58,4 +58,9 @@ public class UserManageServiceImpl implements IUserManageService {
         userDao.deleteRole(userId);
         return true;
     }
+
+    @Override
+    public Integer getUserRole(String userId) {
+        return userDao.getUserRoleByUserId(userId);
+    }
 }

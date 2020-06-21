@@ -22,4 +22,6 @@ public interface ApplyDao {
     Integer updateApply(@Param("userId")String userId, @Param("courseId")int courseId, @Param("code")String code);
 
     Integer deleteApplyInfoByCourseId(@Param("courseId") Integer courseId);
+
+    Integer deleteApplyRecord(@Param("userId")String userId, @Param("courseId")int courseId);
 }

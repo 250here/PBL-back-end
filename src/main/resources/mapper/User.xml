@@ -88,4 +88,11 @@
     <delete id="deleteRole" parameterType="String">
         delete from user_role where user_id=#{userId}
     </delete>
+
+<!--    Integer getUserRoleByUserId(@Param("userId")String userId);-->
+    <select id="getUserRoleByUserId" parameterType="String" resultType="integer">
+        select role_id
+        from user_role
+        where user_id=#{userId}
+    </select>
 </mapper>

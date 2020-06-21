@@ -55,4 +55,9 @@
         from apply
         where course_id=#{courseId}
     </delete>
+
+<!--    Integer deleteApplyRecord(@Param("userId")String userId, @Param("courseId")int courseId);-->
+    <delete id="deleteApplyRecord">
+        delete from apply where user_id=#{userId} and course_id=#{courseId}
+    </delete>
 </mapper>

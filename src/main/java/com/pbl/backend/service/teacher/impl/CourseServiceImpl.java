@@ -143,6 +143,9 @@ public class CourseServiceImpl implements ICourseService {
                     userGroupDao.deleteStuPjGroup(project.getProjectId(), userId);
                     //删除学生与项目关联信息
                     projectScoreDao.deleteStuProjectInfo(project.getProjectId(), userId);
+
+                    //删除申请记录
+                    applyDao.deleteApplyRecord(userId, courseId);
                 }
                 return true;
             }else {

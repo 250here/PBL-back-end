@@ -1,9 +1,12 @@
 package com.pbl.backend.controller.admin;
 
 import com.pbl.backend.common.response.ResultCode;
+import com.pbl.backend.entity.Course;
 import com.pbl.backend.entity.User;
 import com.pbl.backend.service.admin.ICourseAdminService;
 import com.pbl.backend.service.admin.IUserManageService;
+import com.pbl.backend.service.student.ICourseStuService;
+import com.pbl.backend.service.teacher.ICourseService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +28,12 @@ public class UserManageController {
 
     @Autowired
     IUserManageService userManageService;
+
+    @Autowired(required=false)
+    ICourseStuService courseStuService;
+
+    @Autowired(required=false)
+    ICourseService courseService;
 
     @ApiOperation(value = "新增教师")
     @PostMapping("/teacherInfo")
@@ -63,8 +72,31 @@ public class UserManageController {
     @ApiOperation(value = "删除指定用户")
     @DeleteMapping("/userInfo/{userId}")
     public Result deleteUser(@PathVariable("userId") String userId){
-        if(userManageService.deleteUserRoleById(userId) && userManageService.deleteUserById(userId))
+
+        int role = userManageService.getUserRole(userId);
+
+        //学生
+        if(role == 3){
+            List<Course> coursesOfStu = courseStuService.getJoinedCourseInfos(userId);
+            if(coursesOfStu.size() != 0){
+                System.out.println("+++++++");
+                return Result.FAIL("该用户正在进行课程学习,删除失败");
+            }
+        }
+        if(role == 2){
+            //若是老师看是否教课
+            List<Course> coursesOfTeacher = courseService.getCoursesOfTeacher(userId);
+
+            if (coursesOfTeacher.size()!=0){
+                System.out.println("============");
+                return Result.FAIL("该用户正在进行课程教授，删除失败");
+            }
+        }
+
+        if(userManageService.deleteUserRoleById(userId) && userManageService.deleteUserById(userId)){
+            System.out.println("-----------");
             return Result.SUCCESS();
+        }
         return Result.FAIL();
     }
 

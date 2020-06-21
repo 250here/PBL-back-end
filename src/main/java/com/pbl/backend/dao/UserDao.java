@@ -41,4 +41,6 @@ public interface UserDao {
 
     void deleteRole(@Param("userId")String userId);
 
+    Integer getUserRoleByUserId(@Param("userId")String userId);
+
 }
