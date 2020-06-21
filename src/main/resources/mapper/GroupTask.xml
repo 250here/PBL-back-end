@@ -64,4 +64,10 @@
         where task_id=#{groupTaskId}
     </update>
 
+    <select id="getPJTaskAllGroupTasks" resultMap="BaseResultMap">
+        select *
+        from group_task
+        where group_id=#{groupId} and project_task_id=#{pjTaskId}
+    </select>
+
 </mapper>

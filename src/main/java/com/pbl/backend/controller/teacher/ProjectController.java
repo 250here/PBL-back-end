@@ -50,7 +50,7 @@ public class ProjectController {
     }
 
     @ApiOperation(value = "删除项目")
-    @DeleteMapping("/projectInfo/projectId}")
+    @DeleteMapping("/projectInfo/{projectId}")
     public Result deleteProject(@PathVariable("projectId") Integer projectId){
         boolean result = projectService.deleteProject(projectId);
         return result ? Result.SUCCESS() : Result.FAIL();

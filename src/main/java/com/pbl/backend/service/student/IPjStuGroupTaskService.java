@@ -11,6 +11,8 @@ public interface IPjStuGroupTaskService {
 
     List<GroupTask> getPjGroupAllTasks(Integer groupId);
 
+    List<GroupTask> getPjTaskGroupAllTasks(int pjTaskId, int groupId);
+
     GroupTask getPjGroupTask();
 
     boolean deletePjGroupTask(int pjTaskId, int groupId, int groupTaskId, boolean isFinished);

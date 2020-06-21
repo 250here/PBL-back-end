@@ -71,12 +71,12 @@
 
     <select id="getMyPjGroup" resultMap="BaseResultMap">
         select *
-        from grouping
+        from `grouping`
         where group_id=(select user_group.group_id from user_group where
         user_group.user_id=#{userId} and user_group.project_id=#{projectId})
     </select>
 
     <delete id="deleteGroupsByGroupId">
-        delete from grouping where group_id=#{groupId}
+        delete from `grouping` where group_id=#{groupId}
     </delete>
 </mapper>
