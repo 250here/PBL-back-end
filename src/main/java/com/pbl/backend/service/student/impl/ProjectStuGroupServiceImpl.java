@@ -115,7 +115,14 @@ public class ProjectStuGroupServiceImpl implements IProjectStuGroupService {
     */
     @Override
     public boolean dropPjGroup(Integer groupId, String userId) {
-        int result = userGroupDao.deleteStuGroup(groupId, userId);
+        Group group = groupDao.getGroupByGroupId(groupId);
+        int result = 0;
+        if(group.getGroupHeaderId().equals(userId)){ //组长退出,删除小组
+            result = groupDao.deleteGroupsByGroupId(groupId);
+        }
+        else{
+            result = userGroupDao.deleteStuGroup(groupId, userId);
+        }
         return result > 0;
     }
 }
