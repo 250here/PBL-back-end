@@ -1,7 +1,10 @@
 package com.pbl.backend.controller.student;
 
+import com.pbl.backend.dao.ProjectScoreDao;
 import com.pbl.backend.entity.Audience;
 import com.pbl.backend.entity.Project;
+import com.pbl.backend.entity.ProjectTask;
+import com.pbl.backend.model.StuPjEvaluation;
 import com.pbl.backend.entity.ProjectScore;
 import com.pbl.backend.service.student.IProjectStuService;
 import com.pbl.backend.utils.JwtTokenUtil;
@@ -34,6 +37,9 @@ public class StuProjectController {
 
     @Resource
     private IProjectStuService stuProjectService;
+
+    @Autowired
+    private ProjectScoreDao projectScoreDao;
 
     @ApiOperation(value = "获取该课程所有项目")
     @GetMapping("/projectList/{courseId}")
@@ -75,6 +81,13 @@ public class StuProjectController {
         return result ? Result.SUCCESS() : Result.FAIL();
     }
 
+    @ApiOperation(value = "学生小组互评")
+    @PostMapping("/studentPjInfo/stuEvaluates")
+    public Result stuEvaluate(@RequestBody StuPjEvaluation stuPjEvaluation, HttpServletRequest request) {
+        String userId = JwtTokenUtil.getUserIdFromToken(request, audience);
+        return stuProjectService.updateStuGrade(stuPjEvaluation, userId);
+    }
+
     @ApiOperation(value = "学生查看项目成绩")
     @GetMapping("/studentPjInfo/PjScore/{projectId}")
     public Result getPjScore(HttpServletRequest request, @PathVariable("projectId") Integer projectId){
@@ -82,4 +95,13 @@ public class StuProjectController {
         ProjectScore projectScores = projectStuService.getPjScore(userId,projectId);
         return Result.SUCCESS(projectScores);
     }
+
+    @ApiOperation(value = "查看是否完成评测")
+    @GetMapping("/studentPjInfo/isEvaluated/{projectId}")
+    public Result getIsEvaluated(@PathVariable("projectId") int projectId, HttpServletRequest request){
+        String userId = JwtTokenUtil.getUserIdFromToken(request, audience);
+        ProjectScore projectScore = projectScoreDao.getPjScoreByPjIdAndStuId(projectId, userId);
+        return Result.SUCCESS(projectScore.getIsEvaluated());
+    }
+
 }

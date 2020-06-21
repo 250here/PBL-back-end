@@ -79,4 +79,8 @@
     <delete id="deleteGroupsByGroupId">
         delete from `grouping` where group_id=#{groupId}
     </delete>
+
+    <delete id="deleteGroupsByGroupHeaderId">
+        delete from `grouping` where group_header=#{groupHeaderId} and project_id=#{projectId}
+    </delete>
 </mapper>

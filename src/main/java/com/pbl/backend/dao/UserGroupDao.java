@@ -15,6 +15,10 @@ public interface UserGroupDao {
     //学生退出小组，删除关联信息
     int deleteStuGroup(@Param("groupId")int groupId, @Param("userId")String userId);
 
+    //学生退出项目,删除所有小组关联信息
+    int deleteStuPjGroup(@Param("projectId")int projectId, @Param("userId")String userId);
+
+
     //根据UserId和ProjectId获取groupId
     Integer getGroupIdByPjIdAndUserId(@Param("projectId")int projectId, @Param("userId")String userId);
 }

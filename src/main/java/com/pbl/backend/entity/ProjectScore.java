@@ -26,5 +26,7 @@ public class ProjectScore {
 
     private String pjTaskCompletion; //所在小组项目任务完成度
 
+    private Integer isEvaluated; //学生是否已经参加互评
+
     private Integer totalScore;//总成绩
 }
