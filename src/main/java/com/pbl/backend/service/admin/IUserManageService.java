@@ -15,4 +15,6 @@ public interface IUserManageService {
     boolean deleteUserById(String userId);
 
     User getUserByName(String userName);
+
+    boolean deleteUserRoleById(String userId);
 }

@@ -83,4 +83,9 @@
     <delete id="deleteUserById" parameterType="String">
         delete from user where user_id=#{userId}
     </delete>
+
+<!--    void deleteRole(@Param("userId")String userId);-->
+    <delete id="deleteRole" parameterType="String">
+        delete from user_role where user_id=#{userId}
+    </delete>
 </mapper>

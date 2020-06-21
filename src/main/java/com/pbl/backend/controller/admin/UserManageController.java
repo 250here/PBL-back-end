@@ -63,7 +63,7 @@ public class UserManageController {
     @ApiOperation(value = "删除指定用户")
     @DeleteMapping("/userInfo/{userId}")
     public Result deleteUser(@PathVariable("userId") String userId){
-        if(userManageService.deleteUserById(userId))
+        if(userManageService.deleteUserRoleById(userId) && userManageService.deleteUserById(userId))
             return Result.SUCCESS();
         return Result.FAIL();
     }

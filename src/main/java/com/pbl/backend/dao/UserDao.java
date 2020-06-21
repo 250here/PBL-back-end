@@ -39,5 +39,6 @@ public interface UserDao {
 
     Integer deleteUserById(@Param("userId")String userId);
 
+    void deleteRole(@Param("userId")String userId);
 
 }
