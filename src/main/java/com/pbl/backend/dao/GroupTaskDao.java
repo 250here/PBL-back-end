@@ -12,6 +12,8 @@ public interface GroupTaskDao {
     //获取小组内所有任务
     List<GroupTask> getAllGroupTasks(@Param("groupId")int groupId);
 
+    List<GroupTask> getPJTaskAllGroupTasks(@Param("pjTaskId")int pjTaskId, @Param("groupId") int groupId);
+
     //插入小组任务
     int addGroupTask(GroupTask groupTask);
 
@@ -29,4 +31,6 @@ public interface GroupTaskDao {
 
     //更新小组任务为已完成
     int updateGruopTaskFinished(@Param("groupTaskId")int groupTaskId, @Param("isFinished")int isFinished);
+
+
 }

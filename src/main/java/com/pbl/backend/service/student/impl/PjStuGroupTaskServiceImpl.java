@@ -130,4 +130,9 @@ public class PjStuGroupTaskServiceImpl implements IPjStuGroupTaskService {
         }
         return true;
     }
+
+    @Override
+    public List<GroupTask> getPjTaskGroupAllTasks(int pjTaskId, int groupId) {
+        return groupTaskDao.getPJTaskAllGroupTasks(pjTaskId, groupId);
+    }
 }

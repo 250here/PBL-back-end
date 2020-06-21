@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface IProjectTaskService {
 
-    boolean createPjTask(ProjectTaskReq projectTaskReq);
+    boolean createPjTask(ProjectTask projectTask);
 
     List<ProjectTask> getPjAllTasks(Integer projectId);
 

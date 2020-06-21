@@ -3,7 +3,6 @@ package com.pbl.backend.controller.student;
 import com.pbl.backend.common.response.Result;
 import com.pbl.backend.entity.GroupTask;
 import com.pbl.backend.entity.ProjectTask;
-import com.pbl.backend.model.ProjectTaskReq;
 import com.pbl.backend.service.student.IPjStuGroupTaskService;
 import com.pbl.backend.service.teacher.IProjectTaskService;
 import io.swagger.annotations.Api;
@@ -58,9 +57,11 @@ public class StuProjectTaskController {
     }
 
     @ApiOperation(value = "查看项目小组内指定任务具体信息，包含组员任务认领和完成情况")
-    @GetMapping("/pjGroupTaskInfo")
-    public Result getPjGroupTaskInfo(){
-        return null;
+    @GetMapping("/pjGroupTaskInfo/{projectTaskId}/{groupId}")
+    public Result getPjGroupTaskInfo(@PathVariable("projectTaskId") int projectTaskId,
+                                     @PathVariable("groupId") int groupId){
+        List<GroupTask> groupTasks = pjGroupTaskService.getPjTaskGroupAllTasks(projectTaskId, groupId);
+        return Result.SUCCESS(groupTasks);
     }
 
     @ApiOperation(value = "删除项目小组内发布的任务")
