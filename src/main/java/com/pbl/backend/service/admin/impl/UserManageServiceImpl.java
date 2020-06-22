@@ -54,7 +54,7 @@ public class UserManageServiceImpl implements IUserManageService {
     @Override
     public User getUserByName(String userName) {
         User user = userDao.loadUserByUsername(userName);
-        user.setRole(userDao.getUserRole(user.getId()));
+        //user.setRole(userDao.getUserRole(user.getId()));
         return user;
     }
 
